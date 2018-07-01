@@ -31,6 +31,14 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+.Rproj.user
 
-# Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
-rsconnect/
+# Sync.com file
+.syncinfo
+
+# Manuscript files
+*.doc
+*.docx
+
+# PDF files of articles
+pdfs/*.*
