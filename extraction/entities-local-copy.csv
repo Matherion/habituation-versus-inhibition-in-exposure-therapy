@@ -1,0 +1,74 @@
+"title","description","identifier","valueTemplate","validValues","default","examples","parent","entityRef","fieldRef","owner","list","collapsing","repeating","recurring","recursing"
+"Study identifier","Unique identifier for this study","studyId","xdoi",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"General comments","Any general comments the coder wants to add about this study","comments","string",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Year","Year (or years) the data were collected","year","integer.length4.multi",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Country","Country (or countries) where the data were collected","country","countrycode",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Methods","Description of the methods used by the study","methods",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Sample size","Total number of human participants in the study (note: the actual sample size may be larger if multiple observations are collected per participant)","N","integer",NA,NA,NA,"methods",NA,NA,NA,NA,NA,NA,NA,NA
+"Subsample","If studies contain several samples, specify them here","subsample",NA,NA,NA,NA,"methods",NA,NA,NA,TRUE,NA,TRUE,NA,NA
+"Name","A unique name (in this study), to be able to refer to this subsample later, and to easily find it afterwards","subsample.name","string.mandatory",NA,NA,NA,"subsample",NA,NA,NA,NA,NA,NA,NA,NA
+"Size","Sample size of subsample","subsample.N","integer",NA,NA,NA,"subsample",NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Type of study","Whether the study was qualitative or quantitative","methodType","categorical","""qualitative"" || ""quantitative"" || ""mixed methods""",NA,NA,"methods",NA,NA,NA,NA,NA,NA,NA,NA
+"Operationalisations","The operationalisations (measurements or manipulations) used in the study","operationalisations",NA,NA,NA,NA,"methods",NA,NA,NA,NA,NA,NA,NA,NA
+"Variable","A variable and its operationalisation","variable",NA,NA,NA,NA,"operationalisations",NA,NA,NA,TRUE,NA,TRUE,NA,NA
+"Variable Name","A unique name (in this study), to be able to refer to this variable later, and to easily find it afterwards","oper.name","string.mandatory",NA,NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
+"Moment","Moment(s) this variable was measured/manipulated.","oper.moment","integer.multi",NA,1,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
+"Type of operationalisation","Whether this variable is a manipulation, a single measurement, or an aggregate","oper.type","categorical","""manipulation"" || ""item"" || ""aggregate""",NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
+"Type of data","""Measurement level"" of this operationalisation.","oper.datatype","categorical","""numeric"" || ""logical"" || ""nominal"" || ""ordinal"" || ""string""",NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
+"Values","Possible values this variable can take: only valid for ""nominal"" or ""ordinal"" variables.","oper.values","integer.multi",NA,NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
+"Labels","Labels for the values.","oper.labels","string.multi",NA,NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
+"Description","A description of this variable (can be more extensive than the name)","oper.description","string",NA,NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
+"Comment","Any relevant comments the coder wants to add","oper.comment","string",NA,NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
+"Treatments","The treatments for each group","treatments",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Treatment","Details about the delivered treatment for this group (this operationalisation value)","treatment",NA,NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Group","Which treatment group (operationalisation value) this description pertains to","treatment.operValue","string.fieldRef.mandatory",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,TRUE,NA,NA
+"blabla",NA,NA,"activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"etc",NA,NA,"activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Expectancy disconfirmation","Hoe we het ook precies definieren","expectdisconfirm","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Results","Results based on the data collected in this study","results",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Univariate","A single statistic about a single variable.","univariate",NA,NA,NA,NA,"results",NA,NA,NA,TRUE,NA,TRUE,NA,NA
+"Name of result","A unique name (in this study), to easily find / meta-analyse / group this result later","uni.name","string.mandatory",NA,NA,"""prevalence"" || ""reliability""","univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Variable","The variable this result pertains to.","uni.variable","string.entityRef.mandatory",NA,NA,NA,"univariate","oper.name",NA,NA,NA,NA,NA,NA,NA
+"Subsample","If applicable, the subsample this result pertains to.","uni.subsample","string.entityRef.optional",NA,NA,NA,"univariate","subsample.name",NA,NA,NA,NA,NA,NA,NA
+"Value","If applicable, the value this result pertains to. For example, for a categorical variable, three percentages can be specified: one for each possible category (as identified by the corresponding value).","uni.value","string.fieldRef.optional",NA,NA,NA,"univariate",NA,"oper.values",NA,NA,NA,NA,NA,NA
+"Moment","If applicable, the measurement moemnt this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment.","uni.moment","string.fieldRef.optional",NA,NA,NA,"univariate",NA,"oper.moment",NA,NA,NA,NA,NA,NA
+"Minimum value","If applicable, the minimum value in the data series of this variable.","uni.minimum","numeric",NA,NA,NA,"univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Maximum value","If applicable, the maximum value in the data series of this variable.","uni.maximum","numeric",NA,NA,NA,"univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Median value","If applicable, the median of this variable.","uni.median","numeric",NA,NA,NA,"univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Mean value","If applicable, the mean of this variable.","uni.mean","numeric",NA,NA,NA,"univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Percentage","If applicable, the percentage of observations in this category (for a categorical variable) or scoring TRUE (for a logical variable).","uni.percentage","numeric",NA,NA,NA,"univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Sample size","This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample.","uni.n","integer",NA,NA,NA,"univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Standard deviation","If applicable, the standard deviation of this variable.","uni.sd","numeric",NA,NA,NA,"univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Qualitative","If applicable, the original text as extracted from the source material.","uni.qualitative","string",NA,NA,NA,"univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Comment","Any relevant comments the coder wants to add","uni.comment","string",NA,NA,NA,"univariate",NA,NA,NA,NA,NA,NA,NA,NA
+"Association","An association between two variables.","association",NA,NA,NA,NA,"results",NA,NA,NA,TRUE,NA,TRUE,NA,NA
+"Name of result","A unique name (in this study), to easily find / meta-analyse / group this result later","assoc.name","string.mandatory",NA,NA,"""mainHypothesisTest"" || ""manipulationCheck""","association",NA,NA,NA,NA,NA,NA,NA,NA
+"First variable","The name of the first variable.","assoc.variable1","string.entityRef.mandatory",NA,NA,NA,"association","oper.name",NA,NA,NA,NA,NA,NA,NA
+"Values of first variable","Values this variable pertains to (e.g. in post hoc analyses).","assoc.var1name","string.fieldRef.optional",NA,NA,NA,"association",NA,"oper.values",NA,NA,NA,NA,NA,NA
+"Measurement moment of first variable","To which measurement moment of the first variable this association pertains.","assoc.var1moment","string.fieldRef.optional",NA,NA,NA,"association",NA,"oper.moment",NA,NA,NA,NA,NA,NA
+"Second variable","The name of the second variable.","assoc.var2name","string.entityRef.mandatory",NA,NA,NA,"association","oper.name",NA,NA,NA,NA,NA,NA,NA
+"Values of second variable","Values this variable pertains to (e.g. in post hoc analyses).","assoc.var2values","string.fieldRef.optional",NA,NA,NA,"association",NA,"oper.values",NA,NA,NA,NA,NA,NA
+"Measurement moment of second variable","To which measurement moment of the second variable this association pertains.","assoc.var2moment","string.fieldRef.optional",NA,NA,NA,"association",NA,"oper.moment",NA,NA,NA,NA,NA,NA
+"Subsample","If applicable, the subsample this result pertains to.","assoc.subsample","string.entityRef.optional",NA,NA,NA,"association","subsample.name",NA,NA,NA,NA,NA,NA,NA
+"Sample size","This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample.","assoc.n","integer",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Degrees of freedom","This can be used to specify the degrees of freedom for this analysis, in case for example a t or an F value is extracted.","assoc.df","numeric.multi",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"t value","The t value of this association.","assoc.t","numeric",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"F value","The F value of this association","assoc.F","numeric",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Pearson r","The bivariate correlation of this association","assoc.r","numeric",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Chi square","The chi squared value of this association","assoc.chisq","numeric",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Raw table","A table with the frequencies","assoc.crosstab","matrix.crosstab",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Cohen's d","The Cohen's d value of this association","assoc.d","numeric",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Eta squared","The eta squared value of this association","assoc.etasq","numeric",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Omega squared","The omega squared value of this association","assoc.omegasq","numeric",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Odds Ratio","The odds ratio of this association","assoc.OR","numeric",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"p value","The association's p value (only extract if nothing else is available)","assoc.p","numeric",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Covariates","Number of covariates (for multivariate analyses).","assoc.covariates","integer",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Comment","Any relevant comments the coder wants to add","assoc.comment","string",NA,NA,NA,"association",NA,NA,NA,NA,NA,NA,NA,NA
+"Recursing element","This is a recursing element, one containing itself even.","recursiveElement",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"TRUE"
+"Child 1","First placeholder child for recursing element","recursChild1","string",NA,NA,NA,"recursiveElement",NA,NA,NA,NA,NA,NA,NA,NA
+"Child 2","Second placeholder child for recursing element","recursChild2","string",NA,NA,NA,"recursiveElement",NA,NA,NA,NA,NA,NA,NA,NA
+"Itself","The recursing element itself","itself",NA,NA,NA,NA,"recursiveElement",NA,NA,NA,NA,NA,NA,NA,"recursiveElement"

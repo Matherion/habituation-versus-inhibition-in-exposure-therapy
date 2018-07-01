@@ -13,6 +13,8 @@ output: html_document
 require('userfriendlyscience');  ### For convenience functions, e.g. 'safeRequire'
 safeRequire('here');             ### To easily access files using 'relative paths'
 safeRequire('plyr');             ### For easily processing and restructuring data
+safeRequire('dplyr');            ### Also for easily processing and restructuring data
+safeRequire('purrr');            ### Iteration and the %||% operator
 safeRequire('lubridate');        ### For working with dates
 safeRequire("googlesheets");     ### To import data from google sheets in metabefor
 safeRequire('jsonlite');         ### To import a list of country codes in metabefor
@@ -28,6 +30,7 @@ require('metabefor');
 
 ### By default hide R code
 knitr::opts_chunk$set(echo = FALSE);
+knitr::opts_chunk$set(comment = NA);
 
 ### Set path for query hit exports
 queryHitExportPath <- here::here("queries");
@@ -46,8 +49,18 @@ queries <- list();
 ```{r first-query-setup}
 queries[[length(queries) + 1]] <-
   list(date = ymd("2018-07-01"),
-       query = paste0('(("cognitive behavio* therapy" OR cbt OR exposure) AND',
-                      '(child* OR adolescen* OR youth) AND (anxiety OR fear))'),
+       query = query_requiredConcepts(conceptName="Exposure therapy query",
+                                      query_conceptTerms(conceptName = "Exposure Therapy",
+                                                         "cognitive behavio* therapy",
+                                                         "cbt",
+                                                         "exposure"),
+                                      query_conceptTerms(conceptName = "Target population",
+                                                         "child*",
+                                                         "adolescent*",
+                                                         "youth"),
+                                      query_conceptTerms(conceptName = "Disorder",
+                                                         "anxiety",
+                                                         "fear")),
        databases = c(psycinfo = "RIS",
                      pubmed = "RIS"));
 ```
@@ -56,13 +69,21 @@ queries[[length(queries) + 1]] <-
 
 The first query is:
 
-```
-queries[[1]]$query;
+```{r query1-visual}
+plot(queries[[1]]$query);
 ```
 
-This was run at 2018-XX-XX in PubMed (XXXX hits) and PsycINFO accessed through EbscoHost (XXXX hits), and exported to RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`.
+In this plot, the 'AND' operator is visualised by a solid line, while the 'OR' operator is visualised by a dotted line.
 
-```{r echo=TRUE}
+In the interface language of the PubMed interface to the PubMed database and the Ebscohost and Ovid interfaces to a variety of databases such as PsycINFO, PsycArticles, and MedLine, this query renders as:
+
+```{r}
+query_toInterfaceLang(queries[[1]]$query);
+```
+
+This query was run at `r queries[[1]]$date;` in PubMed (XXXX hits) and PsycINFO accessed through EbscoHost (XXXX hits), and exported to RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`.
+
+```{r echo=TRUE, eval=FALSE}
 
 ### Import PsycINFO hits
 firstQueryIteration_psycinfo <-
@@ -109,7 +130,7 @@ When opening a bibliographic library (i.e. a file with the extension `.bib`) in 
 
 First, to change the fields that are visible in the overview table of all references (i.e. the entry table), open the 'Options' drop-down menu and select 'Preferences'. In the preferences dialog, open the 'Entry table columns' section:
 
-![Figure 1: Screenshot of JabRef preferences dialog when the 'Entry table columns' section is opened.](img/jabref--preferences--entry-table-columns.png)
+![Figure 1: Screenshot of JabRef preferences dialog when the 'Entry table columns' section is opened.](../img/jabref--preferences--entry-table-columns.png)
 
 There, the columns shown in the entry table can be edited in the 'Entry table columns' sections. A bit confusingly, this is done by adding *rows* in the table shown in this dialog. Each 'row' in this table represents a column in the entry table.
 
@@ -119,7 +140,7 @@ Second, you need to be able to edit the content in that field. The entry table i
 
 These tabs can be configured by setting the 'General fields'. Open the 'Options' drop-down menu and select 'General Fields' to configure which fields are available in the different tabs when opening an entry. 
 
-![Figure 2: Screenshot of JabRef dialog used to set the general fields.](img/jabref--set-general-fields.png)
+![Figure 2: Screenshot of JabRef dialog used to set the general fields.](../img/jabref--set-general-fields.png)
 
 Add a dedicated field for the reviewing, showing only the title, abstract, and `screening1` fields. This allows you to focus on the relevant information while ignoring irrelevant and potentially biasing information (such as year, journal, and authors). Each row in this text area shows one tab. The first term on each row is the tab's name, followed by a colon (`:`) and then the fields shown in the tab, separated by semicolons (`;`). For example, you could add the following row:
 
@@ -149,7 +170,7 @@ NEWQUERY
 
 This was run at 2018-05-23 in PubMed (61 hits) and PsycINFO accessed through EbscoHost (72 hits), and exported to the RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`.
 
-```{r echo=TRUE}
+```{r echo=TRUE, eval=FALSE}
 
 ### Import PsycINFO hits
 secondQueryIteration_psycinfo <-
