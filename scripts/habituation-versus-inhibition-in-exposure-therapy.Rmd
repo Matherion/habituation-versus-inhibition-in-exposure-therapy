@@ -1,6 +1,10 @@
 ---
 title: "Habituation versus inhibition in exposure therapy - literature synthesis"
+<<<<<<< HEAD
 author: "Pepijn van der Hulle, Gjalt-Jorn Peters, Eva de Hullu & Jacques van Lankveld"
+=======
+author: "Pepijn de Hulle, Gjalt-Jorn Peters, Eva de Hullu & Jacques van Lankveld"
+>>>>>>> 25d74161212f10d9bb19dfee194a686a89c49f24
 date: "`r format(Sys.time(), '%H:%M:%S on %Y-%m-%d %Z (GMT%z)')`"
 output: html_document
 ---
