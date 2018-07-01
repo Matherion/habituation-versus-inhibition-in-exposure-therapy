@@ -62,7 +62,8 @@ queries[[length(queries) + 1]] <-
                                                          "anxiety",
                                                          "fear")),
        databases = c(psycinfo = "RIS",
-                     pubmed = "RIS"));
+                     pubmed = "RIS"),
+       fields = "title");
 ```
 
 ## First query, executed at: `r queries[[1]]$date;`
@@ -75,10 +76,13 @@ plot(queries[[1]]$query);
 
 In this plot, the 'AND' operator is visualised by a solid line, while the 'OR' operator is visualised by a dotted line.
 
+In this query, the searched terms must occur in entries' `r queries[[1]]$fields` fields.
+
 In the interface language of the PubMed interface to the PubMed database and the Ebscohost and Ovid interfaces to a variety of databases such as PsycINFO, PsycArticles, and MedLine, this query renders as:
 
 ```{r}
-query_toInterfaceLang(queries[[1]]$query);
+query_toInterfaceLang(queries[[1]]$query,
+                      fields=queries[[1]]$fields);
 ```
 
 This query was run at `r queries[[1]]$date;` in PubMed (XXXX hits) and PsycINFO accessed through EbscoHost (XXXX hits), and exported to RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`.
