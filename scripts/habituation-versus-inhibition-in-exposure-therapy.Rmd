@@ -50,9 +50,10 @@ queries <- list();
 queries[[length(queries) + 1]] <-
   list(date = ymd("2018-07-01"),
        query = query_requiredConcepts(conceptName="Exposure therapy query",
-                                      query_conceptTerms(conceptName = "Exposure Therapy",
+                                      query_conceptTerms(conceptName = "Cognitive Behavioral Therapy",
                                                          "cognitive behavio* therapy",
-                                                         "cbt",
+                                                         "cbt"),
+                                      query_conceptTerms(conceptName = "Exposure Therapy",
                                                          "exposure"),
                                       query_conceptTerms(conceptName = "Target population",
                                                          "child*",
@@ -85,20 +86,20 @@ query_toInterfaceLang(queries[[1]]$query,
                       fields=queries[[1]]$fields);
 ```
 
-This query was run at `r queries[[1]]$date;` in PubMed (XXXX hits) and PsycINFO accessed through EbscoHost (XXXX hits), and exported to RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`.
+This query was run at `r queries[[1]]$date;` in PubMed (XXXX hits; file saved as <code>pubmed-`r queries[[1]]$date`.ris</code>) and PsycINFO accessed through EbscoHost (XXXX hits; file saved as <code>psycinfo-`r queries[[1]]$date`.ris</code>), and exported to RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`.
 
 ```{r echo=TRUE, eval=FALSE}
 
 ### Import PsycINFO hits
 firstQueryIteration_psycinfo <-
   importRISlike(file.path(queryHitExportPath,
-                          "psycinfo-XXXX-XX-XX.ris"),
+                          paste0("psycinfo-", queries[[1]]$date, ".ris"),
                 encoding="native.enc");
 
 ### Import PubMed hits
 firstQueryIteration_pubmed <-
   importRISlike(file.path(queryHitExportPath,
-                          "pubmed-XXXX-XX-XX.ris"));
+                          paste0("pubmed-", queries[[1]]$date, ".ris")));
 
 ### Merge the two sets of hits
 firstQueryIteration <-
@@ -116,17 +117,17 @@ firstQueryIteration$output$records <-
 ### Add query date identifier to bibtex keys
 firstQueryIteration$output$records$bibtexkey <-
   paste0(firstQueryIteration$output$records$bibtexkey,
-         "-20180514");
+         "-", gsub("-", "", queries[[1]]$date));
 
 ### Export the hits to bibtex for screening in JabRef
 sysrevExport(firstQueryIteration,
              filename=file.path(screeningPath,
-                                "2018-05-14-screening.bib"),
+                                paste0(queries[[1]]$date, "-screening.bib")),
              screeningType="screening");
 
 ```
 
-The merged list of query hits has now been exported to file `2018-05-14-screening.bib` in directory "screening" and can be opened using JabRef, which can be downloaded from https://www.fosshub.com/JabRef.html.
+The merged list of query hits has now been exported to file <code>`r queries[[1]]$date`-screening.bib</code> in directory "screening" and can be opened using JabRef, which can be downloaded from https://www.fosshub.com/JabRef.html.
 
 ## JabRef configuration
 
@@ -155,10 +156,11 @@ Add a dedicated field for the reviewing, showing only the title, abstract, and `
 For every entry, add the following text in the 'screening' field:
 
 - If it is excluded, add the reason, specifically (these are ordered progressively; i.e. if one of the criteria matches, apply it and move on to the next entry):
-    - **`nohome`** if the study does not deal with the home advantage;
-    - **`nosoccer`** if the study does not report on data exclusively for soccer (*also* reporting data for other sports is no grounds for exclusion of course)
-    - **`nopro`** if the study does not report on data exclusively for professionals (*also* reporting data for amateur soccer is no grounds for exclusion of course)
-- If it is included, add **`incl`**, followed by two opening brackets (**`[[`**) and a list of the relevant variables that were included separated by pipes (**`|`**) and terminated by two closing brackets (**`]]`**), such as `incl [[ supporting audience size | distance from home city ]]`
+    - **`noexperiment`** if the study does not have an experimental design;
+    - **`notargetpop`** if the study did not sample participants younger than 18 years;
+    - **`noexposure`** if the study does not compare two groups that differ in the treatment in terms of exposure;
+    - **`nophobia`** if the study did concern treatment for phobia disorders;
+- If it is included, add **`incl`**.
 
 So once JabRef is opened, when screening, make sure that the 'screening1' field is shown in the entry table (i.e. that it is one of the entry table columns), and create one entry editing tab using 'General Fields' that contains the fields `title`, `abstract`, and `screening1`. You can then use this tab for the screening. It is also convenient to show field `dupl` in either the entry table or the screening tab in the entry editor, because for duplicate records (that were identified as such - the algorithm may miss some duplicates of course), that field contains the text `dupl`.
 

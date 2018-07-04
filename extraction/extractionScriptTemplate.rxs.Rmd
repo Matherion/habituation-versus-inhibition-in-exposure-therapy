@@ -1,6 +1,6 @@
 ---
 title: "Systematic Review Extraction Script Template"
-date: "01 Jul 2018 at 14:03:32"
+date: "04 Jul 2018 at 17:46:02"
 output:
   html_document:
     self-contained: yes
@@ -232,6 +232,35 @@ study <- Node$new('study');
   
   
     ############################################################################
+    ############################################################# START: age ###
+    ############################################################################
+    study$methods$AddChild('age');
+    study$methods$age[['value']] <-
+    ############################################################################
+    ### 
+    ### SAMPLE AGE
+    ### 
+    ### Age range of the participants in the study
+    ### 
+    ############################################################################
+        
+        NA
+        
+    ############################################################################
+    ######################################### VALUE DESCRIPTION AND EXAMPLES ###
+    ############################################################################
+    ### 
+    ### A vector of integers (i.e. one or more whole numbers)
+    ### 
+    ### 
+    ############################################################################
+    study$methods$age[['validation']] <- expression(c(23, 62) || 52 || c(76, 12, 42));
+    ############################################################################
+    ############################################################### END: age ###
+    ############################################################################
+  
+  
+    ############################################################################
     ########################################### START: subsample (REPEATING) ###
     ############################################################################
     study$methods$AddChild('subsample__1__');
@@ -245,11 +274,13 @@ study <- Node$new('study');
     ############################################################################
         
         list(subsample.name = NA,  ### Name: A unique name (in this study), to be able to refer to this subsample later, and to easily find it afterwards [Examples: "Enter name here (mandatory)"] [Value description: A single character value that cannot be omitted]
-             subsample.N = NA);    ### Size: Sample size of subsample [Examples: NA] [Value description: Any valid whole number]
+             subsample.N = NA,     ### Size: Sample size of subsample [Examples: NA] [Value description: Any valid whole number]
+             subsample.age = NA);  ### Age: Age of subsample [Examples: NA] [Value description: A vector of integers (i.e. one or more whole numbers)]
         
     ############################################################################
     study$methods$subsample__1__[['validation']] <- list(`subsample.name` = expression("Example" || "Another example"),
-                                                         `subsample.N` = expression(30 || 8762));
+                                                         `subsample.N` = expression(30 || 8762),
+                                                         `subsample.age` = expression(c(23, 62) || 52 || c(76, 12, 42)));
     study$methods$subsample__1__$name <- study$methods$subsample__1__$value[[1]];
     ############################################################################
     ############################################# END: subsample (REPEATING) ###

@@ -3,14 +3,14 @@
 "General comments","Any general comments the coder wants to add about this study","comments","string",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Year","Year (or years) the data were collected","year","integer.length4.multi",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Country","Country (or countries) where the data were collected","country","countrycode",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Methods","Description of the methods used by the study","methods",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Sample size","Total number of human participants in the study (note: the actual sample size may be larger if multiple observations are collected per participant)","N","integer",NA,NA,NA,"methods",NA,NA,NA,NA,NA,NA,NA,NA
+"Sample age","Age range of the participants in the study","age","integer.multi",NA,NA,NA,"methods",NA,NA,NA,NA,NA,NA,NA,NA
 "Subsample","If studies contain several samples, specify them here","subsample",NA,NA,NA,NA,"methods",NA,NA,NA,TRUE,NA,TRUE,NA,NA
 "Name","A unique name (in this study), to be able to refer to this subsample later, and to easily find it afterwards","subsample.name","string.mandatory",NA,NA,NA,"subsample",NA,NA,NA,NA,NA,NA,NA,NA
 "Size","Sample size of subsample","subsample.N","integer",NA,NA,NA,"subsample",NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Age","Age of subsample","subsample.age","integer.multi",NA,NA,NA,"subsample",NA,NA,NA,NA,NA,NA,NA,NA
 NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Type of study","Whether the study was qualitative or quantitative","methodType","categorical","""qualitative"" || ""quantitative"" || ""mixed methods""",NA,NA,"methods",NA,NA,NA,NA,NA,NA,NA,NA
 "Operationalisations","The operationalisations (measurements or manipulations) used in the study","operationalisations",NA,NA,NA,NA,"methods",NA,NA,NA,NA,NA,NA,NA,NA
@@ -19,16 +19,29 @@ NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Moment","Moment(s) this variable was measured/manipulated.","oper.moment","integer.multi",NA,1,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
 "Type of operationalisation","Whether this variable is a manipulation, a single measurement, or an aggregate","oper.type","categorical","""manipulation"" || ""item"" || ""aggregate""",NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
 "Type of data","""Measurement level"" of this operationalisation.","oper.datatype","categorical","""numeric"" || ""logical"" || ""nominal"" || ""ordinal"" || ""string""",NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Values","Possible values this variable can take: only valid for ""nominal"" or ""ordinal"" variables.","oper.values","integer.multi",NA,NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
 "Labels","Labels for the values.","oper.labels","string.multi",NA,NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
 "Description","A description of this variable (can be more extensive than the name)","oper.description","string",NA,NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
 "Comment","Any relevant comments the coder wants to add","oper.comment","string",NA,NA,NA,"variable",NA,NA,NA,NA,NA,NA,NA,NA
 "Treatments","The treatments for each group","treatments",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Treatment","Details about the delivered treatment for this group (this operationalisation value)","treatment",NA,NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Treatment","Details about the delivered treatment for this group (this operationalisation value)","treatment","string",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
 "Group","Which treatment group (operationalisation value) this description pertains to","treatment.operValue","string.fieldRef.mandatory",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,TRUE,NA,NA
-"blabla",NA,NA,"activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
-"etc",NA,NA,"activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
-"Expectancy disconfirmation","Hoe we het ook precies definieren","expectdisconfirm","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Fear hierarchy","The exposure trials are rank-ordered in their ability to elicit anxiety.","fearHierarchy","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Fear monitoring","The fear level of the participant is being monitored throughout the exposure trial.","fearMon","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Fear level","The end of the exposure trial is determined by fear reduction to a certain level.","fearLevel","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Expectancy statement","Expectancies for aversive events are explicitly stated before the start of the exposure trial.","expectState","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Learning consolidation","Following the exposure trial, the learning is consolidated by asking participants to judge what they learned regarding the non-occurrence of the feared event, discrepancies between what was predicted and what occurred.","learnConsol","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Expectancy violation","The end of the exposure trial is determined by expectancy reduction to a certain level.","expectViol","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Lessen overestimation","Cognitive interventions designed to lessen probability overestimation (e.g., “I am unlikely to be bitten by the dog”) and perceived negative valence (e.g., “It is not so bad to be rejected”) occur.","lessOverest","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Deepened extinction","Combination of multiple cues (internal and/or external) during exposure therapy, after initially conducting some exposure to each cue in isolation.","deepExt","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Occasional reinforced extinction","Occasional CS-US pairings during extinction training occur.","occReinfExt","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Removal of safety signals","The prevention or removal of “safety signals” or “safety behaviors"" during the exposure therapy occurs.","removSaf","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Variability","Exposure is conducted with varying stimuli, for varying durations, at varying levels of intensity, or items from a fear hierarchy are selected out of order, rather than continuing exposure in one situation until fear declines before moving to the next situation.","variab","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Retrieval cues","Retrieval cues (of the CS-no US association) are included during extinction training to be used in other contexts once extinction is over.","retrCues","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Multiple contexts","Interoceptive, imaginal, and in vivo exposures are conducted in multiple different contexts, such as when alone, in unfamiliar places, or at varying times of day or varying days of the week.","multCont","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+"Reconsolidation","The phobic stimulus is introduced for a brief period about 30 minutes before repeated trials of exposure.","recons","activeIngredient",NA,NA,NA,"treatment",NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Results","Results based on the data collected in this study","results",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Univariate","A single statistic about a single variable.","univariate",NA,NA,NA,NA,"results",NA,NA,NA,TRUE,NA,TRUE,NA,NA
 "Name of result","A unique name (in this study), to easily find / meta-analyse / group this result later","uni.name","string.mandatory",NA,NA,"""prevalence"" || ""reliability""","univariate",NA,NA,NA,NA,NA,NA,NA,NA
