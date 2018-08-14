@@ -18,6 +18,7 @@ safeRequire('purrr');            ### Iteration and the %||% operator
 safeRequire('lubridate');        ### For working with dates
 safeRequire("googlesheets");     ### To import data from google sheets in metabefor
 safeRequire('jsonlite');         ### To import a list of country codes in metabefor
+safeRequire('knitr');            ### For kable
 safeRequire('data.tree');        ### To work with data structured in a tree in metabefor
 safeRequire('devtools');         ### To install metabefor from github repo
                                  ### ... Which we then do here:
@@ -71,7 +72,7 @@ queries[[length(queries) + 1]] <-
 
 The first query is:
 
-```{r query1-visual}
+```{r query1-visual, screenshot.force=FALSE}
 plot(queries[[1]]$query);
 ```
 
@@ -158,8 +159,8 @@ For every entry, add the following text in the 'screening' field:
 - If it is excluded, add the reason, specifically (these are ordered progressively; i.e. if one of the criteria matches, apply it and move on to the next entry):
     - **`noexperiment`** if the study does not have an experimental design;
     - **`notargetpop`** if the study did not sample participants younger than 18 years;
-    - **`noexposure`** if the study does not compare two groups that differ in the treatment in terms of exposure;
-    - **`nophobia`** if the study did concern treatment for phobia disorders;
+    - **`noexposure`** if the study did not compare two groups that differ in the treatment in terms of exposure as a part of cognitive behavioral therapy;
+    - **`nophobia`** if the study did not concern treatment for phobia disorders;
 - If it is included, add **`incl`**.
 
 So once JabRef is opened, when screening, make sure that the 'screening1' field is shown in the entry table (i.e. that it is one of the entry table columns), and create one entry editing tab using 'General Fields' that contains the fields `title`, `abstract`, and `screening1`. You can then use this tab for the screening. It is also convenient to show field `dupl` in either the entry table or the screening tab in the entry editor, because for duplicate records (that were identified as such - the algorithm may miss some duplicates of course), that field contains the text `dupl`.
@@ -263,17 +264,29 @@ sheetsURL <- paste0("https://docs.google.com/spreadsheets/d/",
 valueTemplatesSheet <- "valueTemplates";
 entitiesSheet <- "entities";
 
-rxs_fromSpecifications(gs_url = sheetsURL,
-                       entitiesFilename = file.path(extractionScriptTemplatePath,
-                                                    "entities-local-copy.csv"),
-                       valueTemplatesFilename = file.path(extractionScriptTemplatePath,
-                                                          "valueTemplates-local-copy.csv"),
-                       gs_localBackup = list(entities = file.path(extractionScriptTemplatePath,
-                                                                  "entities-local-copy.csv"),
-                                             valueTemplates= file.path(extractionScriptTemplatePath,
-                                                                       "valueTemplates-local-copy.csv"),
-                                             definitions = NULL),
-                       outputFile = file.path(extractionScriptTemplatePath,
-                                              "extractionScriptTemplate.rxs.Rmd"));
+fullObject <-
+  rxs_fromSpecifications(gs_url = sheetsURL,
+                         entitiesFilename = file.path(extractionScriptTemplatePath,
+                                                      "entities-local-copy.csv"),
+                         valueTemplatesFilename = file.path(extractionScriptTemplatePath,
+                                                            "valueTemplates-local-copy.csv"),
+                         localBackup = list(entities = file.path(extractionScriptTemplatePath,
+                                                                 "entities-local-copy.csv"),
+                                            valueTemplates= file.path(extractionScriptTemplatePath,
+                                                                      "valueTemplates-local-copy.csv"),
+                                            definitions = NULL),
+                         outputFile = file.path(extractionScriptTemplatePath,
+                                                "extractionScriptTemplate.rxs.Rmd"),
+                         returnFullObject = TRUE);
+
+```
+
+## List of active ingredients
+
+```{r active-ingredient-list}
+
+data.frame(Name=fullObject$rxsStructure$parsedEntities$extractionScriptTree$methods$variables$treatments$Get('title'),
+           Description=fullObject$rxsStructure$parsedEntities$extractionScriptTree$methods$variables$treatments$Get('description')) %>%
+  knitr::kable();
 
 ```

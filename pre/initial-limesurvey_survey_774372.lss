@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+ <LimeSurveyDocType>Survey</LimeSurveyDocType>
+ <DBVersion>184</DBVersion>
+ <languages>
+  <language>en</language>
+ </languages>
+ <answers>
+  <fields>
+   <fieldname>qid</fieldname>
+   <fieldname>code</fieldname>
+   <fieldname>answer</fieldname>
+   <fieldname>sortorder</fieldname>
+   <fieldname>assessment_value</fieldname>
+   <fieldname>language</fieldname>
+   <fieldname>scale_id</fieldname>
+  </fields>
+  <rows>
+   <row>
+    <qid><![CDATA[86796]]></qid>
+    <code><![CDATA[1]]></code>
+    <answer><![CDATA[Psychology student]]></answer>
+    <sortorder><![CDATA[1]]></sortorder>
+    <assessment_value><![CDATA[1]]></assessment_value>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+   </row>
+   <row>
+    <qid><![CDATA[86796]]></qid>
+    <code><![CDATA[2]]></code>
+    <answer><![CDATA[PhD. student in psychology]]></answer>
+    <sortorder><![CDATA[2]]></sortorder>
+    <assessment_value><![CDATA[1]]></assessment_value>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+   </row>
+   <row>
+    <qid><![CDATA[86796]]></qid>
+    <code><![CDATA[3]]></code>
+    <answer><![CDATA[Post doc in psychology]]></answer>
+    <sortorder><![CDATA[3]]></sortorder>
+    <assessment_value><![CDATA[1]]></assessment_value>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+   </row>
+   <row>
+    <qid><![CDATA[86796]]></qid>
+    <code><![CDATA[4]]></code>
+    <answer><![CDATA[Assistant Professor in psychology]]></answer>
+    <sortorder><![CDATA[4]]></sortorder>
+    <assessment_value><![CDATA[1]]></assessment_value>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+   </row>
+   <row>
+    <qid><![CDATA[86796]]></qid>
+    <code><![CDATA[5]]></code>
+    <answer><![CDATA[Associate Professor in psychology]]></answer>
+    <sortorder><![CDATA[5]]></sortorder>
+    <assessment_value><![CDATA[1]]></assessment_value>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+   </row>
+   <row>
+    <qid><![CDATA[86796]]></qid>
+    <code><![CDATA[6]]></code>
+    <answer><![CDATA[Full Professor in psychology]]></answer>
+    <sortorder><![CDATA[6]]></sortorder>
+    <assessment_value><![CDATA[1]]></assessment_value>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+   </row>
+   <row>
+    <qid><![CDATA[86796]]></qid>
+    <code><![CDATA[7]]></code>
+    <answer><![CDATA[Therapist (active)]]></answer>
+    <sortorder><![CDATA[7]]></sortorder>
+    <assessment_value><![CDATA[1]]></assessment_value>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+   </row>
+   <row>
+    <qid><![CDATA[86796]]></qid>
+    <code><![CDATA[8]]></code>
+    <answer><![CDATA[Prefer not to disclose]]></answer>
+    <sortorder><![CDATA[8]]></sortorder>
+    <assessment_value><![CDATA[1]]></assessment_value>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+   </row>
+  </rows>
+ </answers>
+ <groups>
+  <fields>
+   <fieldname>gid</fieldname>
+   <fieldname>sid</fieldname>
+   <fieldname>group_name</fieldname>
+   <fieldname>group_order</fieldname>
+   <fieldname>description</fieldname>
+   <fieldname>language</fieldname>
+   <fieldname>randomization_group</fieldname>
+   <fieldname>grelevance</fieldname>
+  </fields>
+  <rows>
+   <row>
+    <gid><![CDATA[4274]]></gid>
+    <sid><![CDATA[774372]]></sid>
+    <group_name><![CDATA[activeIngredients]]></group_name>
+    <group_order><![CDATA[419]]></group_order>
+    <description/>
+    <language><![CDATA[en]]></language>
+    <randomization_group/>
+    <grelevance/>
+   </row>
+  </rows>
+ </groups>
+ <questions>
+  <fields>
+   <fieldname>qid</fieldname>
+   <fieldname>parent_qid</fieldname>
+   <fieldname>sid</fieldname>
+   <fieldname>gid</fieldname>
+   <fieldname>type</fieldname>
+   <fieldname>title</fieldname>
+   <fieldname>question</fieldname>
+   <fieldname>preg</fieldname>
+   <fieldname>help</fieldname>
+   <fieldname>other</fieldname>
+   <fieldname>mandatory</fieldname>
+   <fieldname>question_order</fieldname>
+   <fieldname>language</fieldname>
+   <fieldname>scale_id</fieldname>
+   <fieldname>same_default</fieldname>
+   <fieldname>relevance</fieldname>
+  </fields>
+  <rows>
+   <row>
+    <qid><![CDATA[86777]]></qid>
+    <parent_qid><![CDATA[0]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[X]]></type>
+    <title><![CDATA[intro]]></title>
+    <question><![CDATA[<p>
+	For a systematic review to compare effectiveness of exposure therapy based on the habituation versus inhibition theories of exposure, we will process published therapy evaluations and code the active ingredients.</p>
+<p>
+	We list the active ingredients in this list, and we have two questions about this list.</p>
+<p>
+	The results to this brief exploration will be shared throught the Open Science Framework repository for this project, which is located at <a href="https://osf.io/83uaq/">https://osf.io/83uaq/</a>. The raw datafile from LimeSurvey will be shared. Therefore, please do not list any personal data here, unless you consent to the publication of these personal data.</p>
+<p>
+	If you have any questions, feel free to contact Pepijn van der Hulle at <a href="mailto:pepijnvanderhulle@gmail.com">pepijnvanderhulle@gmail.com</a> or Gjalt-Jorn Peters at <a href="mailto:gjalt-jorn@behaviorchange.eu">gjalt-jorn@behaviorchange.eu</a>.</p>
+]]></question>
+    <preg/>
+    <help/>
+    <other><![CDATA[N]]></other>
+    <mandatory><![CDATA[N]]></mandatory>
+    <question_order><![CDATA[1]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance><![CDATA[1]]></relevance>
+   </row>
+   <row>
+    <qid><![CDATA[86778]]></qid>
+    <parent_qid><![CDATA[0]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[X]]></type>
+    <title><![CDATA[activeIngredients]]></title>
+    <question><![CDATA[<table align="left" border="1" cellpadding="3" cellspacing="0" style="width:900px;">
+	<thead>
+		<tr>
+			<th scope="col" style="padding:2px;">
+				Active ingredient</th>
+			<th scope="col" style="padding:2px;">
+				Definition and coding instruction</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="padding:2px;">
+				Fear hierarchy</td>
+			<td style="padding:2px;">
+				The exposure trials are rank-ordered in their ability to elicit anxiety.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Fear monitoring</td>
+			<td style="padding:2px;">
+				The fear level of the participant is being monitored throughout the exposure trial.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Fear level</td>
+			<td style="padding:2px;">
+				The end of the exposure trial is determined by fear reduction to a certain level.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Expectancy statement</td>
+			<td style="padding:2px;">
+				Expectancies for aversive events are explicitly stated before the start of the exposure trial.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Learning consolidation</td>
+			<td style="padding:2px;">
+				Following the exposure trial, the learning is consolidated by asking participants to judge what they learned regarding the non-occurrence of the feared event, discrepancies between what was predicted and what occurred.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Expectancy violation</td>
+			<td style="padding:2px;">
+				The end of the exposure trial is determined by expectancy reduction to a certain level.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Lessen overestimation</td>
+			<td style="padding:2px;">
+				Cognitive interventions designed to lessen probability overestimation (e.g., “I am unlikely to be bitten by the dog”) and perceived negative valence (e.g., “It is not so bad to be rejected”) occur.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Deepened extinction</td>
+			<td style="padding:2px;">
+				Combination of multiple cues (internal and/or external) during exposure therapy, after initially conducting some exposure to each cue in isolation.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Occasional reinforced extinction</td>
+			<td style="padding:2px;">
+				Occasional CS-US pairings during extinction training occur.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Removal of safety signals</td>
+			<td style="padding:2px;">
+				The prevention or removal of “safety signals” or “safety behaviors" during the exposure therapy occurs.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Variability</td>
+			<td style="padding:2px;">
+				Exposure is conducted with varying stimuli, for varying durations, at varying levels of intensity, or items from a fear hierarchy are selected out of order, rather than continuing exposure in one situation until fear declines before moving to the next situation.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Retrieval cues</td>
+			<td style="padding:2px;">
+				Retrieval cues (of the CS-no US association) are included during extinction training to be used in other contexts once extinction is over.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Multiple contexts</td>
+			<td style="padding:2px;">
+				Interoceptive, imaginal, and in vivo exposures are conducted in multiple different contexts, such as when alone, in unfamiliar places, or at varying times of day or varying days of the week.</td>
+		</tr>
+		<tr>
+			<td style="padding:2px;">
+				Reconsolidation</td>
+			<td style="padding:2px;">
+				The phobic stimulus is introduced for a brief period about 30 minutes before repeated trials of exposure.</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	 </p>
+]]></question>
+    <preg/>
+    <help/>
+    <other><![CDATA[N]]></other>
+    <mandatory><![CDATA[N]]></mandatory>
+    <question_order><![CDATA[2]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance><![CDATA[1]]></relevance>
+   </row>
+   <row>
+    <qid><![CDATA[86779]]></qid>
+    <parent_qid><![CDATA[0]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[Q]]></type>
+    <title><![CDATA[corrections]]></title>
+    <question><![CDATA[Do you think any of these ingredients and/or their descriptions should be corrected? If so, could you indicate this here?]]></question>
+    <preg/>
+    <help/>
+    <other><![CDATA[N]]></other>
+    <mandatory><![CDATA[N]]></mandatory>
+    <question_order><![CDATA[3]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance><![CDATA[1]]></relevance>
+   </row>
+   <row>
+    <qid><![CDATA[86795]]></qid>
+    <parent_qid><![CDATA[0]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[omissions]]></title>
+    <question><![CDATA[Do you think there are active ingredients in exposure therapy that are omitted in this list? If so, could you please indicate these here?]]></question>
+    <preg/>
+    <help><![CDATA[For every omitted active ingredient, could you also provide a name of a theory or a reference for this ingredient?]]></help>
+    <other><![CDATA[N]]></other>
+    <mandatory><![CDATA[N]]></mandatory>
+    <question_order><![CDATA[15]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance><![CDATA[1]]></relevance>
+   </row>
+   <row>
+    <qid><![CDATA[86796]]></qid>
+    <parent_qid><![CDATA[0]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[L]]></type>
+    <title><![CDATA[expertise]]></title>
+    <question><![CDATA[Could you please provide an indication as to your background/expertise?]]></question>
+    <preg/>
+    <help/>
+    <other><![CDATA[Y]]></other>
+    <mandatory><![CDATA[Y]]></mandatory>
+    <question_order><![CDATA[16]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance><![CDATA[1]]></relevance>
+   </row>
+   <row>
+    <qid><![CDATA[86797]]></qid>
+    <parent_qid><![CDATA[0]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[comments]]></title>
+    <question><![CDATA[<p>
+	Do you have any last comments? For example, are there any articles that you think are crucial with respect to this topic, or is there anything else you would like to share?</p>
+<p>
+	(Perhaps superfluously: note that this exploration is very much a 'lean' extra initiative we introduced in this project. We are aware that it is unlikely we'll obtain anything like 'the final word' on active ingredients in exposure therapy.)</p>
+]]></question>
+    <preg/>
+    <help><![CDATA[Don't forget that everything you add here will be published on the OSF repo for this project as is. Please do not disclose any personal data unless you consent to us publishing those personal data. You can always email us if you want; see the introduction at the top.]]></help>
+    <other><![CDATA[N]]></other>
+    <mandatory><![CDATA[N]]></mandatory>
+    <question_order><![CDATA[17]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance><![CDATA[1]]></relevance>
+   </row>
+  </rows>
+ </questions>
+ <subquestions>
+  <fields>
+   <fieldname>qid</fieldname>
+   <fieldname>parent_qid</fieldname>
+   <fieldname>sid</fieldname>
+   <fieldname>gid</fieldname>
+   <fieldname>type</fieldname>
+   <fieldname>title</fieldname>
+   <fieldname>question</fieldname>
+   <fieldname>preg</fieldname>
+   <fieldname>help</fieldname>
+   <fieldname>other</fieldname>
+   <fieldname>mandatory</fieldname>
+   <fieldname>question_order</fieldname>
+   <fieldname>language</fieldname>
+   <fieldname>scale_id</fieldname>
+   <fieldname>same_default</fieldname>
+   <fieldname>relevance</fieldname>
+  </fields>
+  <rows>
+   <row>
+    <qid><![CDATA[86781]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[hierarchy]]></title>
+    <question><![CDATA[Fear hierarchy]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[1]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86782]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[monitoring]]></title>
+    <question><![CDATA[Fear monitoring]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[2]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86783]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[fearlevel]]></title>
+    <question><![CDATA[Fear level]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[3]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86784]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[expectancyStatement]]></title>
+    <question><![CDATA[expectancy statement]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[4]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86785]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[consolidation]]></title>
+    <question><![CDATA[Learning consolidation]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[5]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86786]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[expectancyViolation]]></title>
+    <question><![CDATA[Expectancy violation]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[6]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86787]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[overestimation]]></title>
+    <question><![CDATA[Lessen overestimation]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[7]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86788]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[deepenedExtinction]]></title>
+    <question><![CDATA[Deepened extinction]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[8]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86789]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[reinforcedExtinction]]></title>
+    <question><![CDATA[Occasional reinforced extinction]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[9]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86790]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[safety]]></title>
+    <question><![CDATA[Removal of safety signals]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[10]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86791]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[variability]]></title>
+    <question><![CDATA[Variability]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[11]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86792]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[cues]]></title>
+    <question><![CDATA[Retrieval cues]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[12]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86793]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[contexts]]></title>
+    <question><![CDATA[Multiple contexts]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[13]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+   <row>
+    <qid><![CDATA[86794]]></qid>
+    <parent_qid><![CDATA[86779]]></parent_qid>
+    <sid><![CDATA[774372]]></sid>
+    <gid><![CDATA[4274]]></gid>
+    <type><![CDATA[T]]></type>
+    <title><![CDATA[reconsolidation]]></title>
+    <question><![CDATA[Reconsolidation]]></question>
+    <other><![CDATA[N]]></other>
+    <question_order><![CDATA[14]]></question_order>
+    <language><![CDATA[en]]></language>
+    <scale_id><![CDATA[0]]></scale_id>
+    <same_default><![CDATA[0]]></same_default>
+    <relevance/>
+   </row>
+  </rows>
+ </subquestions>
+ <question_attributes>
+  <fields>
+   <fieldname>qid</fieldname>
+   <fieldname>attribute</fieldname>
+   <fieldname>value</fieldname>
+   <fieldname>language</fieldname>
+  </fields>
+  <rows>
+   <row>
+    <qid><![CDATA[86779]]></qid>
+    <attribute><![CDATA[text_input_width]]></attribute>
+    <value><![CDATA[60]]></value>
+   </row>
+  </rows>
+ </question_attributes>
+ <surveys>
+  <fields>
+   <fieldname>sid</fieldname>
+   <fieldname>admin</fieldname>
+   <fieldname>expires</fieldname>
+   <fieldname>startdate</fieldname>
+   <fieldname>adminemail</fieldname>
+   <fieldname>anonymized</fieldname>
+   <fieldname>faxto</fieldname>
+   <fieldname>format</fieldname>
+   <fieldname>savetimings</fieldname>
+   <fieldname>template</fieldname>
+   <fieldname>language</fieldname>
+   <fieldname>additional_languages</fieldname>
+   <fieldname>datestamp</fieldname>
+   <fieldname>usecookie</fieldname>
+   <fieldname>allowregister</fieldname>
+   <fieldname>allowsave</fieldname>
+   <fieldname>autonumber_start</fieldname>
+   <fieldname>autoredirect</fieldname>
+   <fieldname>allowprev</fieldname>
+   <fieldname>printanswers</fieldname>
+   <fieldname>ipaddr</fieldname>
+   <fieldname>refurl</fieldname>
+   <fieldname>publicstatistics</fieldname>
+   <fieldname>publicgraphs</fieldname>
+   <fieldname>listpublic</fieldname>
+   <fieldname>htmlemail</fieldname>
+   <fieldname>sendconfirmation</fieldname>
+   <fieldname>tokenanswerspersistence</fieldname>
+   <fieldname>assessments</fieldname>
+   <fieldname>usecaptcha</fieldname>
+   <fieldname>usetokens</fieldname>
+   <fieldname>bounce_email</fieldname>
+   <fieldname>attributedescriptions</fieldname>
+   <fieldname>emailresponseto</fieldname>
+   <fieldname>emailnotificationto</fieldname>
+   <fieldname>tokenlength</fieldname>
+   <fieldname>showxquestions</fieldname>
+   <fieldname>showgroupinfo</fieldname>
+   <fieldname>shownoanswer</fieldname>
+   <fieldname>showqnumcode</fieldname>
+   <fieldname>bouncetime</fieldname>
+   <fieldname>bounceprocessing</fieldname>
+   <fieldname>bounceaccounttype</fieldname>
+   <fieldname>bounceaccounthost</fieldname>
+   <fieldname>bounceaccountpass</fieldname>
+   <fieldname>bounceaccountencryption</fieldname>
+   <fieldname>bounceaccountuser</fieldname>
+   <fieldname>showwelcome</fieldname>
+   <fieldname>showprogress</fieldname>
+   <fieldname>questionindex</fieldname>
+   <fieldname>navigationdelay</fieldname>
+   <fieldname>nokeyboard</fieldname>
+   <fieldname>alloweditaftercompletion</fieldname>
+   <fieldname>googleanalyticsstyle</fieldname>
+   <fieldname>googleanalyticsapikey</fieldname>
+  </fields>
+  <rows>
+   <row>
+    <sid><![CDATA[774372]]></sid>
+    <admin><![CDATA[Gjalt-Jorn Peters]]></admin>
+    <adminemail><![CDATA[gjalt-jorn.peters@ou.nl]]></adminemail>
+    <anonymized><![CDATA[N]]></anonymized>
+    <faxto/>
+    <format><![CDATA[G]]></format>
+    <savetimings><![CDATA[N]]></savetimings>
+    <template><![CDATA[ciberlite_template]]></template>
+    <language><![CDATA[en]]></language>
+    <additional_languages/>
+    <datestamp><![CDATA[N]]></datestamp>
+    <usecookie><![CDATA[N]]></usecookie>
+    <allowregister><![CDATA[N]]></allowregister>
+    <allowsave><![CDATA[Y]]></allowsave>
+    <autonumber_start><![CDATA[0]]></autonumber_start>
+    <autoredirect><![CDATA[N]]></autoredirect>
+    <allowprev><![CDATA[N]]></allowprev>
+    <printanswers><![CDATA[N]]></printanswers>
+    <ipaddr><![CDATA[N]]></ipaddr>
+    <refurl><![CDATA[N]]></refurl>
+    <publicstatistics><![CDATA[N]]></publicstatistics>
+    <publicgraphs><![CDATA[N]]></publicgraphs>
+    <listpublic><![CDATA[N]]></listpublic>
+    <htmlemail><![CDATA[N]]></htmlemail>
+    <sendconfirmation><![CDATA[Y]]></sendconfirmation>
+    <tokenanswerspersistence><![CDATA[N]]></tokenanswerspersistence>
+    <assessments><![CDATA[N]]></assessments>
+    <usecaptcha><![CDATA[N]]></usecaptcha>
+    <usetokens><![CDATA[N]]></usetokens>
+    <bounce_email><![CDATA[gjalt-jorn.peters@ou.nl]]></bounce_email>
+    <emailresponseto/>
+    <emailnotificationto/>
+    <tokenlength><![CDATA[15]]></tokenlength>
+    <showxquestions><![CDATA[Y]]></showxquestions>
+    <showgroupinfo><![CDATA[D]]></showgroupinfo>
+    <shownoanswer><![CDATA[Y]]></shownoanswer>
+    <showqnumcode><![CDATA[X]]></showqnumcode>
+    <bounceprocessing><![CDATA[N]]></bounceprocessing>
+    <showwelcome><![CDATA[N]]></showwelcome>
+    <showprogress><![CDATA[Y]]></showprogress>
+    <questionindex><![CDATA[0]]></questionindex>
+    <navigationdelay><![CDATA[0]]></navigationdelay>
+    <nokeyboard><![CDATA[N]]></nokeyboard>
+    <alloweditaftercompletion><![CDATA[N]]></alloweditaftercompletion>
+    <googleanalyticsstyle><![CDATA[0]]></googleanalyticsstyle>
+    <googleanalyticsapikey/>
+   </row>
+  </rows>
+ </surveys>
+ <surveys_languagesettings>
+  <fields>
+   <fieldname>surveyls_survey_id</fieldname>
+   <fieldname>surveyls_language</fieldname>
+   <fieldname>surveyls_title</fieldname>
+   <fieldname>surveyls_description</fieldname>
+   <fieldname>surveyls_welcometext</fieldname>
+   <fieldname>surveyls_endtext</fieldname>
+   <fieldname>surveyls_url</fieldname>
+   <fieldname>surveyls_urldescription</fieldname>
+   <fieldname>surveyls_email_invite_subj</fieldname>
+   <fieldname>surveyls_email_invite</fieldname>
+   <fieldname>surveyls_email_remind_subj</fieldname>
+   <fieldname>surveyls_email_remind</fieldname>
+   <fieldname>surveyls_email_register_subj</fieldname>
+   <fieldname>surveyls_email_register</fieldname>
+   <fieldname>surveyls_email_confirm_subj</fieldname>
+   <fieldname>surveyls_email_confirm</fieldname>
+   <fieldname>surveyls_dateformat</fieldname>
+   <fieldname>surveyls_attributecaptions</fieldname>
+   <fieldname>email_admin_notification_subj</fieldname>
+   <fieldname>email_admin_notification</fieldname>
+   <fieldname>email_admin_responses_subj</fieldname>
+   <fieldname>email_admin_responses</fieldname>
+   <fieldname>surveyls_numberformat</fieldname>
+   <fieldname>attachments</fieldname>
+  </fields>
+  <rows>
+   <row>
+    <surveyls_survey_id><![CDATA[774372]]></surveyls_survey_id>
+    <surveyls_language><![CDATA[en]]></surveyls_language>
+    <surveyls_title><![CDATA[Active ingredients in exposure therapy]]></surveyls_title>
+    <surveyls_description/>
+    <surveyls_welcometext/>
+    <surveyls_endtext/>
+    <surveyls_url/>
+    <surveyls_urldescription/>
+    <surveyls_email_invite_subj><![CDATA[Invitation to participate in a survey]]></surveyls_email_invite_subj>
+    <surveyls_email_invite><![CDATA[Dear {FIRSTNAME},
+
+you have been invited to participate in a survey.
+
+The survey is titled:
+"{SURVEYNAME}"
+
+"{SURVEYDESCRIPTION}"
+
+To participate, please click on the link below.
+
+Sincerely,
+
+{ADMINNAME} ({ADMINEMAIL})
+
+----------------------------------------------
+Click here to do the survey:
+{SURVEYURL}
+
+If you do not want to participate in this survey and don't want to receive any more invitations please click the following link:
+{OPTOUTURL}
+
+If you are blacklisted but want to participate in this survey and want to receive invitations please click the following link:
+{OPTINURL}]]></surveyls_email_invite>
+    <surveyls_email_remind_subj><![CDATA[Reminder to participate in a survey]]></surveyls_email_remind_subj>
+    <surveyls_email_remind><![CDATA[Dear {FIRSTNAME},
+
+Recently we invited you to participate in a survey.
+
+We note that you have not yet completed the survey, and wish to remind you that the survey is still available should you wish to take part.
+
+The survey is titled:
+"{SURVEYNAME}"
+
+"{SURVEYDESCRIPTION}"
+
+To participate, please click on the link below.
+
+Sincerely,
+
+{ADMINNAME} ({ADMINEMAIL})
+
+----------------------------------------------
+Click here to do the survey:
+{SURVEYURL}
+
+If you do not want to participate in this survey and don't want to receive any more invitations please click the following link:
+{OPTOUTURL}]]></surveyls_email_remind>
+    <surveyls_email_register_subj><![CDATA[Survey registration confirmation]]></surveyls_email_register_subj>
+    <surveyls_email_register><![CDATA[Dear {FIRSTNAME},
+
+You, or someone using your email address, have registered to participate in an online survey titled {SURVEYNAME}.
+
+To complete this survey, click on the following URL:
+
+{SURVEYURL}
+
+If you have any questions about this survey, or if you did not register to participate and believe this email is in error, please contact {ADMINNAME} at {ADMINEMAIL}.]]></surveyls_email_register>
+    <surveyls_email_confirm_subj><![CDATA[Confirmation of your participation in our survey]]></surveyls_email_confirm_subj>
+    <surveyls_email_confirm><![CDATA[Dear {FIRSTNAME},
+
+this email is to confirm that you have completed the survey titled {SURVEYNAME} and your response has been saved. Thank you for participating.
+
+If you have any further questions about this email, please contact {ADMINNAME} on {ADMINEMAIL}.
+
+Sincerely,
+
+{ADMINNAME}]]></surveyls_email_confirm>
+    <surveyls_dateformat><![CDATA[9]]></surveyls_dateformat>
+    <email_admin_notification_subj><![CDATA[Response submission for survey {SURVEYNAME}]]></email_admin_notification_subj>
+    <email_admin_notification><![CDATA[Hello,
+
+A new response was submitted for your survey '{SURVEYNAME}'.
+
+Click the following link to reload the survey:
+{RELOADURL}
+
+Click the following link to see the individual response:
+{VIEWRESPONSEURL}
+
+Click the following link to edit the individual response:
+{EDITRESPONSEURL}
+
+View statistics by clicking here:
+{STATISTICSURL}]]></email_admin_notification>
+    <email_admin_responses_subj><![CDATA[Response submission for survey {SURVEYNAME} with results]]></email_admin_responses_subj>
+    <email_admin_responses><![CDATA[Hello,
+
+A new response was submitted for your survey '{SURVEYNAME}'.
+
+Click the following link to reload the survey:
+{RELOADURL}
+
+Click the following link to see the individual response:
+{VIEWRESPONSEURL}
+
+Click the following link to edit the individual response:
+{EDITRESPONSEURL}
+
+View statistics by clicking here:
+{STATISTICSURL}
+
+
+The following answers were given by the participant:
+{ANSWERTABLE}]]></email_admin_responses>
+    <surveyls_numberformat><![CDATA[0]]></surveyls_numberformat>
+   </row>
+  </rows>
+ </surveys_languagesettings>
+</document>
