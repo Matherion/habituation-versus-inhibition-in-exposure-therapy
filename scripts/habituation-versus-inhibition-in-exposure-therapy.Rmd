@@ -75,7 +75,7 @@ for (currentVar in varsToShow) {
 
 ```{r first-query-setup}
 queries[[length(queries) + 1]] <-
-  list(date = ymd("2018-07-01"),
+  list(date = ymd("2018-08-28"),
        query = query_requiredConcepts(conceptName="Exposure therapy query",
                                       query_conceptTerms(conceptName = "Cognitive Behavioral Therapy",
                                                          "cognitive behavio* therapy",
@@ -89,9 +89,17 @@ queries[[length(queries) + 1]] <-
                                       query_conceptTerms(conceptName = "Disorder",
                                                          "anxiety",
                                                          "fear")),
-       databases = c(psycinfo = "RIS",
-                     pubmed = "RIS"),
+       databases = list(psycinfo = list(interface = "ebsco",
+                                        fileFormat = "ris"),
+                        pubmed = list(interface= "pubmed",
+                                      fileFormat = "ris")),
        fields = "title, abstract");
+
+### Note that PsycINFO subsumes PsycARTICLES, and PubMed subsumes MEDLINE (see
+### "Is PsycARTICLES cross-linked with any outside databases or journals?" at
+### http://www.apa.org/pubs/databases/psycarticles/faq.aspx for PsycINFO and
+### and http://askus.library.tmc.edu/faq/2018 for MEDLINE
+
 ```
 
 ## First query, executed at: `r queries[[1]]$date;`
@@ -113,20 +121,35 @@ query_toInterfaceLang(queries[[1]]$query,
                       fields=queries[[1]]$fields);
 ```
 
+The EbscoHost query was manually adjusted to:
+
+    (TI ("cognitive behavio* therapy" OR "cbt") OR AB ("cognitive behavio* therapy" OR "cbt")) AND ((TI "exposure") OR (AB "exposure")) AND ((TI ("child*" OR "adolescent*" OR "youth")) OR (AB ("child*" OR "adolescent*" OR "youth"))) AND ((TI ("anxiety" OR "fear")) OR (AB ("anxiety" OR "fear")))
+
+
+
 This query was run at `r queries[[1]]$date;` in PubMed (XXXX hits; file saved as <code>pubmed-`r queries[[1]]$date`.ris</code>) and PsycINFO accessed through EbscoHost (XXXX hits; file saved as <code>psycinfo-`r queries[[1]]$date`.ris</code>), and exported to RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`.
 
-```{r echo=TRUE, eval=FALSE}
+```{r echo=TRUE, eval=TRUE}
 
 ### Import PsycINFO hits
 firstQueryIteration_psycinfo <-
   importRISlike(file.path(queryHitExportPath,
-                          paste0("psycinfo-", queries[[1]]$date, ".ris"),
+                          queries[[1]]$date,
+                          paste0(queries[[1]]$date, "--",
+                                 queries[[1]]$databases[[1]]$interface, "--",
+                                 names(queries[[1]]$databases)[1], ".",
+                                 queries[[1]]$databases[[1]]$fileFormat)),
                 encoding="native.enc");
 
 ### Import PubMed hits
 firstQueryIteration_pubmed <-
   importRISlike(file.path(queryHitExportPath,
-                          paste0("pubmed-", queries[[1]]$date, ".ris")));
+                          queries[[1]]$date,
+                          paste0(queries[[1]]$date, "--",
+                                 queries[[1]]$databases[[2]]$interface, "--",
+                                 names(queries[[1]]$databases)[2], ".",
+                                 queries[[1]]$databases[[2]]$fileFormat)),
+                encoding="native.enc");
 
 ### Merge the two sets of hits
 firstQueryIteration <-
@@ -146,15 +169,17 @@ firstQueryIteration$output$records$bibtexkey <-
   paste0(firstQueryIteration$output$records$bibtexkey,
          "-", gsub("-", "", queries[[1]]$date));
 
+screening1_filename <- paste0(queries[[1]]$date, "-screening.bib");
+
 ### Export the hits to bibtex for screening in JabRef
 sysrevExport(firstQueryIteration,
              filename=file.path(screeningPath,
-                                paste0(queries[[1]]$date, "-screening.bib")),
+                                screening1_filename),
              screeningType="screening");
 
 ```
 
-The merged list of query hits has now been exported to file <code>`r queries[[1]]$date`-screening.bib</code> in directory "screening" and can be opened using JabRef, which can be downloaded from https://www.fosshub.com/JabRef.html.
+The merged list of query hits has now been exported to file <code>`r screening1_filename`</code> in directory "screening" and can be opened using JabRef, which can be downloaded from https://www.fosshub.com/JabRef.html.
 
 ## JabRef configuration
 
@@ -183,15 +208,16 @@ Add a dedicated field for the reviewing, showing only the title, abstract, and `
 For every entry, add the following text in the 'screening' field:
 
 - If it is excluded, add the reason, specifically (these are ordered progressively; i.e. if one of the criteria matches, apply it and move on to the next entry):
-    - **`noexperiment`** if the study does not have an experimental design;
-    - **`notargetpop`** if the study did not sample participants younger than 18 years;
-    - **`noexposure`** if the study did not compare two groups that differ in the treatment in terms of exposure as a part of cognitive behavioral therapy;
+    - **`dupl`** if the study is a duplicate of another entry;
+    - **`noexper`** if the study does not have an experimental design;
+    - **`nopopul`** if the study did not sample participants younger than 18 years;
+    - **`noexpos`** if the study did not compare two groups that differ in the treatment in terms of exposure as a part of cognitive behavioral therapy;
     - **`nophobia`** if the study did not concern treatment for phobia disorders;
 - If it is included, add **`incl`**.
 
 So once JabRef is opened, when screening, make sure that the 'screening1' field is shown in the entry table (i.e. that it is one of the entry table columns), and create one entry editing tab using 'General Fields' that contains the fields `title`, `abstract`, and `screening1`. You can then use this tab for the screening. It is also convenient to show field `dupl` in either the entry table or the screening tab in the entry editor, because for duplicate records (that were identified as such - the algorithm may miss some duplicates of course), that field contains the text `dupl`.
 
-Make sure to save the database with query hits under a different name than "2018-05-14-screening.bib". That is important because file "2018-05-14-screening.bib" will get overwritten if this R Markdown file is executed again.
+Make sure to save the database with query hits under a different name than <code>`r screening1_filename`</code>. That is important because file <code>`r screening1_filename`</code> will get overwritten if this R Markdown file is executed again.
 
 ## Second query, executed at: 2018-05-23
 
