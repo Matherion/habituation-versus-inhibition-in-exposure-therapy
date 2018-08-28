@@ -42,3 +42,7 @@ vignettes/*.pdf
 
 # PDF files of articles
 pdfs/*.*
+
+# JabRef backup file and other weird file
+.bib.bak
+.bib.sav

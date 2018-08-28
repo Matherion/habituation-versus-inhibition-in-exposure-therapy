@@ -125,9 +125,7 @@ The EbscoHost query was manually adjusted to:
 
     (TI ("cognitive behavio* therapy" OR "cbt") OR AB ("cognitive behavio* therapy" OR "cbt")) AND ((TI "exposure") OR (AB "exposure")) AND ((TI ("child*" OR "adolescent*" OR "youth")) OR (AB ("child*" OR "adolescent*" OR "youth"))) AND ((TI ("anxiety" OR "fear")) OR (AB ("anxiety" OR "fear")))
 
-
-
-This query was run at `r queries[[1]]$date;` in PubMed (XXXX hits; file saved as <code>pubmed-`r queries[[1]]$date`.ris</code>) and PsycINFO accessed through EbscoHost (XXXX hits; file saved as <code>psycinfo-`r queries[[1]]$date`.ris</code>), and exported to RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`.
+This query was run at `r queries[[1]]$date;` in PubMed (XXXX hits; file saved as <code>pubmed-`r queries[[1]]$date`.ris</code>) and PsycINFO accessed through EbscoHost (XXXX hits; file saved as <code>psycinfo-`r queries[[1]]$date`.ris</code>), and exported to RIS format (called 'MEDLINE' in PubMed). The RIS files were then imported in R using `metabefor`.
 
 ```{r echo=TRUE, eval=TRUE}
 
