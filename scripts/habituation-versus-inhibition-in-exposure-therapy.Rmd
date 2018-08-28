@@ -19,6 +19,7 @@ safeRequire('lubridate');        ### For working with dates
 safeRequire("googlesheets");     ### To import data from google sheets in metabefor
 safeRequire('jsonlite');         ### To import a list of country codes in metabefor
 safeRequire('knitr');            ### For kable
+safeRequire('ufs');              ### 
 safeRequire('data.tree');        ### To work with data structured in a tree in metabefor
 safeRequire('devtools');         ### To install metabefor from github repo
                                  ### ... Which we then do here:
@@ -39,6 +40,9 @@ queryHitExportPath <- here::here("queries");
 ### Set path for screening
 screeningPath <- here::here("screening");
 
+### Set path for any preliminary studies/work
+prePath <- here::here("pre");
+
 ### Set path for extraction script template
 extractionScriptTemplatePath <- here::here("extraction");
 
@@ -46,6 +50,28 @@ extractionScriptTemplatePath <- here::here("extraction");
 queries <- list();
 
 ```
+
+## Pilot data
+
+```{r process-pilot-data, results="asis"}
+
+preDat <- importLimeSurveyData(datafile=file.path(prePath, "data", "survey_774372_R_data_file.csv"),
+                               scriptfile=file.path(prePath, "data", "survey_774372_R_syntax_file.R"),
+                               categoricalQuestions = c("expertise"));
+
+varsToShow <- c(grep('corrections_', names(preDat), value=TRUE),
+                'omissions',
+                'expertise',
+                'expertise_other',
+                'comments');
+
+for (currentVar in varsToShow) {
+  ufs::cat0("\n\n### ", currentVar, "\n\n");
+  ufs::cat0(paste0("\n- ", preDat[, currentVar], "\n"));
+}
+
+```
+
 
 ```{r first-query-setup}
 queries[[length(queries) + 1]] <-
