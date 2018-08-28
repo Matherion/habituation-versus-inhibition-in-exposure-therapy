@@ -65,7 +65,7 @@ queries[[length(queries) + 1]] <-
                                                          "fear")),
        databases = c(psycinfo = "RIS",
                      pubmed = "RIS"),
-       fields = "title");
+       fields = "title, abstract");
 ```
 
 ## First query, executed at: `r queries[[1]]$date;`
