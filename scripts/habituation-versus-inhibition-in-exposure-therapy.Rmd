@@ -9,7 +9,7 @@ output: html_document
 ########################################################################
 ### Load packages
 ########################################################################
-
+ 
 require('userfriendlyscience');  ### For convenience functions, e.g. 'safeRequire'
 safeRequire('here');             ### To easily access files using 'relative paths'
 safeRequire('plyr');             ### For easily processing and restructuring data
