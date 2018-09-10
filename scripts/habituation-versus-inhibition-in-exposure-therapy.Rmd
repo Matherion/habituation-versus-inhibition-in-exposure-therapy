@@ -167,12 +167,12 @@ firstQueryIteration$output$records$bibtexkey <-
   paste0(firstQueryIteration$output$records$bibtexkey,
          "-", gsub("-", "", queries[[1]]$date));
 
-screening1_filename <- paste0(queries[[1]]$date, "-screening.bib");
+screening1_filename_pre <- paste0(queries[[1]]$date, "-screening.bib");
 
 ### Export the hits to bibtex for screening in JabRef
 sysrevExport(firstQueryIteration,
              filename=file.path(screeningPath,
-                                screening1_filename),
+                                screening1_filename_pre),
              screeningType="screening");
 
 ```
@@ -216,6 +216,36 @@ For every entry, add the following text in the 'screening' field:
 So once JabRef is opened, when screening, make sure that the 'screening1' field is shown in the entry table (i.e. that it is one of the entry table columns), and create one entry editing tab using 'General Fields' that contains the fields `title`, `abstract`, and `screening1`. You can then use this tab for the screening. It is also convenient to show field `dupl` in either the entry table or the screening tab in the entry editor, because for duplicate records (that were identified as such - the algorithm may miss some duplicates of course), that field contains the text `dupl`.
 
 Make sure to save the database with query hits under a different name than <code>`r screening1_filename`</code>. That is important because file <code>`r screening1_filename`</code> will get overwritten if this R Markdown file is executed again.
+
+### Screening results {.tabset}
+
+#### Overview
+
+This is an overview of the screening results. The details for the sources to include are listed in the second tab.
+
+```{r query-1-import-screened-hits-overview}
+
+screening1_filename_pre <- paste0(queries[[1]]$date, "-screened.bib");
+firstQueryScreened <-
+  metabefor::importBibtex(file.path(screeningPath,
+                                    screening1_filename_pre));
+
+userfriendlyscience::freq(firstQueryScreened$records$screening1);
+
+```
+
+#### Details
+
+```{r query-1-import-screened-hits-details}
+
+
+firstQueryScreened$records[grepl('incl', firstQueryScreened$records$screening1),
+                           c('author', 'title', 'year')];
+
+
+
+```
+
 
 ## Second query, executed at: 2018-05-23
 
