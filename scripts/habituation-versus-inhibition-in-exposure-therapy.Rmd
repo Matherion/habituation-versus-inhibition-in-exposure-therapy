@@ -55,7 +55,117 @@ queries <- list();
 
 ### Overview and decisions
 
-The full answers are listed in the 'Details' tab.
+There were no comments about fear hierarchy, fear level, occasional reinforced extinction, removal of safety signals, variability, retrieval cues, multiple contexts.
+
+#### Fear monitoring
+
+*"The fear level of the participant is being monitored throughout the exposure trial."*
+
+- Could also include ‘affect labelling’ more generally.
+
+This could include affect labelling, but a crucial condition is that fear monitoring always involves monitoring the *level* of the emotion. We decide that this is sufficiently clear from the definition as we formulated it now; this should exclude affect labelling exercises where monitoring is not explicit.
+
+#### Expectancy statement
+
+*"Expectancies for aversive events are explicitly stated before the start of the exposure trial."*
+
+- I agree this is important, the only thing would be whether it can be shown to be an therapy ingredient - even without explicitly stating and disconfirming it, expectancies are likely to be activated and contradicted.
+- Expectancies for aversive events are explicitly stated before the start of the exposure trial and monitored throughout the exposure trial (perhaps better called expectancy monitoring)
+
+Regarding the first point, this is a methodological point; if indeed, in many therapy sessions/control groups, expectancies will be activated as 'usual care', the effect size will be very low. However, this would then accurately estimate the effects than can be expected of this therapy ingredient. We decide to not make any revisions based on this comment.
+
+Regarding the second point, we decide to add monitoring as another therapy ingredient in addition to baseline statement of the expectancies. As formulation, we will use "Expectancies for aversive events are monitored throughout the exposure trial."
+
+#### Learning consolidation
+
+*"Following the exposure trial, the learning is consolidated by asking participants to judge what they learned regarding the non-occurrence of the feared event, discrepancies between what was predicted and what occurred."*
+
+- I would use another term than consolidation as this also refers to the process of memory storage/stabilisation that is also often spoken of in fear learning/extinction.
+
+We decide to substitute 'evaluation' for consolidation. For clarity, we also rephrase the definition to: "Following the exposure trial, the participants are asked to evaluate what they learned regarding the non-occurrence of the feared event, discrepancies between what was predicted and what occurred."
+
+#### Expectancy violation
+
+*"The end of the exposure trial is determined by expectancy reduction to a certain level."*
+
+- Could also be stated as ‘prediction error’. It’s a little difficult whether the expectancy violation should be ‘reduced to a certain level’, or whether it is instead a binary thing: you make the explicit and specific prediction and test it in the exposure. Could expectancy statement and expectancy violation even be combined to refer to a ‘behavioral test’ - as in CBT where the cognitions/expectations are treated as a hypothesis and the exposure functions as a behavioral test of them
+
+In discussing this point, we realise that in fact, this therapy ingredient and 'Fear level' describe specific instances of generic 'termination criteria' that can be described as a combination of two decisions. First, does termination occur based on the monitored level of a psychological variable, or based on prespecified criteria that operationalise expectations regarding the influence of the exposure on the level of a psychological variable. Second, does this variable relate to somebody's fear or their expectancies? The possible combinations would therefore be:
+
+1. Level-based termination (fear): The end of the exposure trial is determined by fear reduction to a certain level, as measured through monitoring (e.g. if this therapy ingredient is coded, 'Fear monitoring' must always also be coded).
+2. Level-based termination (expectancy): The end of the exposure trial is determined by expectancy reduction to a certain level, as measured through monitoring (e.g. if this therapy ingredient is coded, 'Expectancy monitoring' must always also be coded).
+3. Exposure-based termination (fear): The exposure trial ends when prespecified conditions that are based on expected effects of the exposure on fear are met (e.g. exposure for a specific period).
+4. Exposure-based termination (expectancy): The exposure trial ends when prespecified conditions that are based on expected effects of the exposure on expectancies are met (e.g. exposure for a specific period).
+5. Exposure-based termination (nonspecific): The exposure trial ends when prespecified conditions are met (e.g. exposure for a specific period), where it is not specified what these conditions are based on.
+
+Note that we realise that not all combinations are plausible or realistic from the theoretical frameworks employed. However, the only cost of retaining them is that some may never be coded, which is a lower cost than omitting an therapy ingredient that does occur.
+
+We will therefore also remove therapy ingredients 'Expectancy violation' and 'Fear level'.
+
+#### Lessen overestimation
+
+*"Cognitive interventions designed to lessen probability overestimation (e.g., “I am unlikely to be bitten by the dog”) and perceived negative valence (e.g., “It is not so bad to be rejected”) occur."*
+
+- dit is 1 kant van angst; de andere is de mate waarin iemand zelfvertrouwen (self-efficacy; problem solving/coping) heeft een probleem aan te kunnen (CBT kan zich ook op die kant richten om angst te verminderen)
+- It would depend on when this occurs: if exposure therapy works by forcing a prediction error to update beliefs, then some theorists would say that lessening overestimation before exposure would be counterproductive, as it would lessen the contrast between what is expected and what occurs, and reduce inhibitory learning.
+- The formulation is somewhat obscure. What exactly is the intervention?
+
+The first point is true; increasing self/response efficacy, coping skills, et cetera can also plausibly help reduce fear or change expectancies, and thus contribute to exposure therapy effectivess. However, such an intervention would not constitute exposure therapy per se, and therefore we decide to not code this element. (Note that we are aware that inclusion of a self-efficacy intervention might be a precondition for the effectiveness of some of these other therapy ingredients; but modeling such interactions goes far beyond the scope of what is feasible in this project.)
+
+The second point is an excellent point, and directly concerns the goal of this review: whether this therapy ingredient is included in a therapy would be indicative of the theoretical perspective from which the therapy was designed.
+
+The third point is also a good point; however, given the breadth of interventions applied to this end, we see no possibilities to specify this more explicitly. We will therefore, for now, retain this definition.
+
+#### Deepened extinction
+
+*"Combination of multiple cues (internal and/or external) during exposure therapy, after initially conducting some exposure to each cue in isolation."*
+
+- Could also have a separate thing for enhancing extinction learning with pharmacological means? The same could go for habituation (a drug taken to reduce arousal during exposure could make habituation more rapid).
+
+This is a good point; we decide to add an additional therapy ingredient:
+
+1. Pharmacological enhancement: Pharmacological means are used to support the therapy.
+
+#### Reconsolidation
+
+*"The phobic stimulus is introduced for a brief period about 30 minutes before repeated trials of exposure."*
+
+- I would say ‘retrieval-extinction’ rather than reconsolidation. I the one case, you simply state what is occurring (brief retrieval, then extinction), whereas in the other a specific process is inferred. There is a lot of conflicting evidence about whether retrieval-extinction procedures are really reconsolidation-based.
+
+One participant remarked that 'reconsilidation' may be a misnomer; 'retrieval-extinction' may be more accurate. However, this participant did not think this was a redundant therapy ingredient to code. Consistent with our earlier decision to avoid 'consolidation', we will follow this suggestion and rename this therapy ingredient to "Brief pre-exposure".
+
+#### Omissions
+
+- Mogelijk nog het aantal behandelingen.
+
+Indeed, number of treatments is important to code.
+
+- En waarschijnlijk ook goed om onderscheid te maken in typen angst: bijvoorbeeld in termen van complexiteit (bijv. spinnenangst vs. sociale angst).
+
+This is a good point. We will code this using the DSM codes.
+
+<div style='font-size:80px;color:red'>!!!! TO DO !!!!</div>
+
+- One of the things I thought of was that sometimes a pharmacological agent is used to enhance inhibitory learning. Perhaps: ‘pharmacological enhancement’ or something like that.
+- The reference to reconsolidation is questionable as I noted above, in that we do not know whether reconsolidation is what is occurring. Also though, if a reconsolidation approach is taken and reconsolidation is what is believed to be happening, then it would be neither a habituation nor an inhibitory learning approach. The idea that people focusing on reconsolidation in exposure are pushing is that rather than inhibitory memories being formed, the original memory is directly updated.
+
+Both points have been dealt with above.
+
+- self-efficacy (Bandura)
+
+We dealt with this above, as well.
+
+- contingency management (rewarding courageous behaviors (by praise or material rewards by therapist and carers; self-reward; ignoring anxious behaviors)
+
+This is an important omission. We will include this therapy ingredient:
+
+1. Contingency management: Any use of rewards on the basis of progress in the exposure therapy.
+
+- It’s maybe implicitly stated in the ‘fear monitoring’ ingredient, but I would add ‘fear eliciting’: one needs to be sure the participant is feeling anxious/experiencing fear in order for habituation to be possible
+
+
+
+
 
 ### Details
 
@@ -389,7 +499,7 @@ fullObject <-
 
 ```
 
-## List of active ingredients
+## List of therapy ingredients
 
 ```{r active-ingredient-list}
 
