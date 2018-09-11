@@ -19,7 +19,7 @@ attributes(data)$variable.labels[4] <- "startlanguage"
 names(data)[4] <- "startlanguage"
 # LimeSurvey Field type: A
 data[, 5] <- as.character(data[, 5])
-attributes(data)$variable.labels[5] <- "For a systematic review to compare effectiveness of exposure therapy based on the habituation versus inhibition-learning theories of exposure, we will process published therapy evaluations and code the active ingredients.	We list the active ingredients in this list, and we have two questions about this list.	The results of this brief exploration will be shared through the Open Science Framework repository for this project, which is located at https://osf.io/83uaq/. The raw datafile from LimeSurvey will be shared. Therefore, please do not list any personal data here, unless you consent to the publication of these personal data.	If you have any questions, feel free to contact Pepijn van der Hulle at pepijnvanderhulle@gmail.com or Gjalt-Jorn Peters at gjalt-jorn@behaviorchange.eu."
+attributes(data)$variable.labels[5] <- "For a systematic review to compare effectiveness of exposure therapy based on the habituation versus inhibition-learning theories of exposure, we will process published therapy evaluations and code the active ingredients.	We list the active ingredients in this list, and we have two questions about this list.	The results of this brief exploration will be shared through the Open Science Framework repository for this project, which is located at https://osf.io/3nze4. The raw datafile from LimeSurvey will be shared. Therefore, please do not list any personal data here, unless you consent to the publication of these personal data.	If you have any questions, feel free to contact Pepijn van der Hulle at pepijnvanderhulle@gmail.com or Gjalt-Jorn Peters at gjalt-jorn@behaviorchange.eu."
 names(data)[5] <- "intro"
 # LimeSurvey Field type: A
 data[, 6] <- as.character(data[, 6])
@@ -90,8 +90,8 @@ data[, 22] <- as.numeric(data[, 22])
 attributes(data)$variable.labels[22] <- "Could you please provide an indication as to your background/expertise?"
 data[, 22] <- factor(data[, 22], levels=c(1,2,3,4,5,6,7,8),labels=c("Psychology student", "PhD. student in psychology", "Post doc in psychology", "Assistant Professor in psychology", "Associate Professor in psychology", "Full Professor in psychology", "Therapist (active)", "Prefer not to disclose"))
 names(data)[22] <- "expertise"
-# LimeSurvey Field type: F
-data[, 23] <- as.numeric(data[, 23])
+# LimeSurvey Field type: A
+data[, 23] <- as.character(data[, 23])
 attributes(data)$variable.labels[23] <- "[Other] Could you please provide an indication as to your background/expertise?"
 names(data)[23] <- "expertise_other"
 # LimeSurvey Field type: A

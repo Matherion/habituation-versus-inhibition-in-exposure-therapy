@@ -51,7 +51,13 @@ queries <- list();
 
 ```
 
-## Pilot data
+## Pilot data {.tabset}
+
+### Overview and decisions
+
+The full answers are listed in the 'Details' tab.
+
+### Details
 
 ```{r process-pilot-data, results="asis"}
 
@@ -66,12 +72,17 @@ varsToShow <- c(grep('corrections_', names(preDat), value=TRUE),
                 'comments');
 
 for (currentVar in varsToShow) {
-  ufs::cat0("\n\n### ", currentVar, "\n\n");
-  ufs::cat0(paste0("\n- ", preDat[, currentVar], "\n"));
+  ufs::cat0("\n\n#### ", currentVar, "\n\n");
+  ufs::cat0(paste0("\n- ", preDat[isTrue(preDat$lastpage==1),
+                                  currentVar], "\n"));
 }
 
 ```
 
+<!--------------------------------------------------------------------->
+<!-- Set up of first query (done before the corresponding header, as -->
+<!-- the date in that header is read from this object) ---------------->
+<!--------------------------------------------------------------------->
 
 ```{r first-query-setup}
 queries[[length(queries) + 1]] <-
@@ -168,16 +179,17 @@ firstQueryIteration$output$records$bibtexkey <-
          "-", gsub("-", "", queries[[1]]$date));
 
 screening1_filename_pre <- paste0(queries[[1]]$date, "-screening.bib");
+screening1_filename_post <- paste0(queries[[1]]$date, "-screened.bib");
 
 ### Export the hits to bibtex for screening in JabRef
 sysrevExport(firstQueryIteration,
              filename=file.path(screeningPath,
                                 screening1_filename_pre),
-             screeningType="screening");
+             screeningType=NULL);
 
 ```
 
-The merged list of query hits has now been exported to file <code>`r screening1_filename`</code> in directory "screening" and can be opened using JabRef, which can be downloaded from https://www.fosshub.com/JabRef.html.
+The merged list of query hits has now been exported to file <code>`r screening1_filename_pre`</code> in directory "screening" and can be opened using JabRef, which can be downloaded from https://www.fosshub.com/JabRef.html.
 
 ## JabRef configuration
 
@@ -215,7 +227,7 @@ For every entry, add the following text in the 'screening' field:
 
 So once JabRef is opened, when screening, make sure that the 'screening1' field is shown in the entry table (i.e. that it is one of the entry table columns), and create one entry editing tab using 'General Fields' that contains the fields `title`, `abstract`, and `screening1`. You can then use this tab for the screening. It is also convenient to show field `dupl` in either the entry table or the screening tab in the entry editor, because for duplicate records (that were identified as such - the algorithm may miss some duplicates of course), that field contains the text `dupl`.
 
-Make sure to save the database with query hits under a different name than <code>`r screening1_filename`</code>. That is important because file <code>`r screening1_filename`</code> will get overwritten if this R Markdown file is executed again.
+Make sure to save the database with query hits under a different name than <code>`r screening1_filename_pre`</code>. That is important because file <code>`r screening1_filename_pre`</code> will get overwritten if this R Markdown file is executed again. This file will not require any adjustments if you name the database <code>`r screening1_filename_post`</code>.
 
 ### Screening results {.tabset}
 
@@ -225,10 +237,9 @@ This is an overview of the screening results. The details for the sources to inc
 
 ```{r query-1-import-screened-hits-overview}
 
-screening1_filename_pre <- paste0(queries[[1]]$date, "-screened.bib");
 firstQueryScreened <-
   metabefor::importBibtex(file.path(screeningPath,
-                                    screening1_filename_pre));
+                                    screening1_filename_post));
 
 userfriendlyscience::freq(firstQueryScreened$records$screening1);
 
@@ -236,26 +247,43 @@ userfriendlyscience::freq(firstQueryScreened$records$screening1);
 
 #### Details
 
-```{r query-1-import-screened-hits-details}
+```{r query-1-import-screened-hits-details, results='asis'}
 
+firstQueryScreened$records %>%
+  dplyr::filter(grepl("incl", screening1)) %>%
+  dplyr::rowwise() %>%
+  dplyr::do(
+    data.frame(txt=paste0("\n\n##### ", .$bibtexkey, "\n\n",
+                          .$author, " (", .$year, ") ",
+                          .$title, ". ", .$journal, ". <a href='https://doi.org/",
+                          .$doi, "'>", .$doi, "</a>\n\n",
+                          .$abstract),
+               stringsAsFactors = FALSE)
+  ) %>%
+  unlist() %>%
+  cat(collapse="\n");
 
-firstQueryScreened$records[grepl('incl', firstQueryScreened$records$screening1),
-                           c('author', 'title', 'year')];
-
-
+### Maybe start working with
+# firstQueryScreened$records$bibtype <- firstQueryScreened$records$recordtype;
+# row.names(firstQueryScreened$records) <- firstQueryScreened$records$bibtexkey
+# RefManageR::PrintBibliography(RefManageR::as.BibEntry(head(firstQueryScreened$records, 1)),
+#                               .opts=list(no.print.fields=setdiff(names(firstQueryScreened$records),
+#                                                                  c('author',
+#                                                                    'title',
+#                                                                    'date',
+#                                                                    'journal'))));
 
 ```
 
+<!-- ## Second query, executed at: 2018-05-23 -->
 
-## Second query, executed at: 2018-05-23
+<!-- The query was updated to: -->
 
-The query was updated to:
+<!-- ``` -->
+<!-- NEWQUERY -->
+<!-- ``` -->
 
-```
-NEWQUERY
-```
-
-This was run at 2018-05-23 in PubMed (61 hits) and PsycINFO accessed through EbscoHost (72 hits), and exported to the RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`.
+<!-- This was run at 2018-05-23 in PubMed (61 hits) and PsycINFO accessed through EbscoHost (72 hits), and exported to the RIS format (called 'medline' in PubMed). The RIS files were then imported in R using `metabefor`. -->
 
 ```{r echo=TRUE, eval=FALSE}
 
@@ -326,9 +354,9 @@ sysrevExport(secondScreening,
 
 ```
 
-The merged bibliographic database has been stored in the screening path (`r screeningPath`), to file `2018-05-23-screening.bib`. This file can now be opened in JabRef, and should be saved to a different filename before any edits are made (because, after all, the file named `2018-05-23-screening.bib` will be overwritten every time this script runs).
+<!-- The merged bibliographic database has been stored in the screening path (`r screeningPath`), to file `2018-05-23-screening.bib`. This file can now be opened in JabRef, and should be saved to a different filename before any edits are made (because, after all, the file named `2018-05-23-screening.bib` will be overwritten every time this script runs). -->
 
-In this merged database, field 'screening1' has been preserved. Records where this field is empty, therefore, are from the second query, and should be screened in the second screening sweep.
+<!-- In this merged database, field 'screening1' has been preserved. Records where this field is empty, therefore, are from the second query, and should be screened in the second screening sweep. -->
 
 ## Generation of the Extraction Script
 

@@ -1,6 +1,6 @@
 ---
 title: "Systematic Review Extraction Script Template"
-date: "28 Aug 2018 at 12:40:43"
+date: "10 Sep 2018 at 19:14:34"
 output:
   html_document:
     self-contained: yes
@@ -556,33 +556,33 @@ study <- Node$new('study');
     ### 
     ############################################################################
         
-        list(assoc.name = "Enter name here (mandatory)",    ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "mainHypothesisTest"; "manipulationCheck"] [Value description: A single character value that cannot be omitted]
-             assoc.variable1 = "enter <<entityRef>> here",  ### First variable: The name of the first variable. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
-             assoc.var1name = NA,                           ### Values of first variable: Values this variable pertains to (e.g. in post hoc analyses). [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
-             assoc.var1moment = NA,                         ### Measurement moment of first variable: To which measurement moment of the first variable this association pertains. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
-             assoc.var2name = "enter <<entityRef>> here",   ### Second variable: The name of the second variable. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
-             assoc.var2values = NA,                         ### Values of second variable: Values this variable pertains to (e.g. in post hoc analyses). [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
-             assoc.var2moment = NA,                         ### Measurement moment of second variable: To which measurement moment of the second variable this association pertains. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
-             assoc.subsample = NA,                          ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
-             assoc.n = NA,                                  ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
-             assoc.df = NA,                                 ### Degrees of freedom: This can be used to specify the degrees of freedom for this analysis, in case for example a t or an F value is extracted. [Examples: c(23.43, 62); 52.2; c(76, 12.56, 42)] [Value description: A vector of valid numbers]
-             assoc.t = NA,                                  ### t value: The t value of this association. [Examples: 2.3; 643.2] [Value description: Any valid number]
-             assoc.F = NA,                                  ### F value: The F value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
-             assoc.r = NA,                                  ### Pearson r: The bivariate correlation of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
-             assoc.chisq = NA,                              ### Chi square: The chi squared value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
-             assoc.crosstab = NA,                           ### Raw table: A table with the frequencies [Examples: rawTable(10, 5, 15, 10); rawTable(31, 87, 21, 54, 25, 32, ncol=3)] [Value description: A table with frequencies; variable 1 in columns, variable 2 in rows; always work from absence/negative/less (left, top) to presence/positive/more (right, bottom)]
-             assoc.d = NA,                                  ### Cohen's d: The Cohen's d value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
-             assoc.etasq = NA,                              ### Eta squared: The eta squared value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
-             assoc.omegasq = NA,                            ### Omega squared: The omega squared value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
-             assoc.OR = NA,                                 ### Odds Ratio: The odds ratio of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
-             assoc.p = NA,                                  ### p value: The association's p value (only extract if nothing else is available) [Examples: 2.3; 643.2] [Value description: Any valid number]
-             assoc.covariates = NA,                         ### Covariates: Number of covariates (for multivariate analyses). [Examples: 30; 8762] [Value description: Any valid whole number]
-             assoc.comment = "");                           ### Comment: Any relevant comments the coder wants to add [Examples: "Example"; "Another example"] [Value description: A single character value]
+        list(assoc.name = "Enter name here (mandatory)",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "mainHypothesisTest"; "manipulationCheck"] [Value description: A single character value that cannot be omitted]
+             assoc.var1name = "enter <<entityRef>> here",  ### First variable: The name of the first variable. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             assoc.var1values = NA,                        ### Values of first variable: Values this variable pertains to (e.g. in post hoc analyses). [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+             assoc.var1moment = NA,                        ### Measurement moment of first variable: To which measurement moment of the first variable this association pertains. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+             assoc.var2name = "enter <<entityRef>> here",  ### Second variable: The name of the second variable. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             assoc.var2values = NA,                        ### Values of second variable: Values this variable pertains to (e.g. in post hoc analyses). [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+             assoc.var2moment = NA,                        ### Measurement moment of second variable: To which measurement moment of the second variable this association pertains. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+             assoc.subsample = NA,                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             assoc.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             assoc.df = NA,                                ### Degrees of freedom: This can be used to specify the degrees of freedom for this analysis, in case for example a t or an F value is extracted. [Examples: c(23.43, 62); 52.2; c(76, 12.56, 42)] [Value description: A vector of valid numbers]
+             assoc.t = NA,                                 ### t value: The t value of this association. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             assoc.F = NA,                                 ### F value: The F value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
+             assoc.r = NA,                                 ### Pearson r: The bivariate correlation of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
+             assoc.chisq = NA,                             ### Chi square: The chi squared value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
+             assoc.crosstab = NA,                          ### Raw table: A table with the frequencies [Examples: rawTable(10, 5, 15, 10); rawTable(31, 87, 21, 54, 25, 32, ncol=3)] [Value description: A table with frequencies; variable 1 in columns, variable 2 in rows; always work from absence/negative/less (left, top) to presence/positive/more (right, bottom)]
+             assoc.d = NA,                                 ### Cohen's d: The Cohen's d value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
+             assoc.etasq = NA,                             ### Eta squared: The eta squared value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
+             assoc.omegasq = NA,                           ### Omega squared: The omega squared value of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
+             assoc.OR = NA,                                ### Odds Ratio: The odds ratio of this association [Examples: 2.3; 643.2] [Value description: Any valid number]
+             assoc.p = NA,                                 ### p value: The association's p value (only extract if nothing else is available) [Examples: 2.3; 643.2] [Value description: Any valid number]
+             assoc.covariates = NA,                        ### Covariates: Number of covariates (for multivariate analyses). [Examples: 30; 8762] [Value description: Any valid whole number]
+             assoc.comment = "");                          ### Comment: Any relevant comments the coder wants to add [Examples: "Example"; "Another example"] [Value description: A single character value]
         
     ############################################################################
     study$results$association__1__[['validation']] <- list(`assoc.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
-                                                           `assoc.variable1` = expression(!is.null(FindNode(node$root, "oper.name"))),
-                                                           `assoc.var1name` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                           `assoc.var1name` = expression(!is.null(FindNode(node$root, "oper.name"))),
+                                                           `assoc.var1values` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
                                                            `assoc.var1moment` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
                                                            `assoc.var2name` = expression(!is.null(FindNode(node$root, "oper.name"))),
                                                            `assoc.var2values` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
