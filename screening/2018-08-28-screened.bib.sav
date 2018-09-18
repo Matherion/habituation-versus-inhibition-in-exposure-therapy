@@ -9610,7 +9610,7 @@
   pst                 = {ppublish},
   recordlog           = {PubMed},
   sb                  = {IM},
-  screening1          = {noengl},
+  screening1          = {* e (Turks artikel)},
   source.ref          = {Turk Psikiyatri Derg. 2010 Spring;21(1):25-36.},
   status              = {MEDLINE},
   tt                  = {Ergenlerde Sosyal Anksiyete Belirtilerini Azaltmaya Yonelik Bilissel-Davranisci Bir Grup Terapisi Programinin Etkililiginin Degerlendirilmesi.},

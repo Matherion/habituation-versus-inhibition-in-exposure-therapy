@@ -329,6 +329,7 @@ For every entry, add the following text in the 'screening' field:
 
 - If it is excluded, add the reason, specifically (these are ordered progressively; i.e. if one of the criteria matches, apply it and move on to the next entry):
     - **`dupl`** if the study is a duplicate of another entry;
+    - **`noengl`** if the study is not reported in English;
     - **`noexper`** if the study does not have an experimental design;
     - **`nopopul`** if the study did not sample participants younger than 18 years;
     - **`noexpos`** if the study did not compare two groups that differ in the treatment in terms of exposure as a part of cognitive behavioral therapy;
