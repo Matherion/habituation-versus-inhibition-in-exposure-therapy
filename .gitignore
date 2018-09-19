@@ -43,6 +43,9 @@ vignettes/*.pdf
 # PDF files of articles
 pdfs/*.*
 
+# MacOS thingy
+.DS_Store
+
 # JabRef backup file and other weird file
 .bib.bak
 .bib.sav
