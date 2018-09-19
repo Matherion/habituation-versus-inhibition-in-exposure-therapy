@@ -3,6 +3,8 @@ title: "Habituation versus inhibition in exposure therapy - literature synthesis
 author: "Pepijn van der Hulle, Gjalt-Jorn Peters, Eva de Hullu & Jacques van Lankveld"
 date: "`r format(Sys.time(), '%H:%M:%S on %Y-%m-%d %Z (GMT%z)')`"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -48,6 +50,20 @@ extractionScriptTemplatePath <- here::here("extraction");
 
 ### Create object to keep track of queries
 queries <- list();
+
+### Simple function to correctly capture figures
+figCap <- function(caption) {
+  figCapCounter <-
+    ifelse(is.null(getOption('figCapCounter')),
+           0,
+           getOption('figCapCounter'));
+  figCapCounter <- figCapCounter + 1;
+  options(figCapCounter = figCapCounter);
+  return(paste0("Figure ", figCapCounter, ": ", caption));
+}
+
+### Set figure counter to 0
+options(figCapCounter = 0);
 
 ```
 
@@ -142,9 +158,7 @@ Indeed, number of treatments is important to code.
 
 - En waarschijnlijk ook goed om onderscheid te maken in typen angst: bijvoorbeeld in termen van complexiteit (bijv. spinnenangst vs. sociale angst).
 
-This is a good point. We will code this using the DSM codes.
-
-<div style='font-size:80px;color:red'>!!!! TO DO !!!!</div>
+This is a good point. We will code this using the DSM categories.
 
 - One of the things I thought of was that sometimes a pharmacological agent is used to enhance inhibitory learning. Perhaps: ‘pharmacological enhancement’ or something like that.
 - The reference to reconsolidation is questionable as I noted above, in that we do not know whether reconsolidation is what is occurring. Also though, if a reconsolidation approach is taken and reconsolidation is what is believed to be happening, then it would be neither a habituation nor an inhibitory learning approach. The idea that people focusing on reconsolidation in exposure are pushing is that rather than inhibitory memories being formed, the original memory is directly updated.
@@ -163,9 +177,7 @@ This is an important omission. We will include this therapy ingredient:
 
 - It’s maybe implicitly stated in the ‘fear monitoring’ ingredient, but I would add ‘fear eliciting’: one needs to be sure the participant is feeling anxious/experiencing fear in order for habituation to be possible
 
-
-
-
+We discussed this and decided that this is implicit in the 'Nature of exposure' entity that will be extracted. On the one hand, exposure should normally always result in fear elicitation. On the other hand, if we do want to extract/code this, it should be as a manipulation check of the variable 'fear'; this is about therapy fidelity, not therapy ingredients.
 
 ### Details
 
@@ -241,10 +253,6 @@ In the interface language of the PubMed interface to the PubMed database and the
 query_toInterfaceLang(queries[[1]]$query,
                       fields=queries[[1]]$fields);
 ```
-
-The EbscoHost query was manually adjusted to:
-
-    (TI ("cognitive behavio* therapy" OR "cbt") OR AB ("cognitive behavio* therapy" OR "cbt")) AND ((TI "exposure") OR (AB "exposure")) AND ((TI ("child*" OR "adolescent*" OR "youth")) OR (AB ("child*" OR "adolescent*" OR "youth"))) AND ((TI ("anxiety" OR "fear")) OR (AB ("anxiety" OR "fear")))
 
 This query was run at `r queries[[1]]$date;` in PubMed (XXXX hits; file saved as <code>pubmed-`r queries[[1]]$date`.ris</code>) and PsycINFO accessed through EbscoHost (XXXX hits; file saved as <code>psycinfo-`r queries[[1]]$date`.ris</code>), and exported to RIS format (called 'MEDLINE' in PubMed). The RIS files were then imported in R using `metabefor`.
 
@@ -468,11 +476,20 @@ sysrevExport(secondScreening,
 
 <!-- In this merged database, field 'screening1' has been preserved. Records where this field is empty, therefore, are from the second query, and should be screened in the second screening sweep. -->
 
-## Generation of the Extraction Script
+
+## Data extraction
+
+### The extraction script (.rxs) {.tabset}
+
+#### Generation of the extraction script
 
 We will use a metabefor extraction script for the extraction of the data. The idea of this script is to extract the data from the original sources with a minimum of interpretation. The data is extracted into a machine-readable format, which then allows competely transparent further processing and synthesis.
 
 These scripts are generated on the basis of two tables/spreadsheets. The first contains the entities to extract, such as study year, sample size, how variables were operationalised, and associations that were found. The second contains the valid values for each entity, to allow efficiently providing coders with examples, instructions, and to allow easy verification of the input.
+
+The logged messages from this process are available in this section under the tab 'Logged messages', and the generated extraction script template (which is also written as a file to the repository) is included in a text area in the 'Extraction script template' for convenient inspection.
+
+#### Logged messages
 
 ```{r extraction-script-generation}
 
@@ -499,9 +516,67 @@ fullObject <-
 
 ```
 
+#### Extraction script template
+
+```{r extraction-script-template, results="asis"}
+cat("\n\n<pre><textarea rows='40' cols='124' style='font-family:monospace;font-size:11px;white-space:pre;'>",
+    unlist(fullObject$rxsTemplate),
+    "</textarea></pre>\n\n",
+    sep="\n");
+```
+
+### Software considerations
+
+To do the actual extraction, there are two general routes an extractor can take. The first is to use R Studio. The advantage of using R Studio is that, because each extraction script file (rxs file) is in fact an R Markdown file, it can be rendered into a report for the extracted study immediately. This can show whether any mistakes were made during extraction, and easily allows the extractor to check the results of their labour.
+
+However, a disadvantage of R Studio is that R Markdown files are always wrapped. Wrapping means that to prevent the need for horizontal scrolling, long lines of text are displayed on multiple lines. Wrapping is almost always very useful. Text processors, for example, always wrap; text in books is always wrapped; and so is online content.
+
+However, extraction scripts contain very long lines when closely related entities are extracted in list form; in that case, their explanation and examples are placed as comments (preceded by R's comment symbol, `#`) behind the entities and values to extract, which can look very confusing if lines are wrapped.
+
+RStudio does use syntax coloring to clearly indicate which parts of the extraction script are comments and which parts are values, but still, extractors might find this confusing.
+
+The second option, therefore, is to use an external editor. For extractors working in a Windows environment, Notepad++ is recommended; for extractors working in a Mac OS environment, BBEdit is recommended (extractors using a Linux distro probably already have their preferred text editors).
+
+![`r figCap('Notepad++ when no file has been loaded yet')`](../img/notepadplusplus--empty.png)
+
+#### Downloading the software
+
+Working with RStudio requires installing R as well.
+
+- R can be downloaded from [this link](https://cloud.r-project.org/) (specifically from [this link](https://cloud.r-project.org/bin/windows/base/) for Windows, from [this link](https://cloud.r-project.org/bin/macosx/) for MacOS, and through [this link](https://cloud.r-project.org/bin/linux/) for Linux).
+- RStudio can be downloaded from [this link](https://www.rstudio.com/products/rstudio/download/#download).
+- Notepad++ can be downloaded from [this link](https://notepad-plus-plus.org/download).
+- BBEdit can be downloaded from [this link](https://www.barebones.com/products/bbedit/download.html) (the free version suffices).
+
+#### The extraction process
+
+When extracting articles, an extractor takes the following steps:
+
+- Open the article (this usually means opening the relevant PDF in the `pdfs` directory).
+
+- Copy the extraction script template to a new file in the `extraction` directory.
+
+- Give the new file a name conform the following convention: a list of the last names of all authors, all in lower case (i.e. without capitals), separated by dashes (`-`), and ending with the year of the study, separated from the list of author names by two dashes (`--`), and ending with the extraction script extension (`.rxs.Rmd`). Thus, the filename should look something like this: `boys-marsden--2003.html`.
+
+- Open the new (and newly renamed) extraction script in the editor of choice (see the 'Software considerations' section above).
+
+- If you haven't looked at the extraction script yet, study it. If you encounter anything you're uncertain about, contact another team member to ask them to explain it.
+
+- In the extraction script, scroll to the line containing the text `START: study (ROOT)`.
+
+- Scroll downwards through the extraction script, completing each extractable entity as you encounter it. Often, the first entity will be the study identifier (usually a Digital Object Identifier or DOI).
+
+- Once you have completed the extraction script, if you use RStudio, you can 'render' or 'knit' it by clicking the 'Knit' button at the top. This will show you what you extracted. If you made any errors (e.g. forgot a comma, or a single or double quote, or forgot to open or close a parenthesis, or mistyped a variable name, etc), this should become clear at this point. Correct any errors. (If you use another editor, you won't be able to check this at this point.)
+
+- Repeat these steps for the next article.
+
+If you run into any problems, clearly write them down, and depending on what you agreed with your team members, accumulate these issues and discuss them at the next meeting, or immediately pass them on using whichever medium you use.
+
 ## List of therapy ingredients
 
-```{r active-ingredient-list}
+This table shows the list of therapy ingredients to be coded, for easy access and scrutiny, since it's so central to this study.
+
+```{r therapy-ingredient-list}
 
 data.frame(Name=fullObject$rxsStructure$parsedEntities$extractionScriptTree$methods$variables$treatments$Get('title'),
            Description=fullObject$rxsStructure$parsedEntities$extractionScriptTree$methods$variables$treatments$Get('description')) %>%
