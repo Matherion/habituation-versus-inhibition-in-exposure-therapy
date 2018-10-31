@@ -40,8 +40,9 @@ vignettes/*.pdf
 *.doc
 *.docx
 
-# PDF files of articles
-pdfs/*.*
+# PDF files of articles (except Open Access articles)
+pdfs/*.pdf
+!pdfs/\[OA\]*.pdf
 
 # MacOS thingy
 .DS_Store

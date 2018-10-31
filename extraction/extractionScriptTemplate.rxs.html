@@ -90,9 +90,6 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
-.html-widget {
-  margin-bottom: 20px;
-}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -121,7 +118,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Systematic Review Extraction Script Template</h1>
-<h4 class="date"><em>14 Sep 2018 at 17:52:44</em></h4>
+<h4 class="date"><em>02 Oct 2018 at 10:37:33</em></h4>
 
 </div>
 
@@ -133,21 +130,24 @@ $(document).ready(function () {
 1  study                                   
 2   ¦--studyId                             
 3   ¦--comments                            
-4   ¦--year                                
-5   ¦--country                             
-6   ¦--methods                             
-7   ¦   ¦--N                               
-8   ¦   ¦--age                             
-9   ¦   ¦--Enter name here (mandatory)     
-10  ¦   ¦--anxiety                         
-11  ¦   ¦--methodType                      
-12  ¦   °--variables                       
-13  ¦       ¦--Enter name here (mandatory) 
-14  ¦       °--treatments                  
-15  ¦           °--enter &lt;<entityRef>&gt; here
-16  °--results                             
-17      ¦--Enter name here (mandatory)     
-18      ¦--Enter name here (mandatory)     
+4   ¦--yearCollected                       
+5   ¦--yearPublished                       
+6   ¦--country                             
+7   ¦--methods                             
+8   ¦   ¦--N                               
+9   ¦   ¦--moments                         
+10  ¦   ¦--momentUnits                     
+11  ¦   ¦--age                             
+12  ¦   ¦--enter name here (mandatory)     
+13  ¦   ¦--anxiety                         
+14  ¦   ¦--methodType                      
+15  ¦   °--variables                       
+16  ¦       ¦--enter name here (mandatory) 
+17  ¦       °--treatments                  
+18  ¦           °--enter &lt;<entityRef>&gt; here
+19  °--results                             
+20      ¦--enter name here (mandatory)     
+21      ¦--enter name here (mandatory)     
 </pre>
 </div>
 <div id="section-1" class="section level3">
@@ -179,386 +179,406 @@ $(document).ready(function () {
 </tr>
 <tr class="odd">
 <td align="center">study</td>
-<td align="center">year</td>
+<td align="center">yearCollected</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
 <td align="center">study</td>
-<td align="center">country</td>
+<td align="center">yearPublished</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
+<td align="center">study</td>
+<td align="center">country</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
 <td align="center">study/methods</td>
 <td align="center">N</td>
 <td align="center">NA</td>
 </tr>
+<tr class="odd">
+<td align="center">study/methods</td>
+<td align="center">moments</td>
+<td align="center">NA</td>
+</tr>
 <tr class="even">
+<td align="center">study/methods</td>
+<td align="center">momentUnits</td>
+<td align="center">weeks</td>
+</tr>
+<tr class="odd">
 <td align="center">study/methods</td>
 <td align="center">age</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/Enter name here (mandatory)</td>
-<td align="center">subsample.name</td>
-<td align="center">Enter name here (mandatory)</td>
-</tr>
 <tr class="even">
-<td align="center">study/methods/Enter name here (mandatory)</td>
+<td align="center">study/methods/enter name here (mandatory)</td>
+<td align="center">subsample.name</td>
+<td align="center">enter name here (mandatory)</td>
+</tr>
+<tr class="odd">
+<td align="center">study/methods/enter name here (mandatory)</td>
 <td align="center">subsample.N</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/Enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/methods/enter name here (mandatory)</td>
 <td align="center">subsample.age</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods</td>
 <td align="center">anxiety</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods</td>
 <td align="center">methodType</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/Enter name here (mandatory)</td>
-<td align="center">oper.name</td>
-<td align="center">Enter name here (mandatory)</td>
-</tr>
 <tr class="odd">
-<td align="center">study/methods/variables/Enter name here (mandatory)</td>
+<td align="center">study/methods/variables/enter name here (mandatory)</td>
+<td align="center">oper.name</td>
+<td align="center">enter name here (mandatory)</td>
+</tr>
+<tr class="even">
+<td align="center">study/methods/variables/enter name here (mandatory)</td>
 <td align="center">oper.moment</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/Enter name here (mandatory)</td>
+<tr class="odd">
+<td align="center">study/methods/variables/enter name here (mandatory)</td>
 <td align="center">oper.type</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/Enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/methods/variables/enter name here (mandatory)</td>
 <td align="center">oper.datatype</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/Enter name here (mandatory)</td>
+<tr class="odd">
+<td align="center">study/methods/variables/enter name here (mandatory)</td>
 <td align="center">oper.values</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/Enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/methods/variables/enter name here (mandatory)</td>
 <td align="center">oper.labels</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/Enter name here (mandatory)</td>
+<tr class="odd">
+<td align="center">study/methods/variables/enter name here (mandatory)</td>
 <td align="center">oper.description</td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/Enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/methods/variables/enter name here (mandatory)</td>
 <td align="center">oper.comment</td>
 <td align="center"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">treatment.variable</td>
 <td align="center">enter &lt;<entityRef>&gt; here</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">treatment.sessions</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">treatment.operValue</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">fearHierarchy</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">fearMon</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">lvlBasedFear</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">lvlBasedExpect</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">expectState</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">expectMonitor</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">learnEval</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">expBasedFear</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">expBasedExpect</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">expBasedNonspec</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">lessOverest</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">deepExt</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">pharma</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">occReinfExt</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">removSaf</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">variab</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">retrCues</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">multiCont</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">preExposure</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">contingency</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/methods/variables/treatments/enter &lt;<entityRef>&gt; here</td>
 <td align="center">expNature</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
-<td align="center">uni.name</td>
-<td align="center">Enter name here (mandatory)</td>
-</tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
+<td align="center">uni.name</td>
+<td align="center">enter name here (mandatory)</td>
+</tr>
+<tr class="even">
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.variable</td>
 <td align="center">enter &lt;<entityRef>&gt; here</td>
 </tr>
-<tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<tr class="odd">
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.subsample</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.value</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<tr class="odd">
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.moment</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.minimum</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<tr class="odd">
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.maximum</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.median</td>
 <td align="center">NA</td>
 </tr>
+<tr class="odd">
+<td align="center">study/results/enter name here (mandatory)</td>
+<td align="center">uni.category</td>
+<td align="center">NA</td>
+</tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.mean</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.percentage</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.n</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.sd</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.qualitative</td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">uni.comment</td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.name</td>
-<td align="center">Enter name here (mandatory)</td>
+<td align="center">enter name here (mandatory)</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var1name</td>
 <td align="center">enter &lt;<entityRef>&gt; here</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var1values</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var1moment</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var2name</td>
 <td align="center">enter &lt;<entityRef>&gt; here</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var2values</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var2moment</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.subsample</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.n</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.df</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.t</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.F</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.r</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.chisq</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.crosstab</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.d</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.etasq</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.omegasq</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.OR</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.p</td>
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.covariates</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/results/Enter name here (mandatory)</td>
+<td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.comment</td>
 <td align="center"></td>
 </tr>

@@ -337,6 +337,7 @@ For every entry, add the following text in the 'screening' field:
 
 - If it is excluded, add the reason, specifically (these are ordered progressively; i.e. if one of the criteria matches, apply it and move on to the next entry):
     - **`dupl`** if the study is a duplicate of another entry;
+    - **`noengl`** if the study is not reported in English;
     - **`noexper`** if the study does not have an experimental design;
     - **`nopopul`** if the study did not sample participants younger than 18 years;
     - **`noexpos`** if the study did not compare two groups that differ in the treatment in terms of exposure as a part of cognitive behavioral therapy;
@@ -548,15 +549,17 @@ Working with RStudio requires installing R as well.
 - Notepad++ can be downloaded from [this link](https://notepad-plus-plus.org/download).
 - BBEdit can be downloaded from [this link](https://www.barebones.com/products/bbedit/download.html) (the free version suffices).
 
-#### The extraction process
+### Extraction guidelines
+
+#### Overview of the extraction process
 
 When extracting articles, an extractor takes the following steps:
 
 - Open the article (this usually means opening the relevant PDF in the `pdfs` directory).
 
-- Copy the extraction script template to a new file in the `extraction` directory.
+- Copy the extraction script template to a new file in the `extraction` directory in the study repository.
 
-- Give the new file a name conform the following convention: a list of the last names of all authors, all in lower case (i.e. without capitals), separated by dashes (`-`), and ending with the year of the study, separated from the list of author names by two dashes (`--`), and ending with the extraction script extension (`.rxs.Rmd`). Thus, the filename should look something like this: `boys-marsden--2003.html`.
+- Give the new file a name conform the following convention: a list of the last names of all authors, all in lower case (i.e. without capitals), separated by dashes (`-`), and ending with the year of the study, separated from the list of author names by two dashes (`--`), and ending with the extraction script extension (`.rxs.Rmd`). Thus, the filename should look something like this: `boys-marsden--2003.rxs.Rmd`.
 
 - Open the new (and newly renamed) extraction script in the editor of choice (see the 'Software considerations' section above).
 
@@ -564,13 +567,269 @@ When extracting articles, an extractor takes the following steps:
 
 - In the extraction script, scroll to the line containing the text `START: study (ROOT)`.
 
-- Scroll downwards through the extraction script, completing each extractable entity as you encounter it. Often, the first entity will be the study identifier (usually a Digital Object Identifier or DOI).
+- Work your way through the extraction script, completing each applicable extractable entity and removing those that cannot be extracted (see section 'Extracting entities' below). Often, the first entity will be the study identifier (usually a Digital Object Identifier or DOI), but completing an extraction script is often a nonlinear activity, starting with the primary entities of interest.
 
 - Once you have completed the extraction script, if you use RStudio, you can 'render' or 'knit' it by clicking the 'Knit' button at the top. This will show you what you extracted. If you made any errors (e.g. forgot a comma, or a single or double quote, or forgot to open or close a parenthesis, or mistyped a variable name, etc), this should become clear at this point. Correct any errors. (If you use another editor, you won't be able to check this at this point.)
 
 - Repeat these steps for the next article.
 
-If you run into any problems, clearly write them down, and depending on what you agreed with your team members, accumulate these issues and discuss them at the next meeting, or immediately pass them on using whichever medium you use.
+In this process, apply the steps explained in the 'Extracting entities' section below. Note that in some cases, you will have to make a choice as to how to extract (code) certain information. The decisions that have already been taken to guide these choices have been listed in the 'Coding decisions' section below.
+
+If you run into any problems, clearly write them down, and depending on what you agreed with your team members, accumulate these issues and discuss them at the next meeting, or immediately pass them on using whichever medium you use for coordinating study progress.
+
+#### Extracting entities
+
+The extraction process consists of extracting facts from published reports of empirical research (not always, but almost always). Extraction consists of two steps: studying the report and interpreting its contents to determine what is to be extracted (also called *coding*) and the actual extraction (documenting the extracted facts). When using `metabefor` (and we do), facts that can be extracted are called *entities*. So, can *entity* is one datum (singular of data) to be extracted, such as a year, a sample size, the measurement level of a variable, a precentage, or an effect size. Extraction scripts (i.e. `.rxs.Rmd` files) contain a long list of these entities.
+
+##### Single entities
+
+Some entities are just single entities. For example, this is an example of the extraction script fragment for extracting a sample size:
+
+    ############################################################################
+    ############################################################### START: N ###
+    ############################################################################
+    study$methods$AddChild('N');
+    study$methods$N[['value']] <-
+    ############################################################################
+    ### 
+    ### SAMPLE SIZE
+    ### 
+    ### Total number of human participants in the study (note: the
+    ### actual sample size may be larger if multiple observations are
+    ### collected per participant)
+    ### 
+    ############################################################################
+        
+        NA
+        
+    ############################################################################
+    ######################################### VALUE DESCRIPTION AND EXAMPLES ###
+    ############################################################################
+    ### 
+    ### Any valid whole number
+    ### 
+    ### EXAMPLES:
+    ### 
+    ### 30
+    ### 8762
+    ### 
+    ############################################################################
+    study$methods$N[['validation']] <- expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1)));
+    ############################################################################
+    ################################################################# END: N ###
+    ############################################################################
+
+This excerpt has a number of fragments. As an extractor, not everything is relevant. When extracting, the relevant fragments are the following:
+
+    START: N
+
+This signifies that an *entity block* starts to extract the entity with the *identifier* (a unique name of this entity) `N`. For entity blocks that are *repeating* blocks, this identifier is followed by `(REPEATING)`. Entity blocks that are repeating have to be copied and pasted in the extraction script as often as is required. When copy-pasting, copy-paste the entire entity block.
+
+    SAMPLE SIZE
+
+This is the 'human readable' (i.e. nicely worded) name for this entity. This will normally just be a clearer version of the identifier.
+
+    Total number of human participants in the study (note: the
+    actual sample size may be larger if multiple observations are
+    collected per participant)
+
+This is the explanation of what exactly this entity is (i.e. what an extractor should look for in the report, and how to code it).
+
+    NA
+
+In between this description of what to code and the following section (see next fragment), the extracted value is entered (this fragment is called the *extracted value fragment*). In the extraction script template, the default value as specified in the extraction script specification (three spreadsheets that together specify the entities, value templates, and definitions, and that are parsed by `metabefor` to generate the extraction script template) is prefilled. `NA` stands for a missing value, in other words, something that has not been extracted yet. Depending on what is specified in the extraction script specification, `NA` can be a valid value or an invalid value (i.e. if something *must* be extracted). Another common default value is `""` to signify an empty text string.
+
+    VALUE DESCRIPTION AND EXAMPLES
+
+This fragment contains a description of the valid values for this entity as well as some examples. This fragment ends with the entity block ending:
+
+    END: N
+
+Like for the entity block start, if the entity block is *repeating* (i.e. describes an entity or entity list that can be extracted multiple times in one report), the identifier (in this example, `N`) is followed by `(REPEATING)`.
+
+##### Entity lists
+
+Closely related entities can be combined into an *entity list* for convenience's sake. *Entity lists* look very similar to single entities, but instead of providing a space for extracting a single value in the *extracted value fragment*, they combine multiple extractable entities in a list (for example, univariate results pertaining to a variable; or associations pertaining to two variables). This list always contains pairs of extractable entities' names, equals signs (`=`), and the default value, and these pairs are delimited by comma's (`,`). The list of pairs is always preceded by the text `list(` and followed by a closing parenthesis and a semicolon (`);`). In entity lists, the explanation of each value as well as the examples are included in comments behind each name-value pair:
+
+    ##########################################################################
+    ############################### START: operationalisations (REPEATING) ###
+    ##########################################################################
+    study$methods$variables$AddChild('operationalisations__1__');
+    study$methods$variables$operationalisations__1__[['value']] <-
+    ##########################################################################
+    ### 
+    ### OPERATIONALISATIONS
+    ### 
+    ### The operationalisations (measurements or manipulations)
+    ### used in the study
+    ### 
+    ##########################################################################
+        
+        list(oper.name = "Enter name here (mandatory)",  ### Variable Name: A unique name (in this study), to be able to refer to this variable later, and to easily find it afterwards [Examples: "Example"; "Another example"] [Value description: A single character value that cannot be omitted]
+             oper.moment = 1,                            ### Moment: Moment(s) this variable was measured/manipulated. [Examples: c(23, 62); 52; c(76, 12, 42)] [Value description: A vector of integers (i.e. one or more whole numbers)]
+             oper.type = NA,                             ### Type of operationalisation: Whether this variable is a manipulation, a single measurement, or an aggregate [Examples: c("manipulation", "item", "aggregate")] [Value description: A string that has to exactly match one of the values specified in the "values" column of the Coding sheet]
+             oper.datatype = NA,                         ### Type of data: "Measurement level" of this operationalisation. [Examples: c("numeric", "logical", "nominal", "ordinal", "string")] [Value description: A string that has to exactly match one of the values specified in the "values" column of the Coding sheet]
+             oper.values = NA,                           ### Values: Possible values this variable can take: only valid for "nominal" or "ordinal" variables. [Examples: c(23, 62); 52; c(76, 12, 42)] [Value description: A vector of integers (i.e. one or more whole numbers)]
+             oper.labels = NA,                           ### Labels: Labels for the values. [Examples: c("First value", "Second value")] [Value description: A character vector (i.e. one or more strings)]
+             oper.description = "",                      ### Description: A description of this variable (can be more extensive than the name) [Examples: "Example"; "Another example"] [Value description: A single character value]
+             oper.comment = "");                         ### Comment: Any relevant comments the coder wants to add [Examples: "Example"; "Another example"] [Value description: A single character value]
+        
+    ##########################################################################
+    study$methods$variables$operationalisations__1__[['validation']] <- list(`oper.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
+                                                                             `oper.moment` = expression(is.na(VALUE) || (is.numeric(VALUE) && all(VALUE%%1==0))),
+                                                                             `oper.type` = expression(is.na(VALUE) || (VALUE %in% c("manipulation", "item", "aggregate"))),
+                                                                             `oper.datatype` = expression(is.na(VALUE) || (VALUE %in% c("numeric", "logical", "nominal", "ordinal", "string"))),
+                                                                             `oper.values` = expression(is.na(VALUE) || (is.numeric(VALUE) && all(VALUE%%1==0))),
+                                                                             `oper.labels` = expression(is.na(VALUE) || (is.character(VALUE))),
+                                                                             `oper.description` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)),
+                                                                             `oper.comment` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)));
+    study$methods$variables$operationalisations__1__$name <- study$methods$variables$operationalisations__1__$value[['oper.name']];
+    ##########################################################################
+    ################################# END: operationalisations (REPEATING) ###
+    ##########################################################################
+
+##### How to go about extraction
+
+Literature syntheses are usually about results from empirical investigations. Therefore, usually univariate results or associations are the primary entity of interest. Therefore, it is usually a good idea to start the extraction with looking for the primary entity (or entities) of interest. For example, if the literature synthesis is about an effect size (i.e. an association), but a report does not provide any information about the relevant association, it may be necessary to contact the authors (see the section 'Communication with authors' below). Alternatively, it may be necessary to extract not the association, but univariate results, that will later allow computing the association (see section 'When associations are not reported').
+
+If the primary entities of interested are located and extracted, then the included operationalisations (i.e. manifestations of the variables of interest) can be extracted, and in that case, it is also clear that it is worthwhile to extract the methodological details of the study. Thus, in practice, completing an extraction script is a nonlinear process.
+
+##### Results: univariate, bivariate, and multivariate
+
+Data collection yields two kinds of data: data representing manipulations and data representing measurements.
+
+The values of the first type are determined by the study's design: for example, in a simple two-cell experiment, such as a randomized controlled trial with two arms, participants in one condition (or 'arm') can receive either a placebo ('control condition') or an intervention or therapy ('experimental condition'). In such designs, the condition into which each participant is randomized is usually denoted by a 0 or a 1, which is entered as a variable into the datafile. These values, however, aren't provided by the participants; they don't represent collected data, but instead describe the study design, specifically as it pertains to each participant.
+
+The values of the second type, by contrast, usually result from the registration of participants' responses to stimuli (e.g. participants can endorse certain answer options after having been presented with questions in a questionnaire). For data of this type, realistic ranges for the data will be known in advance (e.g. a questionnaire may register responses on a 5-point scale), but the distributions of the data are unknown (e.g. means, standard deviations, distribution shapes, etc).
+
+The goal of empirical research in psychology is often to estimate the association between two (or sometimes more) variables (if a research question concerns causality, at least one variable is operationalised as a manipulation; otherwise, both may be operationalised as measurements).
+
+Datasets (sets of one or more data series, where a data series is a set of one or more data points, where a data point is one number that represents a value of an operationalisation, e.g. a 0 or a 1 representing a manipulation, or a 4 representing the registered reponse in a questionnaire) can be subjected to many different analyses. In the context of research syntheses such as systematic reviews and meta-analyses, it is useful to distinguish three types of analyses: univariate analyses, bivariate analyses, and multivariate analyses.
+
+###### Univariate analyses
+
+Univariate analyses are analyses conducted on one data series. This can be a data series as collected (e.g. the responses registered from participants for one item in a questionnaire) or a data series that represents an aggregation of multiple data series (e.g. a mean of the data series that each represent participants' answers to a different item in a questionnaire). Univariate analyses by definition do not provide information about associations between variables, but only about the distributions of data points. Examples of univariate results are:
+
+- sum scores (i.e. all data points added together)
+- means (i.e. sum scores divided by the number of data points)
+- medians (i.e. the 'middle value' after all data points were sorted)
+- standard deviations (i.e. the average deviation of the data points from the mean)
+- variances (i.e. the squared standard deviation)
+- sum of squares (i.e. the sum of the squared deviations of each data point from the mean)
+- skewnesses (i.e. the third standardized moment of a data series; whether the distribution deviates from symmetry)
+- kurtosises (i.e. the fourth standardized moment of a data series; how 'pointy' versus 'flat' a distribution is compared to the standard normal distribution).
+- percentages or proportions, if the variable is dichotomous or otherwise categorical
+
+Like any number estimated from a sample, the point estimate for each of these results will vary from sample to sample due to sampling and measurement error. Therefore, each univariate result may be reported with confidence intervals as well.
+
+Univariate results are normally not reported for data series that represent manipulations.
+
+###### Bivariate analyses
+
+Bivariate analyses are analyses conducted on two data series. Again, the data series may be aggregates of other data series, and if a design is experimental, the main research question is usually answered by an analysis that includes a data series representing a manipulation. 
+
+In the frequentist tradition, there are two types of bivariate analyses: tests and effect sizes. Tests are used in a null hypothesis significance testing framework, and were traditionally means to arrive at p-values. Test statistics and p-values provide no information about the strength of an association unless the corresponding degrees of freedom are taken into account. Effect sizes do the opposite: they provide information as to the strength of an association. If both effect sizes and test statistics are available, effect sizes should be extracted instead of test statistics (unless both are extracted, which would then allow rudimentary verification of the reported results).
+
+There are a few common bivariate test statiatics:
+
+- The t-test (Student's t-test, for equal variances, or Welch's t-test, for unequal variances)
+- The F-test for oneway anova (the regular F-test, or Wald's correction for unequal variances)
+- The Chi-squared test for cross tables
+
+There are also a few common bivariate effect sizes:
+
+- The correlation coefficient (Pearson's product moment correlation for continuous data or Spearman's rank correlation for ordinal data; usually tested using a t-test)
+- Cohen's d (used when t-tests are used as a test statistic)
+- Cramèr's V (used for cross tables)
+- Odds Ratio's, Risk Ratio's, or Relative Risks (all closely related)
+
+###### Multivariate analyses
+
+Sometimes researchers report multivariate results: results based on more than two data series. In the context of research syntheses, this can be challenging: estimates from multivariate analyses are conditional upon the entire model (i.e. all data series in the model). In other words, it is not always possible (and will often be problematic) to meta-analytically aggregate effect sizes from bivariate analyses and from multivariate analyses; or from multivariate analyses alone, unless those analyses were the same.
+
+There are a few common multivariate analyses:
+
+- Factorial anova
+- Multiple regression
+- Structural equation modeling
+- Multi-level modeling
+
+If in a multivariate analyses, the predictors are all independent (orthogonal, not associated to each other), for example if the  factors in a factorial anova represent conditions in an experiment with equal cell sizes, and not covariates were included, the results *can* be aggregated without any problems.
+
+##### When associations are not reported or only associations from multivariate analyses are reported
+
+When associations are not reported, look for univariate data, such as means and standard deviations. In an experimental design with multiple measurement moments, each of these extracted univariate results must have a specified measurement moment and a specified value for the subsample. The subsamples, then are defined as arms of the experiment (e.g. values of the manipulated variable). This requires defining a subsample for every arm, as well as variables (or more accurately, operationalisations) for the manipulation (or treatment, or intervention, etc) and the dependent variable(s). In addition, the values of these variables (i.e. the treatment, which will be, for example, 0 or 1 to denote absence or presence, and a dependent variable, which can be, for example, a mean and a standard deviation). Therefore, in this case, you need to extract five entity lists to store one set of univariate results. To illustrate this, an example of each of these five entity lists (in these examples, only the *extracted value fragments* are shown):
+
+    list(subsample.name = "waitinglist",
+         subsample.N = 14,
+         subsample.age = NA);
+
+This entity list (with three extracted entities) specifies a subsample. This subsample codes for one group in the experiment: we will specify which group below. Splitting the sample into subsamples enables specifying, for example, the mean for this subsample.
+
+    list(oper.name = "treatment",
+         oper.moment = c(1, 2),
+         oper.type = "manipulation",
+         oper.datatype = "logical",
+         oper.values = c(0, 1),
+         oper.labels = c("Control", "Experimental"),
+         oper.description = "The treatment arms",
+         oper.comment = "");
+
+This entity list specifies an operationalisation. This operationalisation is the manipulation in an experimental design (as can be seen from `oper.type`), with three possible conditions (`Control` and `Experimental`). This operationalisation allows us to specify that the `waitinglist` subsample is the `Control` group in this study. Extracted entity `oper.moment` shows that this study has (at least) two measurement moments, and that this operationalisation is the same at both moments (in other words, given that this concerns the manipulation, this simply means that participants, once randomized into their condition, stay in that condition at the second measurement moment).
+
+    list(oper.name = "SCARED",
+         oper.moment = c(1, 2),
+         oper.type = "aggregate",
+         oper.datatype = "numeric",
+         oper.description = "The SCARED questionnaire",
+         oper.comment = "");
+
+This second operationalisation specifies a dependent variable called `SCARED`, a measurement instrument for symptoms of anxiety disorders. This is the variable of which we will want to extract the mean and standard deviation for the control condition. This operationalisation, too, is the same at both measurement moments (`oper.moment = c(1, 2)` means that this information pertains to both measurement moments).
+
+    list(uni.name = "treatment_t1_control",
+         uni.variable = "treatment",
+         uni.subsample = "waitinglist",
+         uni.moment = c(1, 2),
+         uni.category = 0);
+
+This univariate result codes the condition of this subsample: variable `treatment` (as specified in the relevant operationalisation entity list) has value `0` at moments `1` and `2` for subsample `waitinglist`. Combined with the operationalisation specified earlier, this means that this subsample is in the control condition.
+
+    list(uni.name = "symptoms_t1_control",
+         uni.variable = "SCARED",
+         uni.subsample = "waitinglist",
+         uni.moment = 1,
+         uni.mean = 26.93,
+         uni.sd = 4.56,
+         uni.comment = "Extracted from Table 2, page 71");
+
+Finally, now that subsample has been defined; both variables have been defined; and the condition of this subsample has been defined; the actual univariate results of interest can be coded. In this case, this concerns a mean and a standard deviation. Two means, standard deviations, and the corresponding sample sizes allow computing Cohen's d, an effect size measure. `metabefor` will handle these conversions.
+
+#### Coding decisions taken in this study
+
+##### When multiple outcomes are reported
+
+- When outcomes for multiple psychopathologies are reported, only fear or anxiety is extracted.
+
+- When multiple outcome measures are reported, self-reported symptoms (or reduction in reported symptoms) is extracted.
+
+- When multiple self-reported symptoms are reported, both for anxiety in general and for one or more specific anxiety disorders, anxiety in general is extracted.
+
+- When multiple outcome measures are reported, the measure that measures fear or anxiety at the most generic level is extracted (e.g. measures of specific anxiety disorderd are avoided to the benefit of generic measures whenever possible).
+
+- When multiple measurement moments were reported, the measurement moment immediately following the conclusion of the therapy sessions was extracted.
+
+
+### Communication with authors
+
+If during the extraction process, you need to request additional information from the authors, follow the following steps:
+
+- Open the directory `communications` in the study repository;
+- Open the general template, called 'requesting-additional-info.Md';
+- Save the template under a different name, where the name matches the base filename used for the extraction script (see section 'Overview of the extraction process') appended by `--communication` and with the same `.Md` extension (e.g. `boys-marsden--2003--communication.Md`);
+- Edit the template as appropriate;
+- Open the communications log by opening file `communications-log.Md` in the `communications` directory in the study repository;
+- Depending on what was decided regarding communication with authors, send the email to the author or send it to whoever in the team was designated as responsible for handlign the communication with authors;
+- Log this action in the communications log.
 
 ## List of therapy ingredients
 
