@@ -818,6 +818,7 @@ Finally, now that subsample has been defined; both variables have been defined; 
 
 - When multiple measurement moments were reported, the measurement moment immediately following the conclusion of the therapy sessions was extracted.
 
+- When coding the therapy ingredients, because authors generally do not list everything that was _not_ done in a therapy protocol, absence is generally coded as such based on how authors describe the therapy. For example, absence of an ingredient can be sensibly inferred if presence of that ingredient would be incompatible with other ingredients that _were_ present, or with the rationale of the therapy as described in the manual. In the rare cases where absence of an ingredient _is_ explicitly stated in the therapy description or manual, this will be indicated in the study description.
 
 ### Communication with authors
 
