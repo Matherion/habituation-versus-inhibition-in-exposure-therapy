@@ -1,6 +1,6 @@
 ---
 title: "Systematic Review Extraction Script Template"
-date: "02 Nov 2018 at 12:35:44"
+date: "05 nov 2018 at 19:15:11"
 output:
   html_document:
     self-contained: yes
@@ -9,7 +9,7 @@ params:
   rxsVersion = "0.1.0"
 ---
 
-```{r setup, include=FALSE, messages=FALSE}
+```{r rxsChunk-setup, include=FALSE, messages=FALSE}
 ### First load (and perhaps install) userfriendlyscience
 if (!require('userfriendlyscience')) {
   install.packages('userfriendlyscience');
@@ -17,6 +17,7 @@ if (!require('userfriendlyscience')) {
 }
 
 ### Other packages
+safeRequire('ufs');              ### To flatten vectors with VecTxtQ in metabefor
 safeRequire('googlesheets');     ### To import data from google sheets in metabefor
 safeRequire('jsonlite');         ### To import a list of country codes in metabefor
 safeRequire('data.tree');        ### To work with data structured in a tree in metabefor
@@ -33,7 +34,7 @@ knitr::opts_chunk$set(comment=NA);               ### Suppress output prefix
 pander::panderOptions('table.split.table', Inf); ### Disable table splitting
 ```
 
-```{r fieldname-chunk}
+```{r rxsChunk-fieldnames}
 eC <- list(titleCol="title",
            descriptionCol="description",
            identifierCol="identifier",
@@ -796,11 +797,11 @@ class(study) <- c('rxs', class(study));
 ```
 
 
-```{r show-extracted-data-chunk, results='asis'}
+```{r rxsChunk-show-extracted-data, results='asis'}
 print.rxs(study);
 ```
 
-```{r validation-chunk, results='asis'}
+```{r rxsChunk-validation, results='asis'}
 rxs_validation(study);
 pandoc.header('Validation results', level=1)
 #rxs_validation(study,

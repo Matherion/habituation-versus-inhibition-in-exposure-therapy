@@ -9,7 +9,7 @@ params:
   rxsVersion = "0.1.0"
 ---
 
-```{r setup, include=FALSE, messages=FALSE}
+```{r rxs-setup-chunk, include=FALSE, messages=FALSE}
 ### First load (and perhaps install) userfriendlyscience
 if (!require('userfriendlyscience')) {
   install.packages('userfriendlyscience');
@@ -474,16 +474,16 @@ study <- Node$new('study');
     ### EXAMPLE:
     ### 
     ### c("separation anxiety", 
-"selective mutism", 
-"specific phobia", 
-"social anxiety", 
-"panic disorder", 
-"agoraphobia", 
-"generalized anxiety", 
-"unspecified anxiety", 
-"obsessive compulsive disorder", 
-"posttraumatic stress disorder", 
-"other")
+# "selective mutism", 
+# "specific phobia", 
+# "social anxiety", 
+# "panic disorder", 
+# "agoraphobia", 
+# "generalized anxiety", 
+# "unspecified anxiety", 
+# "obsessive compulsive disorder", 
+# "posttraumatic stress disorder", 
+# "other")
     ### 
     ############################################################################
     study$methods$anxiety[['validation']] <- expression(is.na(VALUE) || (VALUE %in% c("separation anxiety", "selective mutism", "specific phobia", "social anxiety", "panic disorder", "agoraphobia", "generalized anxiety", "unspecified anxiety", "obsessive compulsive disorder", "posttraumatic stress disorder", "other")));
@@ -751,7 +751,7 @@ study <- Node$new('study');
              uni.category = 0,                          ### Categorical variable value: If applicable, the value for a categorical variable (for example, fopr specifying the experimental condition for a subsample). [Examples: 30; 8762] [Value description: Any valid whole number]
              uni.mean = NA,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.percentage = NA,                        ### Percentage: If applicable, the percentage of observations in this category (for a categorical variable) or scoring TRUE (for a logical variable). [Examples: 2.3; 643.2] [Value description: Any valid number]
-             uni.n = 9,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
              uni.sd = NA,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.qualitative = "",                       ### Qualitative: If applicable, the original text as extracted from the source material. [Examples: "example"; "another example"] [Value description: A single character value]
              uni.comment = "");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
@@ -801,7 +801,7 @@ study <- Node$new('study');
              uni.category = 1,                          ### Categorical variable value: If applicable, the value for a categorical variable (for example, fopr specifying the experimental condition for a subsample). [Examples: 30; 8762] [Value description: Any valid whole number]
              uni.mean = NA,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.percentage = NA,                        ### Percentage: If applicable, the percentage of observations in this category (for a categorical variable) or scoring TRUE (for a logical variable). [Examples: 2.3; 643.2] [Value description: Any valid number]
-             uni.n = 15,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
              uni.sd = NA,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.qualitative = "",                       ### Qualitative: If applicable, the original text as extracted from the source material. [Examples: "example"; "another example"] [Value description: A single character value]
              uni.comment = "");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
@@ -845,10 +845,10 @@ study <- Node$new('study');
              uni.variable = "RCMAS",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
              uni.subsample = "waiting list",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
              uni.moment = 1,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
-             uni.mean = 33.35,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.mean = 12.64,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
-             uni.sd = 20.27,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
-             uni.comment = "extracted from Table 2, page 771");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+             uni.sd = 7.95,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.comment = "extracted from Table 2, page 719");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
         
     ############################################################################
     study$results$univariate__1__[['validation']] <- list(`uni.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
@@ -886,13 +886,13 @@ study <- Node$new('study');
     ############################################################################
         
         list(uni.name = "symptoms_t2_control",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
-             uni.variable = "SCARED",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
-             uni.subsample = "attention-support control",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.variable = "RCMAS",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             uni.subsample = "waiting list",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
              uni.moment = 2,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
-             uni.mean = 34.75,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
-             uni.n = 5,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
-             uni.sd = 17.27,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
-             uni.comment = "extracted from Table 2, page 771");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+             uni.mean = 13.36,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.n = 9,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.sd = 8.96,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.comment = "extracted from Table 2, page 719");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
         
     ############################################################################
     study$results$univariate__1__[['validation']] <- list(`uni.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
@@ -930,13 +930,13 @@ study <- Node$new('study');
     ############################################################################
         
         list(uni.name = "symptoms_t1_experimental",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
-             uni.variable = "SCARED",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
-             uni.subsample = "CBT-Sil",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.variable = "RCMAS",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             uni.subsample = "CBT Spence",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
              uni.moment = 1,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
-             uni.mean = 35.50,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.mean = 14.69,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
-             uni.sd = 20.73,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
-             uni.comment = "extracted from Table 2, page 771");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+             uni.sd = 4.39,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.comment = "extracted from Table 2, page 719");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
         
     ############################################################################
     study$results$univariate__1__[['validation']] <- list(`uni.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
@@ -975,13 +975,13 @@ study <- Node$new('study');
     ############################################################################
         
         list(uni.name = "symptoms_t2_experimental",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
-             uni.variable = "SCARED",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
-             uni.subsample = "CBT-Sil",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.variable = "RCMAS",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             uni.subsample = "CBT Spence",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
              uni.moment = 2,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
-             uni.mean = 28.75,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
-             uni.n = 4,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
-             uni.sd = 28.27,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
-             uni.comment = "extracted from Table 2, page 771");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+             uni.mean = 10.31,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.n = 15,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.sd = 4.68,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.comment = "extracted from Table 2, page 719");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
         
     ############################################################################
     study$results$univariate__1__[['validation']] <- list(`uni.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),

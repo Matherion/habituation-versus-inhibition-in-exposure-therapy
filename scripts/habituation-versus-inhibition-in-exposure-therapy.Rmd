@@ -843,3 +843,34 @@ data.frame(Name=fullObject$rxsStructure$parsedEntities$extractionScriptTree$meth
   knitr::kable();
 
 ```
+
+# Importing extraction scripts
+
+```{r extraction-script-importing}
+
+rxs <- metabefor::rxs_parseExtractionScripts(extractionScriptTemplatePath);
+
+### Loop through the rxs trees and collect treatment information
+treatments <-
+  plyr::ldply(names(rxs$rxsTrees), function(studyName) {
+    ### Get the values stored in the first child in the 'treatments' node
+    if ('rxs' %in% class(rxs$rxsTrees[[studyName]])) {
+      rxsTreeNode <- FindNode(rxs$rxsTrees[[studyName]],
+                              'treatments');
+      if (!is.null(rxsTreeNode$children)) {
+        res <- as.data.frame(rxsTreeNode$children[[1]]$value);
+        res$study <- studyName;
+      } else {
+        res <- data.frame(study = studyName);
+      }
+    } else {
+      res <- data.frame(study = studyName);
+    }
+    return(res);
+  });
+
+knitr::kable(treatments);
+
+```
+
+

@@ -9,7 +9,7 @@ params:
   rxsVersion = "0.1.0"
 ---
 
-```{r setup, include=FALSE, messages=FALSE}
+```{r rxs-setup-chunk, include=FALSE, messages=FALSE}
 ### First load (and perhaps install) userfriendlyscience
 if (!require('userfriendlyscience')) {
   install.packages('userfriendlyscience');

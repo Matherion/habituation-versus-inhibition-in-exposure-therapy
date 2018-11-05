@@ -9,7 +9,7 @@ params:
   rxsVersion = "0.1.0"
 ---
 
-```{r setup, include=FALSE, messages=FALSE}
+```{r rxs-setup-chunk, include=FALSE, messages=FALSE}
 ### First load (and perhaps install) userfriendlyscience
 if (!require('userfriendlyscience')) {
   install.packages('userfriendlyscience');
@@ -219,7 +219,7 @@ study <- Node$new('study');
   ### 
   ##############################################################################
       
-      NA
+      "SG"
       
   ##############################################################################
   ########################################### VALUE DESCRIPTION AND EXAMPLES ###
@@ -406,8 +406,8 @@ study <- Node$new('study');
     ### 
     ############################################################################
         
-        list(subsample.name = "enter name here (mandatory)",  ### Name: A unique name (in this study), to be able to refer to this subsample later, and to easily find it afterwards [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
-             subsample.N = NA,                                ### Size: Sample size of subsample [Examples: 30; 8762] [Value description: Any valid whole number]
+        list(subsample.name = "social recreational",  ### Name: A unique name (in this study), to be able to refer to this subsample later, and to easily find it afterwards [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
+             subsample.N = 34,                                ### Size: Sample size of subsample [Examples: 30; 8762] [Value description: Any valid whole number]
              subsample.age = NA);                             ### Age: Age of subsample [Examples: c(23, 62); 52; c(76, 12, 42)] [Value description: A vector of integers (i.e. one or more whole numbers)]
         
     ############################################################################
@@ -418,6 +418,34 @@ study <- Node$new('study');
     ############################################################################
     ############################################# END: subsample (REPEATING) ###
     ############################################################################
+  
+
+    ############################################################################
+    ########################################### START: subsample (REPEATING) ###
+    ############################################################################
+    study$methods$AddChild('subsample__1__');
+    study$methods$subsample__1__[['value']] <-
+    ############################################################################
+    ### 
+    ### SUBSAMPLE
+    ### 
+    ### If studies contain several samples, specify them here
+    ### 
+    ############################################################################
+        
+        list(subsample.name = "CBT CGC",  ### Name: A unique name (in this study), to be able to refer to this subsample later, and to easily find it afterwards [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
+             subsample.N = 36,                                ### Size: Sample size of subsample [Examples: 30; 8762] [Value description: Any valid whole number]
+             subsample.age = NA);                             ### Age: Age of subsample [Examples: c(23, 62); 52; c(76, 12, 42)] [Value description: A vector of integers (i.e. one or more whole numbers)]
+        
+    ############################################################################
+    study$methods$subsample__1__[['validation']] <- list(`subsample.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
+                                                         `subsample.N` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                         `subsample.age` = expression(is.na(VALUE) || (is.numeric(VALUE) && all(VALUE%%1==0))));
+    study$methods$subsample__1__$name <- study$methods$subsample__1__$value[[1]];
+    ############################################################################
+    ############################################# END: subsample (REPEATING) ###
+    ############################################################################
+  
   
   
     ############################################################################
@@ -446,16 +474,16 @@ study <- Node$new('study');
     ### EXAMPLE:
     ### 
     ### c("separation anxiety", 
-"selective mutism", 
-"specific phobia", 
-"social anxiety", 
-"panic disorder", 
-"agoraphobia", 
-"generalized anxiety", 
-"unspecified anxiety", 
-"obsessive compulsive disorder", 
-"posttraumatic stress disorder", 
-"other")
+# "selective mutism", 
+# "specific phobia", 
+# "social anxiety", 
+# "panic disorder", 
+# "agoraphobia", 
+# "generalized anxiety", 
+# "unspecified anxiety", 
+# "obsessive compulsive disorder", 
+# "posttraumatic stress disorder", 
+# "other")
     ### 
     ############################################################################
     study$methods$anxiety[['validation']] <- expression(is.na(VALUE) || (VALUE %in% c("separation anxiety", "selective mutism", "specific phobia", "social anxiety", "panic disorder", "agoraphobia", "generalized anxiety", "unspecified anxiety", "obsessive compulsive disorder", "posttraumatic stress disorder", "other")));
@@ -477,7 +505,7 @@ study <- Node$new('study');
     ### 
     ############################################################################
         
-        NA
+        "quantitative"
         
     ############################################################################
     ######################################### VALUE DESCRIPTION AND EXAMPLES ###
@@ -510,6 +538,7 @@ study <- Node$new('study');
     ### 
     ############################################################################
         
+      
     
       ##########################################################################
       ############################### START: operationalisations (REPEATING) ###
@@ -525,14 +554,14 @@ study <- Node$new('study');
       ### 
       ##########################################################################
           
-          list(oper.name = "enter name here (mandatory)",  ### Variable Name: A unique name (in this study), to be able to refer to this variable later, and to easily find it afterwards [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
-               oper.moment = 1,                            ### Moment: Moment(s) this variable was measured/manipulated. [Examples: c(23, 62); 52; c(76, 12, 42)] [Value description: A vector of integers (i.e. one or more whole numbers)]
-               oper.type = NA,                             ### Type of operationalisation: Whether this variable is a manipulation, a single measurement, or an aggregate [Examples: c("manipulation", "item", "aggregate")] [Value description: A string that has to exactly match one of the values specified in the "values" column of the Coding sheet]
-               oper.datatype = NA,                         ### Type of data: "Measurement level" of this operationalisation. [Examples: c("numeric", "logical", "nominal", "ordinal", "string")] [Value description: A string that has to exactly match one of the values specified in the "values" column of the Coding sheet]
-               oper.values = NA,                           ### Values: Possible values this variable can take: only valid for "nominal" or "ordinal" variables. [Examples: c(23, 62); 52; c(76, 12, 42)] [Value description: A vector of integers (i.e. one or more whole numbers)]
-               oper.labels = NA,                           ### Labels: Labels for the values. [Examples: c("first value", "second value")] [Value description: A character vector (i.e. one or more strings)]
-               oper.description = "",                      ### Description: A description of this variable (can be more extensive than the name) [Examples: "example"; "another example"] [Value description: A single character value]
-               oper.comment = "");                         ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+          list(oper.name = "treatment",  ### Variable Name: A unique name (in this study), to be able to refer to this variable later, and to easily find it afterwards [Examples: "Example"; "Another example"] [Value description: A single character value that cannot be omitted]
+               oper.moment = c(1, 2),                            ### Moment: Moment(s) this variable was measured/manipulated. [Examples: c(23, 62); 52; c(76, 12, 42)] [Value description: A vector of integers (i.e. one or more whole numbers)]
+               oper.type = "manipulation",                             ### Type of operationalisation: Whether this variable is a manipulation, a single measurement, or an aggregate [Examples: c("manipulation", "item", "aggregate")] [Value description: A string that has to exactly match one of the values specified in the "values" column of the Coding sheet]
+               oper.datatype = "logical",                         ### Type of data: "Measurement level" of this operationalisation. [Examples: c("numeric", "logical", "nominal", "ordinal", "string")] [Value description: A string that has to exactly match one of the values specified in the "values" column of the Coding sheet]
+               oper.values = c(0, 1),                           ### Values: Possible values this variable can take: only valid for "nominal" or "ordinal" variables. [Examples: c(23, 62); 52; c(76, 12, 42)] [Value description: A vector of integers (i.e. one or more whole numbers)]
+               oper.labels = c("control", "experimental"),                           ### Labels: Labels for the values. [Examples: c("First value", "Second value")] [Value description: A character vector (i.e. one or more strings)]
+               oper.description = "the treatment arms",                      ### Description: A description of this variable (can be more extensive than the name) [Examples: "Example"; "Another example"] [Value description: A single character value]
+               oper.comment = "");                         ### Comment: Any relevant comments the coder wants to add [Examples: "Example"; "Another example"] [Value description: A single character value]
           
       ##########################################################################
       study$methods$variables$operationalisations__1__[['validation']] <- list(`oper.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
@@ -547,6 +576,43 @@ study <- Node$new('study');
       ##########################################################################
       ################################# END: operationalisations (REPEATING) ###
       ##########################################################################
+    
+      
+      ##########################################################################
+      ############################### START: operationalisations (REPEATING) ###
+      ##########################################################################
+      study$methods$variables$AddChild('operationalisations__1__');
+      study$methods$variables$operationalisations__1__[['value']] <-
+      ##########################################################################
+      ### 
+      ### OPERATIONALISATIONS
+      ### 
+      ### The operationalisations (measurements or manipulations)
+      ### used in the study
+      ### 
+      ##########################################################################
+
+          list(oper.name = "SCAS-C",  ### Variable Name: A unique name (in this study), to be able to refer to this variable later, and to easily find it afterwards [Examples: "Example"; "Another example"] [Value description: A single character value that cannot be omitted]
+               oper.moment = c(1, 2),                            ### Moment: Moment(s) this variable was measured/manipulated. [Examples: c(23, 62); 52; c(76, 12, 42)] [Value description: A vector of integers (i.e. one or more whole numbers)]
+               oper.type = "aggregate",                             ### Type of operationalisation: Whether this variable is a manipulation, a single measurement, or an aggregate [Examples: c("manipulation", "item", "aggregate")] [Value description: A string that has to exactly match one of the values specified in the "values" column of the Coding sheet]
+               oper.datatype = "numeric",                         ### Type of data: "Measurement level" of this operationalisation. [Examples: c("numeric", "logical", "nominal", "ordinal", "string")] [Value description: A string that has to exactly match one of the values specified in the "values" column of the Coding sheet]
+               oper.description = "the SCAS-C questionnaire",                      ### Description: A description of this variable (can be more extensive than the name) [Examples: "Example"; "Another example"] [Value description: A single character value]
+               oper.comment = "");                         ### Comment: Any relevant comments the coder wants to add [Examples: "Example"; "Another example"] [Value description: A single character value]
+          
+      ##########################################################################
+      study$methods$variables$operationalisations__1__[['validation']] <- list(`oper.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
+                                                                               `oper.moment` = expression(is.na(VALUE) || (is.numeric(VALUE) && all(VALUE%%1==0))),
+                                                                               `oper.type` = expression(is.na(VALUE) || (VALUE %in% c("manipulation", "item", "aggregate"))),
+                                                                               `oper.datatype` = expression(is.na(VALUE) || (VALUE %in% c("numeric", "logical", "nominal", "ordinal", "string"))),
+                                                                               `oper.values` = expression(is.na(VALUE) || (is.numeric(VALUE) && all(VALUE%%1==0))),
+                                                                               `oper.labels` = expression(is.na(VALUE) || (is.character(VALUE))),
+                                                                               `oper.description` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)),
+                                                                               `oper.comment` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)));
+      study$methods$variables$operationalisations__1__$name <- study$methods$variables$operationalisations__1__$value[['oper.name']];
+      ##########################################################################
+      ################################# END: operationalisations (REPEATING) ###
+      ##########################################################################
+    
     
     
       ##########################################################################
@@ -576,10 +642,10 @@ study <- Node$new('study');
         ### 
         ########################################################################
             
-            list(treatment.name = "enter name here (mandatory)",   ### Treatment Name: A unique name (identifier) for this treatment. [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
-                 treatment.variable = "enter <<entityRef>> here",  ### Treatment Variable: Name of the treatment variable. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+            list(treatment.name = "CBT CGC",   ### Treatment Name: A unique name (identifier) for this treatment. [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
+                 treatment.variable = "treatment",  ### Treatment Variable: Name of the treatment variable. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
                  treatment.sessions = 16,                          ### Number of sessions: The number of sessions in this therapy group (condition or arm). [Examples: 30; 8762] [Value description: Any valid whole number]
-                 treatment.operValue = NA,                         ### Group: Which treatment group (operationalisation value of the treatment variable) this description pertains to. [Examples: <no example>] [Value description: A string that specifies another field in another entity.]
+                 treatment.operValue = 1,                         ### Group: Which treatment group (operationalisation value of the treatment variable) this description pertains to. [Examples: <no example>] [Value description: A string that specifies another field in another entity.]
                  fearHierarchy = NA,                               ### Fear hierarchy: The exposure trials are rank-ordered in their ability to elicit anxiety. [Examples: c("Unknown", "Present", "Absent")] [Value description: Whether a given therapy ingredient was used in the treatment for a group]
                  fearMon = NA,                                     ### Fear monitoring: The fear level of the participant is being monitored throughout the exposure trial. [Examples: c("Unknown", "Present", "Absent")] [Value description: Whether a given therapy ingredient was used in the treatment for a group]
                  lvlBasedFear = NA,                                ### Level-based termination (fear): The end of the exposure trial is determined by fear reduction to a certain level, as measured through monitoring (e.g. if this therapy ingredient is coded, 'Fear monitoring' must always also be coded). [Examples: c("Unknown", "Present", "Absent")] [Value description: Whether a given therapy ingredient was used in the treatment for a group]
@@ -600,7 +666,7 @@ study <- Node$new('study');
                  multiCont = NA,                                   ### Multiple contexts: Interoceptive, imaginal, and in vivo exposures are conducted in multiple different contexts, such as when alone, in unfamiliar places, or at varying times of day or varying days of the week. [Examples: c("Unknown", "Present", "Absent")] [Value description: Whether a given therapy ingredient was used in the treatment for a group]
                  preExposure = NA,                                 ### Brief pre-exposure: The phobic stimulus is introduced for a brief period about 30 minutes before repeated trials of exposure. [Examples: c("Unknown", "Present", "Absent")] [Value description: Whether a given therapy ingredient was used in the treatment for a group]
                  contingency = NA,                                 ### Contingency management: Any use of rewards on the basis of progress in the exposure therapy. [Examples: c("Unknown", "Present", "Absent")] [Value description: Whether a given therapy ingredient was used in the treatment for a group]
-                 expNature = NA);                                  ### Nature of exposure: The type of exposure used (in vivo, in vitro, or virtual reality). [Examples: c("in vivo", "in vitro", "virtual reality")] [Value description: Whether a given therapy ingredient was used in the treatment for a group]
+                 expNature = c("in vivo", "in vitro"));                                  ### Nature of exposure: The type of exposure used (in vivo, in vitro, or virtual reality). [Examples: c("in vivo", "in vitro", "virtual reality")] [Value description: Whether a given therapy ingredient was used in the treatment for a group]
             
         ########################################################################
         study$methods$variables$treatments$treatment__1__[['validation']] <- list(`treatment.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
@@ -663,7 +729,7 @@ study <- Node$new('study');
   ### 
   ##############################################################################
       
-  
+        
     ############################################################################
     ########################################## START: univariate (REPEATING) ###
     ############################################################################
@@ -677,15 +743,14 @@ study <- Node$new('study');
     ### 
     ############################################################################
         
-        list(uni.name = "enter name here (mandatory)",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
-             uni.variable = "enter <<entityRef>> here",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
-             uni.subsample = NA,                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
-             uni.value = NA,                             ### Value: If applicable, the value this result pertains to. For example, for a categorical variable, three percentages can be specified: one for each possible category (as identified by the corresponding value). [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
-             uni.moment = NA,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+        list(uni.name = "treatment_control",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
+             uni.variable = "treatment",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             uni.subsample = "social recreational",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.moment = c(1, 2),                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
              uni.minimum = NA,                           ### Minimum value: If applicable, the minimum value in the data series of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.maximum = NA,                           ### Maximum value: If applicable, the maximum value in the data series of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.median = NA,                            ### Median value: If applicable, the median of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
-             uni.category = NA,                          ### Categorical variable value: If applicable, the value for a categorical variable (for example, fopr specifying the experimental condition for a subsample). [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.category = 0,                          ### Categorical variable value: If applicable, the value for a categorical variable (for example, fopr specifying the experimental condition for a subsample). [Examples: 30; 8762] [Value description: Any valid whole number]
              uni.mean = NA,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.percentage = NA,                        ### Percentage: If applicable, the percentage of observations in this category (for a categorical variable) or scoring TRUE (for a logical variable). [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
@@ -710,11 +775,237 @@ study <- Node$new('study');
                                                           `uni.qualitative` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)),
                                                           `uni.comment` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)));
     study$results$univariate__1__$name <- study$results$univariate__1__$value[['uni.name']];
-    study$results$univariate__1__[['entityRefs']] <- c(uni.variable="oper.name", uni.subsample="subsample.name");
-    study$results$univariate__1__[['fieldRefs']] <- c(uni.value="oper.values", uni.moment="oper.moment");
     ############################################################################
     ############################################ END: univariate (REPEATING) ###
     ############################################################################
+  
+
+    ############################################################################
+    ########################################## START: univariate (REPEATING) ###
+    ############################################################################
+    study$results$AddChild('univariate__1__');
+    study$results$univariate__1__[['value']] <-
+    ############################################################################
+    ### 
+    ### UNIVARIATE
+    ### 
+    ### A single statistic about a single variable.
+    ### 
+    ############################################################################
+        
+        list(uni.name = "treatment_experimental",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
+             uni.variable = "treatment",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             uni.subsample = "CBT CGC",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.moment = c(1, 2),                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+             uni.minimum = NA,                           ### Minimum value: If applicable, the minimum value in the data series of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.maximum = NA,                           ### Maximum value: If applicable, the maximum value in the data series of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.median = NA,                            ### Median value: If applicable, the median of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.category = 1,                          ### Categorical variable value: If applicable, the value for a categorical variable (for example, fopr specifying the experimental condition for a subsample). [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.mean = NA,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.percentage = NA,                        ### Percentage: If applicable, the percentage of observations in this category (for a categorical variable) or scoring TRUE (for a logical variable). [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.sd = NA,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.qualitative = "",                       ### Qualitative: If applicable, the original text as extracted from the source material. [Examples: "example"; "another example"] [Value description: A single character value]
+             uni.comment = "");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+        
+    ############################################################################
+    study$results$univariate__1__[['validation']] <- list(`uni.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
+                                                          `uni.variable` = expression(!is.null(FindNode(node$root, "oper.name"))),
+                                                          `uni.subsample` = expression(is.na(VALUE) || (is.na(VALUE) || !is.null(FindNode(node$root, "subsample.name")))),
+                                                          `uni.value` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.moment` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.minimum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.maximum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.median` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.category` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.mean` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.percentage` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.n` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.sd` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.qualitative` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)),
+                                                          `uni.comment` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)));
+    study$results$univariate__1__$name <- study$results$univariate__1__$value[['uni.name']];
+    ############################################################################
+    ############################################ END: univariate (REPEATING) ###
+    ############################################################################
+  
+
+    ############################################################################
+    ########################################## START: univariate (REPEATING) ###
+    ############################################################################
+    study$results$AddChild('univariate__1__');
+    study$results$univariate__1__[['value']] <-
+    ############################################################################
+    ### 
+    ### UNIVARIATE
+    ### 
+    ### A single statistic about a single variable.
+    ### 
+    ############################################################################
+        
+        list(uni.name = "symptoms_t1_control",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
+             uni.variable = "SCAS-C",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             uni.subsample = "social recreational",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.moment = 1,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+             uni.mean = 35.03,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.sd = 14.13,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.comment = "extracted from Table 2, page 642");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+        
+    ############################################################################
+    study$results$univariate__1__[['validation']] <- list(`uni.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
+                                                          `uni.variable` = expression(!is.null(FindNode(node$root, "oper.name"))),
+                                                          `uni.subsample` = expression(is.na(VALUE) || (is.na(VALUE) || !is.null(FindNode(node$root, "subsample.name")))),
+                                                          `uni.value` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.moment` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.minimum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.maximum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.median` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.category` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.mean` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.percentage` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.n` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.sd` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.qualitative` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)),
+                                                          `uni.comment` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)));
+    study$results$univariate__1__$name <- study$results$univariate__1__$value[['uni.name']];
+    ############################################################################
+    ############################################ END: univariate (REPEATING) ###
+    ############################################################################
+  
+
+    ############################################################################
+    ########################################## START: univariate (REPEATING) ###
+    ############################################################################
+    study$results$AddChild('univariate__1__');
+    study$results$univariate__1__[['value']] <-
+    ############################################################################
+    ### 
+    ### UNIVARIATE
+    ### 
+    ### A single statistic about a single variable.
+    ### 
+    ############################################################################
+        
+        list(uni.name = "symptoms_t2_control",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
+             uni.variable = "SCAS-C",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             uni.subsample = "social recreational",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.moment = 2,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+             uni.mean = 27.62,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.n = 31,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.sd = 13.57,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.comment = "extracted from Table 2, page 642");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+        
+    ############################################################################
+    study$results$univariate__1__[['validation']] <- list(`uni.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
+                                                          `uni.variable` = expression(!is.null(FindNode(node$root, "oper.name"))),
+                                                          `uni.subsample` = expression(is.na(VALUE) || (is.na(VALUE) || !is.null(FindNode(node$root, "subsample.name")))),
+                                                          `uni.value` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.moment` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.minimum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.maximum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.median` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.category` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.mean` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.percentage` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.n` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.sd` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.qualitative` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)),
+                                                          `uni.comment` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)));
+    study$results$univariate__1__$name <- study$results$univariate__1__$value[['uni.name']];
+    ############################################################################
+    ############################################ END: univariate (REPEATING) ###
+    ############################################################################
+  
+
+    ############################################################################
+    ########################################## START: univariate (REPEATING) ###
+    ############################################################################
+    study$results$AddChild('univariate__1__');
+    study$results$univariate__1__[['value']] <-
+    ############################################################################
+    ### 
+    ### UNIVARIATE
+    ### 
+    ### A single statistic about a single variable.
+    ### 
+    ############################################################################
+        
+        list(uni.name = "symptoms_t1_experimental",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
+             uni.variable = "SCAS-C",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             uni.subsample = "CBT CGC",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.moment = 1,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+             uni.mean = 29.96,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.sd = 14.91,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.comment = "extracted from Table 2, page 642");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+        
+    ############################################################################
+    study$results$univariate__1__[['validation']] <- list(`uni.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
+                                                          `uni.variable` = expression(!is.null(FindNode(node$root, "oper.name"))),
+                                                          `uni.subsample` = expression(is.na(VALUE) || (is.na(VALUE) || !is.null(FindNode(node$root, "subsample.name")))),
+                                                          `uni.value` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.moment` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.minimum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.maximum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.median` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.category` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.mean` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.percentage` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.n` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.sd` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.qualitative` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)),
+                                                          `uni.comment` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)));
+    study$results$univariate__1__$name <- study$results$univariate__1__$value[['uni.name']];
+    ############################################################################
+    ############################################ END: univariate (REPEATING) ###
+    ############################################################################
+  
+
+
+    ############################################################################
+    ########################################## START: univariate (REPEATING) ###
+    ############################################################################
+    study$results$AddChild('univariate__1__');
+    study$results$univariate__1__[['value']] <-
+    ############################################################################
+    ### 
+    ### UNIVARIATE
+    ### 
+    ### A single statistic about a single variable.
+    ### 
+    ############################################################################
+        
+        list(uni.name = "symptoms_t2_experimental",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
+             uni.variable = "SCAS-C",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
+             uni.subsample = "CBT CGC",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.moment = 2,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
+             uni.mean = 26.54,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.n = 33,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
+             uni.sd = 15.57,                                ### Standard deviation: If applicable, the standard deviation of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
+             uni.comment = "extracted from Table 2, page 642");                          ### Comment: Any relevant comments the coder wants to add [Examples: "example"; "another example"] [Value description: A single character value]
+        
+    ############################################################################
+    study$results$univariate__1__[['validation']] <- list(`uni.name` = expression(!is.na(VALUE) && !is.null(VALUE) && (nchar(VALUE) > 0)),
+                                                          `uni.variable` = expression(!is.null(FindNode(node$root, "oper.name"))),
+                                                          `uni.subsample` = expression(is.na(VALUE) || (is.na(VALUE) || !is.null(FindNode(node$root, "subsample.name")))),
+                                                          `uni.value` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.moment` = expression("The extraction script is checked for existence of the field in the referent entity, if it is not NA"),
+                                                          `uni.minimum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.maximum` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.median` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.category` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.mean` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.percentage` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.n` = expression(is.na(VALUE) || (is.numeric(VALUE) && (VALUE%%1==0) && (length(VALUE) == 1))),
+                                                          `uni.sd` = expression(is.na(VALUE) || (is.numeric(VALUE) && (length(VALUE) == 1))),
+                                                          `uni.qualitative` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)),
+                                                          `uni.comment` = expression(is.na(VALUE) || (is.character(VALUE) && length(VALUE) == 1)));
+    study$results$univariate__1__$name <- study$results$univariate__1__$value[['uni.name']];
+    ############################################################################
+    ############################################ END: univariate (REPEATING) ###
+    ############################################################################
+  
   
   
     ############################################################################
