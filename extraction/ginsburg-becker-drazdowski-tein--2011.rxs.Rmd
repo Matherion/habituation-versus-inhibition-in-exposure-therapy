@@ -473,16 +473,16 @@ study <- Node$new('study');
     ### EXAMPLE:
     ### 
     ### c("separation anxiety", 
-"selective mutism", 
-"specific phobia", 
-"social anxiety", 
-"panic disorder", 
-"agoraphobia", 
-"generalized anxiety", 
-"unspecified anxiety", 
-"obsessive compulsive disorder", 
-"posttraumatic stress disorder", 
-"other")
+# "selective mutism", 
+# "specific phobia", 
+# "social anxiety", 
+# "panic disorder", 
+# "agoraphobia", 
+# "generalized anxiety", 
+# "unspecified anxiety", 
+# "obsessive compulsive disorder", 
+# "posttraumatic stress disorder", 
+# "other")
     ### 
     ############################################################################
     study$methods$anxiety[['validation']] <- expression(is.na(VALUE) || (VALUE %in% c("separation anxiety", "selective mutism", "specific phobia", "social anxiety", "panic disorder", "agoraphobia", "generalized anxiety", "unspecified anxiety", "obsessive compulsive disorder", "posttraumatic stress disorder", "other")));
