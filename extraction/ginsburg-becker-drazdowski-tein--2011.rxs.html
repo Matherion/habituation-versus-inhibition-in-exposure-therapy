@@ -90,6 +90,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -126,35 +129,35 @@ $(document).ready(function () {
 <div id="section" class="section level3">
 <h3></h3>
 <p>Tree of extracted entities</p>
-<pre>                             levelName
-1  study                              
-2   ¦--studyId                        
-3   ¦--comments                       
-4   ¦--yearCollected                  
-5   ¦--yearPublished                  
-6   ¦--country                        
-7   ¦--methods                        
-8   ¦   ¦--N                          
-9   ¦   ¦--moments                    
-10  ¦   ¦--momentUnits                
-11  ¦   ¦--age                        
-12  ¦   ¦--usual care                 
-13  ¦   ¦--Coping Cat                 
-14  ¦   ¦--anxiety                    
-15  ¦   ¦--methodType                 
-16  ¦   °--variables                  
-17  ¦       ¦--treatment              
-18  ¦       ¦--SCARED                 
-19  ¦       °--treatments             
-20  ¦           °--Coping Cat         
-21  °--results                        
-22      ¦--treatment_control          
-23      ¦--treatment_experimental     
-24      ¦--symptoms_t1_control        
-25      ¦--symptoms_t2_control        
-26      ¦--symptoms_t1_experimental   
-27      ¦--symptoms_t2_experimental   
-28      °--enter name here (mandatory)
+<pre>                                    levelName
+1  study                                     
+2   <U+00A6>--studyId                        
+3   <U+00A6>--comments                       
+4   <U+00A6>--yearCollected                  
+5   <U+00A6>--yearPublished                  
+6   <U+00A6>--country                        
+7   <U+00A6>--methods                        
+8   <U+00A6>   <U+00A6>--N                   
+9   <U+00A6>   <U+00A6>--moments             
+10  <U+00A6>   <U+00A6>--momentUnits         
+11  <U+00A6>   <U+00A6>--age                 
+12  <U+00A6>   <U+00A6>--usual care          
+13  <U+00A6>   <U+00A6>--CBT modular         
+14  <U+00A6>   <U+00A6>--anxiety             
+15  <U+00A6>   <U+00A6>--methodType          
+16  <U+00A6>   <U+00B0>--variables           
+17  <U+00A6>       <U+00A6>--treatment       
+18  <U+00A6>       <U+00A6>--SCARED          
+19  <U+00A6>       <U+00B0>--treatments      
+20  <U+00A6>           <U+00B0>--CBT modular 
+21  <U+00B0>--results                        
+22      <U+00A6>--treatment_control          
+23      <U+00A6>--treatment_experimental     
+24      <U+00A6>--symptoms_t1_control        
+25      <U+00A6>--symptoms_t2_control        
+26      <U+00A6>--symptoms_t1_experimental   
+27      <U+00A6>--symptoms_t2_experimental   
+28      <U+00B0>--enter name here (mandatory)
 </pre>
 </div>
 <div id="section-1" class="section level3">
@@ -162,9 +165,9 @@ $(document).ready(function () {
 <p>Table with extracted entities and extracted values</p>
 <table>
 <colgroup>
-<col width="44%"></col>
-<col width="22%"></col>
-<col width="32%"></col>
+<col width="40%"></col>
+<col width="27%"></col>
+<col width="31%"></col>
 </colgroup>
 <thead>
 <tr class="header">
@@ -235,17 +238,17 @@ $(document).ready(function () {
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
-<td align="center">study/methods/Coping Cat</td>
+<td align="center">study/methods/CBT modular</td>
 <td align="center">subsample.name</td>
-<td align="center">Coping Cat</td>
+<td align="center">CBT modular</td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/Coping Cat</td>
+<td align="center">study/methods/CBT modular</td>
 <td align="center">subsample.N</td>
 <td align="center">17</td>
 </tr>
 <tr class="odd">
-<td align="center">study/methods/Coping Cat</td>
+<td align="center">study/methods/CBT modular</td>
 <td align="center">subsample.age</td>
 <td align="center">NA</td>
 </tr>
@@ -330,436 +333,441 @@ $(document).ready(function () {
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">treatment.name</td>
-<td align="center">Coping Cat</td>
+<td align="center">CBT modular</td>
 </tr>
 <tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">treatment.variable</td>
 <td align="center">treatment</td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">treatment.sessions</td>
-<td align="center">12</td>
+<td align="center">8</td>
 </tr>
 <tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">treatment.operValue</td>
 <td align="center">1</td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<td align="center">study/methods/variables/treatments/CBT modular</td>
+<td align="center">treatment.manualAvailable</td>
+<td align="center">no</td>
+</tr>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">fearHierarchy</td>
-<td align="center">NA</td>
+<td align="center">present</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">fearMon</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">lvlBasedFear</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">lvlBasedExpect</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">expectState</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">expectMonitor</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">learnEval</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">expBasedFear</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">expBasedExpect</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">expBasedNonspec</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">lessOverest</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">deepExt</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">pharma</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">occReinfExt</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">removSaf</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">variab</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">retrCues</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">multiCont</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
 <td align="center">preExposure</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
-<td align="center">contingency</td>
-<td align="center">NA</td>
+<td align="center">unknown</td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/variables/treatments/Coping Cat</td>
-<td align="center">expNature</td>
-<td align="center">NA</td>
+<td align="center">study/methods/variables/treatments/CBT modular</td>
+<td align="center">contingency</td>
+<td align="center">unknown</td>
 </tr>
 <tr class="odd">
+<td align="center">study/methods/variables/treatments/CBT modular</td>
+<td align="center">expNature</td>
+<td align="center">unknown</td>
+</tr>
+<tr class="even">
 <td align="center">study/results/treatment_control</td>
 <td align="center">uni.name</td>
 <td align="center">treatment_control</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/treatment_control</td>
 <td align="center">uni.variable</td>
 <td align="center">treatment</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/treatment_control</td>
 <td align="center">uni.subsample</td>
 <td align="center">usual care</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/treatment_control</td>
 <td align="center">uni.moment</td>
 <td align="center">‘1’ &amp; ‘2’</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/treatment_control</td>
 <td align="center">uni.category</td>
 <td align="center">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/treatment_control</td>
 <td align="center">uni.comment</td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/treatment_experimental</td>
 <td align="center">uni.name</td>
 <td align="center">treatment_experimental</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/treatment_experimental</td>
 <td align="center">uni.variable</td>
 <td align="center">treatment</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/treatment_experimental</td>
 <td align="center">uni.subsample</td>
-<td align="center">Coping Cat</td>
+<td align="center">CBT modular</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/treatment_experimental</td>
 <td align="center">uni.moment</td>
 <td align="center">‘1’ &amp; ‘2’</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/treatment_experimental</td>
 <td align="center">uni.category</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/treatment_experimental</td>
 <td align="center">uni.comment</td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t1_control</td>
 <td align="center">uni.name</td>
 <td align="center">symptoms_t1_control</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t1_control</td>
 <td align="center">uni.variable</td>
 <td align="center">SCARED</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t1_control</td>
 <td align="center">uni.subsample</td>
 <td align="center">usual care</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t1_control</td>
 <td align="center">uni.moment</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t1_control</td>
 <td align="center">uni.mean</td>
 <td align="center">35.65</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t1_control</td>
 <td align="center">uni.sd</td>
 <td align="center">14.57</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t1_control</td>
 <td align="center">uni.comment</td>
 <td align="center">extracted from Table 3, page 11</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t2_control</td>
 <td align="center">uni.name</td>
 <td align="center">symptoms_t2_control</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t2_control</td>
 <td align="center">uni.variable</td>
 <td align="center">SCARED</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t2_control</td>
 <td align="center">uni.subsample</td>
 <td align="center">usual care</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t2_control</td>
 <td align="center">uni.moment</td>
 <td align="center">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t2_control</td>
 <td align="center">uni.mean</td>
 <td align="center">22.37</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t2_control</td>
 <td align="center">uni.sd</td>
 <td align="center">14.57</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t2_control</td>
 <td align="center">uni.comment</td>
 <td align="center">extracted from Table 3, page 11</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t1_experimental</td>
 <td align="center">uni.name</td>
 <td align="center">symptoms_t1_experimental</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t1_experimental</td>
 <td align="center">uni.variable</td>
 <td align="center">SCARED</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t1_experimental</td>
 <td align="center">uni.subsample</td>
-<td align="center">Coping Cat</td>
+<td align="center">CBT modular</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t1_experimental</td>
 <td align="center">uni.moment</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t1_experimental</td>
 <td align="center">uni.mean</td>
 <td align="center">33.74</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t1_experimental</td>
 <td align="center">uni.sd</td>
 <td align="center">8.59</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t1_experimental</td>
 <td align="center">uni.comment</td>
 <td align="center">extracted from Table 3, page 11</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t2_experimental</td>
 <td align="center">uni.name</td>
 <td align="center">symptoms_t2_experimental</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t2_experimental</td>
 <td align="center">uni.variable</td>
 <td align="center">SCARED</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t2_experimental</td>
 <td align="center">uni.subsample</td>
-<td align="center">Coping Cat</td>
+<td align="center">CBT modular</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t2_experimental</td>
 <td align="center">uni.moment</td>
 <td align="center">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t2_experimental</td>
 <td align="center">uni.mean</td>
 <td align="center">25.26</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/symptoms_t2_experimental</td>
 <td align="center">uni.sd</td>
 <td align="center">11.95</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/symptoms_t2_experimental</td>
 <td align="center">uni.comment</td>
 <td align="center">extracted from Table 3, page 11</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.name</td>
 <td align="center">enter name here (mandatory)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var1name</td>
 <td align="center">enter &lt;<entityRef>&gt; here</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var1values</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var1moment</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var2name</td>
 <td align="center">enter &lt;<entityRef>&gt; here</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var2values</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.var2moment</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.subsample</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.n</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.df</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.t</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.F</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.r</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.chisq</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.crosstab</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.d</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.etasq</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.omegasq</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.OR</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.p</td>
 <td align="center">NA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.covariates</td>
 <td align="center">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
 <td align="center">assoc.comment</td>
 <td align="center"></td>
@@ -770,8 +778,29 @@ $(document).ready(function () {
 <div id="validation-results" class="section level1">
 <h1>Validation results</h1>
 <ul>
-<li>Validation run starting at 2018-11-06 12:19</li>
+<li>Validation run starting at 2018-11-07 12:47</li>
 <li>Failed validation for ‘treatment.variable’</li>
+<li>Failed validation for ‘fearHierarchy’</li>
+<li>Failed validation for ‘fearMon’</li>
+<li>Failed validation for ‘lvlBasedFear’</li>
+<li>Failed validation for ‘lvlBasedExpect’</li>
+<li>Failed validation for ‘expectState’</li>
+<li>Failed validation for ‘expectMonitor’</li>
+<li>Failed validation for ‘learnEval’</li>
+<li>Failed validation for ‘expBasedFear’</li>
+<li>Failed validation for ‘expBasedExpect’</li>
+<li>Failed validation for ‘expBasedNonspec’</li>
+<li>Failed validation for ‘lessOverest’</li>
+<li>Failed validation for ‘deepExt’</li>
+<li>Failed validation for ‘pharma’</li>
+<li>Failed validation for ‘occReinfExt’</li>
+<li>Failed validation for ‘removSaf’</li>
+<li>Failed validation for ‘variab’</li>
+<li>Failed validation for ‘retrCues’</li>
+<li>Failed validation for ‘multiCont’</li>
+<li>Failed validation for ‘preExposure’</li>
+<li>Failed validation for ‘contingency’</li>
+<li>Failed validation for ‘expNature’</li>
 <li>Failed validation for ‘uni.variable’</li>
 <li>Failed validation for ‘uni.subsample’</li>
 <li>Failed validation for ‘uni.variable’</li>
@@ -786,7 +815,7 @@ $(document).ready(function () {
 <li>Failed validation for ‘uni.subsample’</li>
 <li>Failed validation for ‘assoc.var1name’</li>
 <li>Failed validation for ‘assoc.var2name’</li>
-<li>Validation run ending at 2018-11-06 12:20</li>
+<li>Validation run ending at 2018-11-07 12:48</li>
 </ul>
 </div>
 
