@@ -52,6 +52,9 @@ extractionScriptTemplatePath <- here::here("extraction");
 ### Set path for figures
 figPath <- here::here("figures");
 
+### Set path for intermediate output
+workingPath <- here::here("results-intermediate");
+
 ### Create object to keep track of queries
 queries <- list();
 
@@ -1039,4 +1042,46 @@ selectedIngredientsHeatmap;
 
 ```
 
+## Study details
 
+```{r}
+
+### Loop through the rxs trees and collect treatment information
+studyDetails <-
+  plyr::ldply(names(rxs$rxsTrees), function(studyName) {
+    ### Get the values
+    if ('rxs' %in% class(rxs$rxsTrees[[studyName]])) {
+      methodsNode <- FindNode(rxs$rxsTrees[[studyName]],
+                              'methods');
+      studyNode <- FindNode(rxs$rxsTrees[[studyName]],
+                            'study');
+      ageValue <- ufs::vecTxt(methodsNode$age$value,
+                              lastDelimiter="-");
+      anxietyValue <- ufs::vecTxt(methodsNode$anxiety$value);
+      nValue <- ufs::vecTxt(methodsNode$N$value);
+      countryValue <- ufs::vecTxt(studyNode$country$value);
+      treatmentName <- FindNode(rxs$rxsTrees[[studyName]],
+                                'treatments')$children[[1]]$name;
+      
+      briefStudyName <- 
+        gsub("^([[:alpha:]]+)-.*([[:digit:]]{4})\\.rxs\\.Rmd",
+             "\\1 et al. (\\2)",
+             studyName);
+      
+      res <- data.frame(study = briefStudyName,
+                        treatmentName = treatmentName,
+                        age = ageValue,
+                        anxiety = anxietyValue,
+                        N = nValue,
+                        country = countryValue);
+      return(res);
+    } else {
+      return(NULL);
+    }
+  });
+
+
+
+knitr::kable(studyDetails);
+
+```
