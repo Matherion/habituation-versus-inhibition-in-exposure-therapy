@@ -1062,6 +1062,8 @@ studyDetails <-
       countryValue <- ufs::vecTxt(studyNode$country$value);
       treatmentName <- FindNode(rxs$rxsTrees[[studyName]],
                                 'treatments')$children[[1]]$name;
+      #variables <- FindNode(rxs$rxsTrees[[studyName]],
+      #                      'variable')$children;
       
       briefStudyName <- 
         gsub("^([[:alpha:]]+)-.*([[:digit:]]{4})\\.rxs\\.Rmd",
@@ -1080,7 +1082,10 @@ studyDetails <-
     }
   });
 
-
+write.csv(studyDetails,
+          file=file.path(workingPath,
+                         "study-details.csv"),
+          row.names=FALSE);
 
 knitr::kable(studyDetails);
 
