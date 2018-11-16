@@ -1062,9 +1062,9 @@ studyDetails <-
       countryValue <- ufs::vecTxt(studyNode$country$value);
       treatmentName <- FindNode(rxs$rxsTrees[[studyName]],
                                 'treatments')$children[[1]]$name;
-      #variables <- FindNode(rxs$rxsTrees[[studyName]],
-      #                      'variable')$children;
-      
+      manualAvailable <- FindNode(rxs$rxsTrees[[studyName]],
+                                  'treatments')$children[[1]]$value$treatment.manualAvailable;
+
       briefStudyName <- 
         gsub("^([[:alpha:]]+)-.*([[:digit:]]{4})\\.rxs\\.Rmd",
              "\\1 et al. (\\2)",
@@ -1072,6 +1072,7 @@ studyDetails <-
       
       res <- data.frame(study = briefStudyName,
                         treatmentName = treatmentName,
+                        manualAvailable = manualAvailable,
                         age = ageValue,
                         anxiety = anxietyValue,
                         N = nValue,

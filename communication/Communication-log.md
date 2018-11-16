@@ -119,3 +119,7 @@ Eva de Hullu mailed the corresponding author of **Ginsburg2002** a reminder foll
  
 ### 2018 11 01 ###
 Eva de Hullu mailed the corresponding author of **Wood2009** following template1. jwood@gseis.ucla.edu
+
+
+### 2018 11 08 ###
+Received BIACA training manual of **Wood2009** responded with thank you mail.
