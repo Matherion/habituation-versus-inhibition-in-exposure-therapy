@@ -433,7 +433,7 @@ study <- Node$new('study');
     ### 
     ############################################################################
         
-        NA
+        "posttraumatic stress disorder"
         
     ############################################################################
     ######################################### VALUE DESCRIPTION AND EXAMPLES ###
@@ -612,7 +612,7 @@ study <- Node$new('study');
         ### 
         ########################################################################
             
-            list(treatment.name = "CBT-trauma",   ### Treatment Name: A unique name (identifier) for this treatment. [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
+            list(treatment.name = "CBT trauma",   ### Treatment Name: A unique name (identifier) for this treatment. [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
                  treatment.variable = "treatment",  ### Treatment Variable: Name of the treatment variable. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
                  treatment.sessions = 9,                          ### Number of sessions: The number of sessions in this therapy group (condition or arm). [Examples: 30; 8762] [Value description: Any valid whole number]
                  treatment.operValue = 1,                         ### Group: Which treatment group (operationalisation value of the treatment variable) this description pertains to. [Examples: <no example>] [Value description: A string that specifies another field in another entity.]

@@ -460,7 +460,7 @@ study <- Node$new('study');
     ### 
     ############################################################################
         
-        c("social anxiety", "generalized anxiety", "separation anxiety", "obsessive compulsive disorder", "specific phobia", "other")
+        c("generalized anxiety", "social anxiety", "separation anxiety", "specific phobia", "obsessive compulsive disorder", "other")
         
     ############################################################################
     ######################################### VALUE DESCRIPTION AND EXAMPLES ###

@@ -461,7 +461,7 @@ study <- Node$new('study');
     ### 
     ############################################################################
         
-        NA
+        c("generalized anxiety", "social anxiety", "separation anxiety", "obsessive compulsive disorder", "panic disorder", "other")
         
     ############################################################################
     ######################################### VALUE DESCRIPTION AND EXAMPLES ###
@@ -642,7 +642,7 @@ study <- Node$new('study');
         ### 
         ########################################################################
             
-            list(treatment.name = "CBT CGC",   ### Treatment Name: A unique name (identifier) for this treatment. [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
+            list(treatment.name = "CBT CGC/ARC",   ### Treatment Name: A unique name (identifier) for this treatment. [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
                  treatment.variable = "treatment",  ### Treatment Variable: Name of the treatment variable. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
                  treatment.sessions = 16,                          ### Number of sessions: The number of sessions in this therapy group (condition or arm). [Examples: 30; 8762] [Value description: Any valid whole number]
                  treatment.operValue = 1,                         ### Group: Which treatment group (operationalisation value of the treatment variable) this description pertains to. [Examples: <no example>] [Value description: A string that specifies another field in another entity.]
@@ -797,7 +797,7 @@ study <- Node$new('study');
         
         list(uni.name = "treatment_experimental",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
              uni.variable = "treatment",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
-             uni.subsample = "CBT CGC",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.subsample = "CBT CGC/ARC",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
              uni.moment = c(1, 2),                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
              uni.minimum = NA,                           ### Minimum value: If applicable, the minimum value in the data series of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.maximum = NA,                           ### Maximum value: If applicable, the maximum value in the data series of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
@@ -935,7 +935,7 @@ study <- Node$new('study');
         
         list(uni.name = "symptoms_t1_experimental",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
              uni.variable = "SCAS-C",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
-             uni.subsample = "CBT CGC",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.subsample = "CBT CGC/ARC",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
              uni.moment = 1,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
              uni.mean = 29.96,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.n = NA,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
@@ -980,7 +980,7 @@ study <- Node$new('study');
         
         list(uni.name = "symptoms_t2_experimental",   ### Name of result: A unique name (in this study), to easily find / meta-analyse / group this result later [Examples: "prevalence"; "reliability"] [Value description: A single character value that cannot be omitted]
              uni.variable = "SCAS-C",  ### Variable: The variable this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
-             uni.subsample = "CBT CGC",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
+             uni.subsample = "CBT CGC/ARC",                         ### Subsample: If applicable, the subsample this result pertains to. [Examples: <no example>] [Value description: A string that specifies another entity (can be missing, i.e. NA)]
              uni.moment = 2,                            ### Moment: If applicable, the measurement moment this result pertains to. For example, for a longitudinal study, this can be '2' to specify that this is the value of this variable at the second measurement moment. [Examples: <no example>] [Value description: A string that specifies another field in another entity (can be missing, i.e. NA).]
              uni.mean = 26.54,                              ### Mean value: If applicable, the mean of this variable. [Examples: 2.3; 643.2] [Value description: Any valid number]
              uni.n = 33,                                 ### Sample size: This can be used to specify the sample size, if it is different from the sample size of the entire sample or the relevant subsample. [Examples: 30; 8762] [Value description: Any valid whole number]
