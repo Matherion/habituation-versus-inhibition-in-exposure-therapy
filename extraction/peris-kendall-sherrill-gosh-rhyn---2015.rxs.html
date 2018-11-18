@@ -126,31 +126,112 @@ $(document).ready(function () {
 </div>
 
 
+<pre><code>$treatment.name
+[1] &quot;Coping Cat&quot;
+
+$treatment.variable
+[1] &quot;treatment&quot;
+
+$treatment.sessions
+[1] 14
+
+$treatment.manualAvailable
+[1] &quot;yes&quot;
+
+$treatment.operValue
+[1] 1
+
+$fearHierarchy
+[1] &quot;present&quot;
+
+$fearMon
+[1] &quot;present&quot;
+
+$lvlBasedFear
+[1] &quot;present&quot;
+
+$lvlBasedExpect
+[1] &quot;absent&quot;
+
+$expectState
+[1] &quot;present&quot;
+
+$expectMonitor
+[1] &quot;absent&quot;
+
+$learnEval
+[1] &quot;absent&quot;
+
+$expBasedFear
+[1] &quot;present&quot;
+
+$expBasedExpect
+[1] &quot;absent&quot;
+
+$expBasedNonspec
+[1] &quot;absent&quot;
+
+$lessOverest
+[1] &quot;present&quot;
+
+$deepExt
+[1] &quot;absent&quot;
+
+$pharma
+[1] &quot;absent&quot;
+
+$occReinfExt
+[1] &quot;absent&quot;
+
+$removSaf
+[1] &quot;present&quot;
+
+$variab
+[1] &quot;absent&quot;
+
+$retrCues
+[1] &quot;absent&quot;
+
+$multiCont
+[1] &quot;present&quot;
+
+$preExposure
+[1] &quot;absent&quot;
+
+$contingency
+[1] &quot;present&quot;
+
+$expNature
+[1] &quot;in vivo&quot;
+
+[[27]]
+[1] &quot;in vitro&quot;</code></pre>
 <div id="section" class="section level3">
 <h3></h3>
 <p>Tree of extracted entities</p>
-<pre>                                     levelName
-1  study                                      
-2   ¦--studyId                                
-3   ¦--comments                               
-4   ¦--yearCollected                          
-5   ¦--yearPublished                          
-6   ¦--country                                
-7   ¦--methods                                
-8   ¦   ¦--N                                  
-9   ¦   ¦--moments                            
-10  ¦   ¦--momentUnits                        
-11  ¦   ¦--age                                
-12  ¦   ¦--enter name here (mandatory)        
-13  ¦   ¦--anxiety                            
-14  ¦   ¦--methodType                         
-15  ¦   °--variables                          
-16  ¦       ¦--enter name here (mandatory)    
-17  ¦       °--treatments                     
-18  ¦           °--enter name here (mandatory)
-19  °--results                                
-20      ¦--enter name here (mandatory)        
-21      ¦--enter name here (mandatory)        
+<pre>                             levelName
+1  study                              
+2   ¦--studyId                        
+3   ¦--comments                       
+4   ¦--yearCollected                  
+5   ¦--yearPublished                  
+6   ¦--country                        
+7   ¦--methods                        
+8   ¦   ¦--N                          
+9   ¦   ¦--moments                    
+10  ¦   ¦--momentUnits                
+11  ¦   ¦--age                        
+12  ¦   ¦--Pill placebo               
+13  ¦   ¦--Coping Cat                 
+14  ¦   ¦--anxiety                    
+15  ¦   ¦--methodType                 
+16  ¦   °--variables                  
+17  ¦       ¦--treatment              
+18  ¦       ¦--PARS                   
+19  ¦       °--treatments             
+20  °--results                        
+21      ¦--enter name here (mandatory)
+22      ¦--enter name here (mandatory)
 </pre>
 </div>
 <div id="section-1" class="section level3">
@@ -158,9 +239,9 @@ $(document).ready(function () {
 <p>Table with extracted entities and extracted values</p>
 <table>
 <colgroup>
-<col width="43%"></col>
-<col width="28%"></col>
-<col width="28%"></col>
+<col width="41%"></col>
+<col width="22%"></col>
+<col width="36%"></col>
 </colgroup>
 <thead>
 <tr class="header">
@@ -173,7 +254,7 @@ $(document).ready(function () {
 <tr class="odd">
 <td align="center">study</td>
 <td align="center">studyId</td>
-<td align="center">enter xdoi here</td>
+<td align="center"><a href="doi:10.1037/a0038402" class="uri">doi:10.1037/a0038402</a></td>
 </tr>
 <tr class="even">
 <td align="center">study</td>
@@ -188,17 +269,17 @@ $(document).ready(function () {
 <tr class="even">
 <td align="center">study</td>
 <td align="center">yearPublished</td>
-<td align="center">NA</td>
+<td align="center">2015</td>
 </tr>
 <tr class="odd">
 <td align="center">study</td>
 <td align="center">country</td>
-<td align="center">NA</td>
+<td align="center">US</td>
 </tr>
 <tr class="even">
 <td align="center">study/methods</td>
 <td align="center">N</td>
-<td align="center">NA</td>
+<td align="center">488</td>
 </tr>
 <tr class="odd">
 <td align="center">study/methods</td>
@@ -208,207 +289,127 @@ $(document).ready(function () {
 <tr class="even">
 <td align="center">study/methods</td>
 <td align="center">momentUnits</td>
-<td align="center">weeks</td>
+<td align="center">NA</td>
 </tr>
 <tr class="odd">
 <td align="center">study/methods</td>
 <td align="center">age</td>
-<td align="center">NA</td>
+<td align="center">‘7’ &amp; ‘17’</td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/enter name here (mandatory)</td>
+<td align="center">study/methods/Pill placebo</td>
 <td align="center">subsample.name</td>
-<td align="center">enter name here (mandatory)</td>
+<td align="center">Pill placebo</td>
 </tr>
 <tr class="odd">
-<td align="center">study/methods/enter name here (mandatory)</td>
+<td align="center">study/methods/Pill placebo</td>
 <td align="center">subsample.N</td>
-<td align="center">NA</td>
+<td align="center">76</td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/enter name here (mandatory)</td>
+<td align="center">study/methods/Pill placebo</td>
 <td align="center">subsample.age</td>
 <td align="center">NA</td>
 </tr>
 <tr class="odd">
+<td align="center">study/methods/Coping Cat</td>
+<td align="center">subsample.name</td>
+<td align="center">Coping Cat</td>
+</tr>
+<tr class="even">
+<td align="center">study/methods/Coping Cat</td>
+<td align="center">subsample.N</td>
+<td align="center">139</td>
+</tr>
+<tr class="odd">
+<td align="center">study/methods/Coping Cat</td>
+<td align="center">subsample.age</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
 <td align="center">study/methods</td>
 <td align="center">anxiety</td>
-<td align="center">NA</td>
+<td align="center">‘separation anxiety’, ‘social anxiety’ &amp; ‘generalized anxiety’</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">study/methods</td>
 <td align="center">methodType</td>
-<td align="center">NA</td>
+<td align="center">quantitative</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatment</td>
 <td align="center">oper.name</td>
-<td align="center">enter name here (mandatory)</td>
+<td align="center">treatment</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/enter name here (mandatory)</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatment</td>
 <td align="center">oper.moment</td>
-<td align="center">1</td>
+<td align="center">‘1’ &amp; ‘2’</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatment</td>
 <td align="center">oper.type</td>
-<td align="center">NA</td>
+<td align="center">manipulation</td>
 </tr>
-<tr class="even">
-<td align="center">study/methods/variables/enter name here (mandatory)</td>
+<tr class="odd">
+<td align="center">study/methods/variables/treatment</td>
 <td align="center">oper.datatype</td>
-<td align="center">NA</td>
+<td align="center">logical</td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/enter name here (mandatory)</td>
+<tr class="even">
+<td align="center">study/methods/variables/treatment</td>
 <td align="center">oper.values</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/enter name here (mandatory)</td>
-<td align="center">oper.labels</td>
-<td align="center">NA</td>
+<td align="center">‘0’ &amp; ‘1’</td>
 </tr>
 <tr class="odd">
-<td align="center">study/methods/variables/enter name here (mandatory)</td>
-<td align="center">oper.description</td>
-<td align="center"></td>
+<td align="center">study/methods/variables/treatment</td>
+<td align="center">oper.labels</td>
+<td align="center">‘control’ &amp; ‘experimental’</td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/variables/enter name here (mandatory)</td>
+<td align="center">study/methods/variables/treatment</td>
+<td align="center">oper.description</td>
+<td align="center">the treatment arms</td>
+</tr>
+<tr class="odd">
+<td align="center">study/methods/variables/treatment</td>
 <td align="center">oper.comment</td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">treatment.name</td>
-<td align="center">enter name here (mandatory)</td>
-</tr>
 <tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">treatment.variable</td>
-<td align="center">enter &lt;<entityRef>&gt; here</td>
+<td align="center">study/methods/variables/PARS</td>
+<td align="center">oper.name</td>
+<td align="center">PARS</td>
 </tr>
 <tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">treatment.sessions</td>
-<td align="center">NA</td>
+<td align="center">study/methods/variables/PARS</td>
+<td align="center">oper.moment</td>
+<td align="center">‘1’ &amp; ‘2’</td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">treatment.operValue</td>
-<td align="center">NA</td>
+<td align="center">study/methods/variables/PARS</td>
+<td align="center">oper.type</td>
+<td align="center">aggregate</td>
 </tr>
 <tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">treatment.manualAvailable</td>
-<td align="center">NA</td>
+<td align="center">study/methods/variables/PARS</td>
+<td align="center">oper.datatype</td>
+<td align="center">numeric</td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">fearHierarchy</td>
-<td align="center">NA</td>
+<td align="center">study/methods/variables/PARS</td>
+<td align="center">oper.description</td>
+<td align="center">the PARS questionnaire</td>
 </tr>
 <tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">fearMon</td>
-<td align="center">NA</td>
+<td align="center">study/methods/variables/PARS</td>
+<td align="center">oper.comment</td>
+<td align="center"></td>
 </tr>
 <tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">lvlBasedFear</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">lvlBasedExpect</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">expectState</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">expectMonitor</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">learnEval</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">expBasedFear</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">expBasedExpect</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">expBasedNonspec</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">lessOverest</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">deepExt</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">pharma</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">occReinfExt</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">removSaf</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">variab</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">retrCues</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">multiCont</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">preExposure</td>
-<td align="center">NA</td>
-</tr>
-<tr class="odd">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">contingency</td>
-<td align="center">NA</td>
-</tr>
-<tr class="even">
-<td align="center">study/methods/variables/treatments/enter name here (mandatory)</td>
-<td align="center">expNature</td>
-<td align="center">NA</td>
+<td align="center">study/methods/variables</td>
+<td align="center">treatments</td>
+<td align="center">NULL (element absent from extraction script)</td>
 </tr>
 <tr class="odd">
 <td align="center">study/results/enter name here (mandatory)</td>
@@ -601,13 +602,11 @@ $(document).ready(function () {
 <div id="validation-results" class="section level1">
 <h1>Validation results</h1>
 <ul>
-<li>Validation run starting at 2018-11-17 15:15</li>
-<li>Failed validation for ‘yearPublished’</li>
-<li>Failed validation for ‘treatment.variable’</li>
+<li>Validation run starting at 2018-11-18 20:00</li>
 <li>Failed validation for ‘uni.variable’</li>
 <li>Failed validation for ‘assoc.var1name’</li>
 <li>Failed validation for ‘assoc.var2name’</li>
-<li>Validation run ending at 2018-11-17 15:15</li>
+<li>Validation run ending at 2018-11-18 20:01</li>
 </ul>
 </div>
 

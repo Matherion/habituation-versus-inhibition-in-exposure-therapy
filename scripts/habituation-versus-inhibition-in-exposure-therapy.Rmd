@@ -1070,13 +1070,13 @@ studyDetails <-
              "\\1 et al. (\\2)",
              studyName);
       
-      res <- data.frame(study = briefStudyName,
-                        treatmentName = treatmentName,
-                        manualAvailable = manualAvailable,
-                        age = ageValue,
-                        anxiety = anxietyValue,
-                        N = nValue,
-                        country = countryValue);
+      res <- data.frame(study = briefStudyName %||% NA,
+                        treatmentName = treatmentName %||% NA,
+                        manualAvailable = manualAvailable %||% NA,
+                        age = ageValue %||% NA,
+                        anxiety = anxietyValue %||% NA,
+                        N = nValue %||% NA,
+                        country = countryValue %||% NA);
       return(res);
     } else {
       return(NULL);

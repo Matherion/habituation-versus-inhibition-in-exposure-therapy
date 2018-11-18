@@ -50,3 +50,6 @@ pdfs/*.pdf
 # JabRef backup file and other weird file
 .bib.bak
 .bib.sav
+
+# Treatment manuals
+treatment manuals/*.*
