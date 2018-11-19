@@ -957,7 +957,7 @@ tidyTreatments$supportsLabel <-
 tidyTreatments$supportsLabel <-
   factor(tidyTreatments$supportsLabel,
          levels=1:3,
-         labels=c("Habituation", "Inhibition", "Neutral"),
+         labels=c("Habituatie", "Inhibitie", "Neutraal"),
          ordered=TRUE);
 
 ### Function to generate heatmap
@@ -974,9 +974,9 @@ ingredientHeatMap <- function(data,
                                          fill=presence,
                                          alpha=supportsLabel)) +
     ggplot2::geom_raster() +
-    ggplot2::scale_fill_viridis_d(name="Presence") +
-    ggplot2::scale_color_viridis_d(name="Presence") +
-    ggplot2::scale_alpha_ordinal(name="Supported theory",
+    ggplot2::scale_fill_viridis_d(name="Aanwezigheid") +
+    ggplot2::scale_color_viridis_d(name="Aanwezigheid") +
+    ggplot2::scale_alpha_ordinal(name="Ondersteunde theorie",
                                  range=c(1, .5)) +
     ggplot2::theme_minimal(base_size=16) +
     ggplot2::theme(panel.grid = ggplot2::element_blank(),
@@ -988,9 +988,9 @@ ingredientHeatMap <- function(data,
                                                              color = "transparent"),
                    legend.box.background = ggplot2::element_rect(fill = "transparent",
                                                                  color = "transparent")) +
-    ggplot2::labs(title = "Treatment ingredients",
-                  x = "Study",
-                  y = "Ingredient");
+    ggplot2::labs(title = "Treatment ingrediënten",
+                  x = "Studie",
+                  y = "Ingrediënt");
   
   ### Save ggplot
   ggplot2::ggsave(filename = file.path(figPath,

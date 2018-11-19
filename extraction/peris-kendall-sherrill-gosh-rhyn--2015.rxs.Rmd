@@ -302,7 +302,7 @@ study <- Node$new('study');
     ### 
     ############################################################################
         
-        0
+        NA
         
     ############################################################################
     ######################################### VALUE DESCRIPTION AND EXAMPLES ###
@@ -625,6 +625,20 @@ study <- Node$new('study');
       ### The treatments for each group
       ### 
       ##########################################################################
+      
+        ########################################################################
+        ####################################### START: treatment (REPEATING) ###
+        ########################################################################
+        study$methods$variables$treatments$AddChild('treatment__1__');
+        study$methods$variables$treatments$treatment__1__[['value']] <-
+        ########################################################################
+        ### 
+        ### TREATMENT
+        ### 
+        ### Details about the delivered treatment for this group
+        ### (this operationalisation value)
+        ### 
+        ########################################################################      
           
       list(treatment.name = "Coping Cat",   ### Treatment Name: A unique name (identifier) for this treatment. [Examples: "example"; "another example"] [Value description: A single character value that cannot be omitted]
                  treatment.variable = "treatment",  ### Treatment Variable: Name of the treatment variable. [Examples: <no example>] [Value description: A string that specifies another entity and which MUST be provided]
