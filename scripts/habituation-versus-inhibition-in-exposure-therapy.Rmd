@@ -905,12 +905,19 @@ tidyTreatments$study <-
        "\\1 et al.\n(\\2)",
        tidyTreatments$study);
 
+### Convert first character to uppercase
+tidyTreatments$study <-
+  gsub("^([a-z])",
+       "\\U\\1",
+       tidyTreatments$study,
+       perl=TRUE);
+
 ### Clean ingredient names
 tidyTreatments$cleanIngredient <-
   dplyr::case_when(tidyTreatments$ingredient == "fearHierarchy" ~ "Angsthiërarchie",
                    tidyTreatments$ingredient == "fearMon" ~ "Angstmonitoring",
                    tidyTreatments$ingredient == "lvlBasedFear" ~ "Einde: angstniveau",
-                   tidyTreatments$ingredient == "lvlBasedExpect" ~ "Einde:       verwachtingsdisconfirmatie",
+                   tidyTreatments$ingredient == "lvlBasedExpect" ~ "Einde: verwachtingsniveau",
                    tidyTreatments$ingredient == "expectState" ~ "Expliciteren verwachtingen",
                    tidyTreatments$ingredient == "expectMonitor" ~ "Monitoring verwachtingen",
                    tidyTreatments$ingredient == "learnEval" ~ "Leer-evaluatie",
@@ -960,6 +967,12 @@ tidyTreatments$supportsLabel <-
          labels=c("Habituatie", "Inhibitie", "Neutraal"),
          ordered=TRUE);
 
+tidyTreatments$Aanwezigheid <-
+  dplyr::case_when(tidyTreatments$presence == 'present' ~ 'Aanwezig',
+                   tidyTreatments$presence == 'absent' ~ 'Afwezig',
+                   tidyTreatments$presence == 'unknown' ~ 'Onbekend',
+                   tidyTreatments$presence == 'not coded' ~ 'Niet gecodeerd')
+
 ### Function to generate heatmap
 ingredientHeatMap <- function(data,
                               filename,
@@ -970,8 +983,8 @@ ingredientHeatMap <- function(data,
                     mapping=ggplot2::aes(x=study,
                                          y=reorder(cleanIngredient,
                                                    supportsOrder),
-                                         color=presence,
-                                         fill=presence,
+                                         color=Aanwezigheid,
+                                         fill=Aanwezigheid,
                                          alpha=supportsLabel)) +
     ggplot2::geom_raster() +
     ggplot2::scale_fill_viridis_d(name="Aanwezigheid") +
@@ -988,7 +1001,7 @@ ingredientHeatMap <- function(data,
                                                              color = "transparent"),
                    legend.box.background = ggplot2::element_rect(fill = "transparent",
                                                                  color = "transparent")) +
-    ggplot2::labs(title = "Treatment ingrediënten",
+    ggplot2::labs(title = "Exposure ingrediënten",
                   x = "Studie",
                   y = "Ingrediënt");
   
@@ -1064,11 +1077,24 @@ studyDetails <-
                                 'treatments')$children[[1]]$name;
       manualAvailable <- FindNode(rxs$rxsTrees[[studyName]],
                                   'treatments')$children[[1]]$value$treatment.manualAvailable;
+      operNames <- unlist(lapply(FindNode(rxs$rxsTrees[[studyName]],
+                                          'variables')$children,
+                                 function(node) {
+                                   return(node$name);
+                                 }));
+      operNames <- operNames[grep('treatment', operNames, invert=TRUE, value=TRUE)];
 
       briefStudyName <- 
         gsub("^([[:alpha:]]+)-.*([[:digit:]]{4})\\.rxs\\.Rmd",
              "\\1 et al. (\\2)",
              studyName);
+      
+      ### Convert first character to uppercase
+      briefStudyName <-
+        gsub("^([a-z])",
+             "\\U\\1",
+             briefStudyName,
+             perl=TRUE);
       
       res <- data.frame(study = briefStudyName %||% NA,
                         treatmentName = treatmentName %||% NA,
@@ -1076,7 +1102,9 @@ studyDetails <-
                         age = ageValue %||% NA,
                         anxiety = anxietyValue %||% NA,
                         N = nValue %||% NA,
-                        country = countryValue %||% NA);
+                        country = countryValue %||% NA,
+                        operNames = operNames %||% NA,
+                        stringsAsFactors = FALSE);
       return(res);
     } else {
       return(NULL);
