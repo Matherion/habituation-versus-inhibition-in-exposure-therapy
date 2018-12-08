@@ -914,15 +914,15 @@ tidyTreatments$study <-
 
 ### Clean ingredient names
 tidyTreatments$cleanIngredient <-
-  dplyr::case_when(tidyTreatments$ingredient == "fearHierarchy" ~ "Angsthiërarchie",
+  dplyr::case_when(tidyTreatments$ingredient == "fearHierarchy" ~ "Angsthi??rarchie",
                    tidyTreatments$ingredient == "fearMon" ~ "Angstmonitoring",
                    tidyTreatments$ingredient == "lvlBasedFear" ~ "Einde: angstniveau",
-                   tidyTreatments$ingredient == "lvlBasedExpect" ~ "Einde: verwachtingsniveau",
+                   tidyTreatments$ingredient == "lvlBasedExpect" ~ "Einde: verwachtingsdisconfirmatie",
                    tidyTreatments$ingredient == "expectState" ~ "Expliciteren verwachtingen",
                    tidyTreatments$ingredient == "expectMonitor" ~ "Monitoring verwachtingen",
                    tidyTreatments$ingredient == "learnEval" ~ "Leer-evaluatie",
                    tidyTreatments$ingredient == "expBasedFear" ~ "Einde: voorwaarden (angst)",
-                   tidyTreatments$ingredient == "expBasedExpect" ~ "Einde: verwachtingsdisconfirmatie",
+                   tidyTreatments$ingredient == "expBasedExpect" ~ "Einde: voorwaarden (verwachtingen)",
                    tidyTreatments$ingredient == "expBasedNonspec" ~ "Einde: voorwaarden (niet specifiek)",
                    tidyTreatments$ingredient == "lessOverest" ~ "Overschatting verminderen",
                    tidyTreatments$ingredient == "deepExt" ~ "Deepened extinction",
@@ -1001,9 +1001,9 @@ ingredientHeatMap <- function(data,
                                                              color = "transparent"),
                    legend.box.background = ggplot2::element_rect(fill = "transparent",
                                                                  color = "transparent")) +
-    ggplot2::labs(title = "Exposure ingrediënten",
+    ggplot2::labs(title = "Exposure ingredi??nten",
                   x = "Studie",
-                  y = "Ingrediënt");
+                  y = "Ingredi??nt");
   
   ### Save ggplot
   ggplot2::ggsave(filename = file.path(figPath,
