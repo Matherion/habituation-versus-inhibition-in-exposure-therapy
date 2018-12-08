@@ -84,7 +84,7 @@ There were no comments about fear hierarchy, fear level, occasional reinforced e
 
 *"The fear level of the participant is being monitored throughout the exposure trial."*
 
-- Could also include ???affect labelling??? more generally.
+- Could also include "affect labelling" more generally.
 
 This could include affect labelling, but a crucial condition is that fear monitoring always involves monitoring the *level* of the emotion. We decide that this is sufficiently clear from the definition as we formulated it now; this should exclude affect labelling exercises where monitoring is not explicit.
 
@@ -111,7 +111,7 @@ We decide to substitute 'evaluation' for consolidation. For clarity, we also rep
 
 *"The end of the exposure trial is determined by expectancy reduction to a certain level."*
 
-- Could also be stated as ???prediction error???. It???s a little difficult whether the expectancy violation should be ???reduced to a certain level???, or whether it is instead a binary thing: you make the explicit and specific prediction and test it in the exposure. Could expectancy statement and expectancy violation even be combined to refer to a ???behavioral test??? - as in CBT where the cognitions/expectations are treated as a hypothesis and the exposure functions as a behavioral test of them
+- Could also be stated as "prediction error". It's a little difficult whether the expectancy violation should be "reduced to a certain level", or whether it is instead a binary thing: you make the explicit and specific prediction and test it in the exposure. Could expectancy statement and expectancy violation even be combined to refer to a "behavioral test" - as in CBT where the cognitions/expectations are treated as a hypothesis and the exposure functions as a behavioral test of them
 
 In discussing this point, we realise that in fact, this therapy ingredient and 'Fear level' describe specific instances of generic 'termination criteria' that can be described as a combination of two decisions. First, does termination occur based on the monitored level of a psychological variable, or based on prespecified criteria that operationalise expectations regarding the influence of the exposure on the level of a psychological variable. Second, does this variable relate to somebody's fear or their expectancies? The possible combinations would therefore be:
 
@@ -127,7 +127,7 @@ We will therefore also remove therapy ingredients 'Expectancy violation' and 'Fe
 
 #### Lessen overestimation
 
-*"Cognitive interventions designed to lessen probability overestimation (e.g., ???I am unlikely to be bitten by the dog???) and perceived negative valence (e.g., ???It is not so bad to be rejected???) occur."*
+*"Cognitive interventions designed to lessen probability overestimation (e.g., "I am unlikely to be bitten by the dog") and perceived negative valence (e.g., "It is not so bad to be rejected") occur."*
 
 - dit is 1 kant van angst; de andere is de mate waarin iemand zelfvertrouwen (self-efficacy; problem solving/coping) heeft een probleem aan te kunnen (CBT kan zich ook op die kant richten om angst te verminderen)
 - It would depend on when this occurs: if exposure therapy works by forcing a prediction error to update beliefs, then some theorists would say that lessening overestimation before exposure would be counterproductive, as it would lessen the contrast between what is expected and what occurs, and reduce inhibitory learning.
@@ -153,7 +153,7 @@ This is a good point; we decide to add an additional therapy ingredient:
 
 *"The phobic stimulus is introduced for a brief period about 30 minutes before repeated trials of exposure."*
 
-- I would say ???retrieval-extinction??? rather than reconsolidation. I the one case, you simply state what is occurring (brief retrieval, then extinction), whereas in the other a specific process is inferred. There is a lot of conflicting evidence about whether retrieval-extinction procedures are really reconsolidation-based.
+- I would say "retrieval-extinction" rather than reconsolidation. I the one case, you simply state what is occurring (brief retrieval, then extinction), whereas in the other a specific process is inferred. There is a lot of conflicting evidence about whether retrieval-extinction procedures are really reconsolidation-based.
 
 One participant remarked that 'reconsilidation' may be a misnomer; 'retrieval-extinction' may be more accurate. However, this participant did not think this was a redundant therapy ingredient to code. Consistent with our earlier decision to avoid 'consolidation', we will follow this suggestion and rename this therapy ingredient to "Brief pre-exposure".
 
@@ -167,7 +167,7 @@ Indeed, number of treatments is important to code.
 
 This is a good point. We will code this using the DSM categories.
 
-- One of the things I thought of was that sometimes a pharmacological agent is used to enhance inhibitory learning. Perhaps: ???pharmacological enhancement??? or something like that.
+- One of the things I thought of was that sometimes a pharmacological agent is used to enhance inhibitory learning. Perhaps: "pharmacological enhancement" or something like that.
 - The reference to reconsolidation is questionable as I noted above, in that we do not know whether reconsolidation is what is occurring. Also though, if a reconsolidation approach is taken and reconsolidation is what is believed to be happening, then it would be neither a habituation nor an inhibitory learning approach. The idea that people focusing on reconsolidation in exposure are pushing is that rather than inhibitory memories being formed, the original memory is directly updated.
 
 Both points have been dealt with above.
@@ -182,7 +182,7 @@ This is an important omission. We will include this therapy ingredient:
 
 1. Contingency management: Any use of rewards on the basis of progress in the exposure therapy.
 
-- It???s maybe implicitly stated in the ???fear monitoring??? ingredient, but I would add ???fear eliciting???: one needs to be sure the participant is feeling anxious/experiencing fear in order for habituation to be possible
+- It's maybe implicitly stated in the "fear monitoring" ingredient, but I would add "fear eliciting" one needs to be sure the participant is feeling anxious/experiencing fear in order for habituation to be possible
 
 We discussed this and decided that this is implicit in the 'Nature of exposure' entity that will be extracted. On the one hand, exposure should normally always result in fear elicitation. On the other hand, if we do want to extract/code this, it should be as a manipulation check of the variable 'fear'; this is about therapy fidelity, not therapy ingredients.
 
@@ -747,7 +747,7 @@ There are also a few common bivariate effect sizes:
 
 - The correlation coefficient (Pearson's product moment correlation for continuous data or Spearman's rank correlation for ordinal data; usually tested using a t-test)
 - Cohen's d (used when t-tests are used as a test statistic)
-- Cram??r's V (used for cross tables)
+- Cramer's V (used for cross tables)
 - Odds Ratio's, Risk Ratio's, or Relative Risks (all closely related)
 
 ###### Multivariate analyses
@@ -914,7 +914,7 @@ tidyTreatments$study <-
 
 ### Clean ingredient names
 tidyTreatments$cleanIngredient <-
-  dplyr::case_when(tidyTreatments$ingredient == "fearHierarchy" ~ "Angsthi??rarchie",
+  dplyr::case_when(tidyTreatments$ingredient == "fearHierarchy" ~ "Angsthiërarchie",
                    tidyTreatments$ingredient == "fearMon" ~ "Angstmonitoring",
                    tidyTreatments$ingredient == "lvlBasedFear" ~ "Einde: angstniveau",
                    tidyTreatments$ingredient == "lvlBasedExpect" ~ "Einde: verwachtingsdisconfirmatie",
@@ -1001,9 +1001,9 @@ ingredientHeatMap <- function(data,
                                                              color = "transparent"),
                    legend.box.background = ggplot2::element_rect(fill = "transparent",
                                                                  color = "transparent")) +
-    ggplot2::labs(title = "Exposure ingredi??nten",
+    ggplot2::labs(title = "Exposure ingrediënten",
                   x = "Studie",
-                  y = "Ingredi??nt");
+                  y = "Ingrediënt");
   
   ### Save ggplot
   ggplot2::ggsave(filename = file.path(figPath,
